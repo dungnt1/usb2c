@@ -1,0 +1,137 @@
+/* invalid input */
+.bvalidator_invalid {
+	border: 1px solid #ca0413 !important;
+}
+/* error message */
+.bvalidator_errmsg {
+	background-color: #fff;
+	font-size: 0.875em;
+	color: #000;
+	display: none;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-border-radius-bottomleft: 0;
+	-moz-border-radius-topleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	border-bottom-left-radius: 0;
+	-webkit-border-top-left-radius: 0;
+	-moz-border-radius-topleft: 0;
+	border-top-left-radius: 0;
+	-moz-box-shadow: 0 0 6px #ddd;
+	-webkit-box-shadow: 0 0 6px #ddd;
+	box-shadow: 0 0 6px #ddd;
+	white-space: nowrap;
+	padding:10px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	opacity: 0.9;
+	filter: alpha(opacity=90)
+}
+/* close icon */
+.bvalidator_errmsg .bvalidator_close_icon {
+	margin-left: 5px;
+	margin-top: -2px;
+	font-weight: bold;
+	color: #F96;
+	cursor: pointer
+}
+/* arrow */
+.bvalidator_errmsg em {
+	display: block;
+	border-color: #fff transparent transparent;
+	border-style: solid;
+	border-width: 10px 10px 0;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: -9px;
+	left: 5px
+}
+
+/* invalid input */
+.bvalidator_bootstraprt_invalid, .bvalidator_bootstraprt_invalid span.select {
+    border: 1px solid #e74c3c !important;
+}
+/* error message */
+.bvalidator_bootstraprt_errmsg {
+    font-size: 14px;
+    display: none;
+    white-space: nowrap;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    background-color: #ffffff;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
+    z-index:10010;
+}
+/* close icon */
+.bvalidator_bootstraprt_errmsg .bvalidator_bootstraprt_close_icon {
+    margin-left: 5px;
+    margin-top: -2px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.bvalidator_bootstraprt_errmsg .bvalidator_bootstraprt_close_icon:hover {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+/* arrow */
+.bvalidator_bootstraprt_errmsg .bvalidator_bootstraprt_arrow {
+    display: block;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 10px;
+    border-color: transparent;
+    border-top-color: #ffffff;
+    border-width: 10px 10px 0 10px;
+    border-style: solid;
+    bottom: -10px;
+}
+.bvalidator_bootstraprt_errmsg .bvalidator_bootstraprt_arrow:after {
+    position: absolute;
+    top: -10px;
+    left: -11px;
+    border-width: 11px 11px 0 11px;
+    content: "";
+    z-index: -1;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-top-color: rgba(0, 0, 0, 0.25);
+    z-index:-1;
+}
+/* message container  */
+.bvalidator_bootstraprt_errmsg .bvalidator_bootstraprt_cont1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Illusion_AjaxCartWishlistCompare>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Illusion_Settings/>
+            </depends>
+        </Illusion_AjaxCartWishlistCompare>
+    </modules>
+</config>

@@ -1,0 +1,74 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+
+<!doctype html>
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<?php $bodyClasses = $this->getBodyClass() .' '. $this->helper('illusion_settings')->getConfig('menu/menu_type'); ?>
+<?php $layoutType = $this->helper('illusion_settings')->getConfig('layout/layout_type');?>
+<body class="<?php echo $bodyClasses;?>">
+<?php echo $this->getChildHtml('after_body_start') ?>
+
+<?php if(!Mage::getStoreConfig('megamenu/general/active')):?>       <!--side menu-->
+    <?php echo $this->getChildHtml('illusion.side.menu');?>
+<?php else:?>
+    <?php echo $this->getChildHtml('illusion.megaside.menu');?>
+<?php endif;?>
+
+<div class="<?php echo $layoutType;?> bg_light col2-right-layout">  <!--layout-->
+    <?php echo $this->getChildHtml('header');?>                     <!--header-->
+    <?php echo $this->getChildHtml('breadcrumbs');?>                <!--breadcrumbs-->
+    <?php echo $this->getChildHtml('slider');?>
+    <div class="section_offset">
+        <div class="container">
+            <div class="row">
+                <section class="col-lg-9 col-md-9 col-sm-9 m_bottom_70 m_xs_bottom_30">
+                    <?php echo $this->getChildHtml('content');?>    <!--content-->
+                </section>
+                <aside class="col-lg-3 col-md-3 col-sm-3 m_bottom_70 m_xs_bottom_30">
+                    <?php echo $this->getChildHtml('right');?>       <!--content-->
+                </aside>
+            </div>
+        </div>
+    </div>
+    <?php echo $this->getChildHtml('footer');?>                     <!--footer-->
+</div>
+<?php echo $this->getChildHtml('illusion.back.top');?>              <!--back to top button-->
+<?php echo $this->getChildHtml('global_cookie_notice') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
+

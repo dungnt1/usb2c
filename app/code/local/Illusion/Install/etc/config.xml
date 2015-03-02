@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Illusion_Install>
+            <version>1.5.0</version>
+        </Illusion_Install>
+    </modules>
+    <global>
+        <models>
+            <illusion_install>
+                <class>Illusion_Install_Model</class>
+                <resourceModel>illusion_install_resource</resourceModel>
+            </illusion_install>
+            <illusion_install_resource>
+                <class>Illusion_Install_Model_Resource</class>
+            </illusion_install_resource>
+        </models>
+        <blocks>
+            <illusion_install>
+                <class>Illusion_Install_Block</class>
+            </illusion_install>
+        </blocks>
+        <helpers>
+            <illusion_install>
+                <class>Illusion_Install_Helper</class>
+            </illusion_install>
+        </helpers>
+        <resources>
+            <illusion_install_setup>
+                <setup>
+                    <module>Illusion_Install</module>
+                </setup>
+            </illusion_install_setup>
+        </resources>
+    </global>
+</config>

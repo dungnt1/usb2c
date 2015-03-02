@@ -1,0 +1,252 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+
+    $currentCategory = Mage::registry('current_category');
+    if($currentCategory){
+        $currentCategoryId = $currentCategory->getId();
+    }
+
+?>
+<?php if(!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <div class="category-products">
+        <?php echo $this->getChildHtml('illusion.category.block');?>
+        <?php echo $this->getToolbarHtml() ?>
+        <?php if($this->getMode()!='grid'): ?>
+            <div class="shop_isotope_container t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
+                <?php $_collectionSize = $_productCollection->count() ?>
+                <?php $_columnCount = $this->getColumnCount(); ?>
+                <?php $i=0; foreach ($_productCollection as $_product): ?>
+                    <?php $storeId = Mage::app()->getStore()->getId();?>
+                    <?php Mage::getModel('review/review')->getEntitySummary($_product, $storeId);?>
+                    <div class="shop_isotope_item d_xs_inline_b list_view">
+                        <!--product-->
+                        <figure class="fp_item t_align_c d_xs_inline_b t_align_l">
+                            <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c f_left m_right_20 f_xs_none">
+                                <!--images container-->
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
+                                    <div class="fp_images relative">
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(270,370)->setQuality(90); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="tr_all" />
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(270,370)->setQuality(90); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'thumbnail'), null, true) ?>" class="tr_all" />
+                                    </div>
+                                    <?php echo Mage::helper('illusion_settings')->getNewSpecialBlock($_product);?>
+                                </a>
+
+                                <div class="quick_btn">
+                                    <a href="<?php echo $this->getUrl('ajaxquickview/product/quickview/id/' . $_product->getId()) ?>" class="ajax"><i class="icon-eye-1"></i><?php echo $this->__('Quick View') ?></a>
+                                </div>
+                            </div>
+                            <figcaption>
+                                <h6 class="m_bottom_5">
+                                    <a href="<?php echo $_product->getProductUrl();?>" class="color_dark"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                                </h6>
+                                <?php $categorySettings = Mage::getStoreConfig('illusion_settings/product_box_settings/category');?>
+                                <?php if($categorySettings):?>
+                                    <?php $productCategories = $_product->getCategoryCollection();?>
+                                    <?php $index = 0;?>
+                                    <?php foreach($productCategories as $productCategory):?>
+                                        <?php $productCategoryId = $productCategory->getId();?>
+                                        <?php //if($currentCategoryId != $productCategoryId):?>
+                                            <?php $productCategoryItem = Mage::getModel('catalog/category')->load($productCategoryId);?>
+                                            <?php if($index++ > 0):?>
+                                                <span color="color_grey">/</span>
+                                            <?php endif;?>
+                                            <a href="<?php echo $productCategoryItem->getUrl();?>" class="fs_medium color_grey d_inline_b m_bottom_3"><i><?php echo $productCategoryItem->getName();?></i></a>
+                                        <?php //endif;?>
+                                    <?php endforeach;?>
+                                <?php endif;?>
+                                <div class="im_half_container wrapper m_bottom_15">
+
+                                    <?php $priceSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/price');?>
+                                    <?php if($priceSettings):?>
+                                        <div class="color_dark d_sm_block w_sm_full d_xs_inline_m w_xs_half_column fw_ex_bold d_inline_m tr_all fp_price with_ie f_left f_xs_none d_xs_block w_xs_full product_listing_color">
+                                            <?php echo $this->getPriceHtml($_product, true); ?>
+                                        </div>
+                                    <?php endif;?>
+
+                                    <?php $ratingSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/rating');?>
+
+                                    <div class="d_sm_block w_sm_full d_xs_inline_m w_xs_half_column t_xs_align_r d_inline_m t_align_r tr_all with_ie f_right t_sm_align_l f_xs_none d_xs_block w_xs_full">
+                                        <?php if($ratingSettings):?>
+                                            <?php if($_product->getRatingSummary()): ?>
+                                                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                                            <?php endif; ?>
+                                        <?php endif;?>
+                                    </div>
+                                </div>
+                                <div class="product_description m_bottom_20 d_block">
+                                    <hr class="m_bottom_12">
+                                    <p class="color_grey fs_medium m_bottom_15"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short-description') ?></p>
+                                    <hr>
+                                </div>
+                                <div class="clearfix fp_buttons">
+                                    <div class="w_md_full m_md_bottom_10 tr_all f_left f_md_none with_ie f_xs_left w_xs_auto">
+                                        <?php if($_product->isSaleable()): ?>
+                                            <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="button_type_6 d_inline_b color_pink transparent r_corners vc_child tr_all add_to_cart_button product_listing_addtocart">
+                                                <span class="d_inline_m clerarfix">
+                                                    <i class="icon-basket f_left m_right_10 fs_large"></i>
+                                                    <span class="fs_medium"><?php echo $this->__('Add to Cart') ?></span>
+                                                </span>
+                                            </a>
+                                        <?php endif;?>
+                                    </div>
+                                    <div class="w_md_full tr_all f_left f_md_none clearfix with_ie f_xs_left w_xs_auto">
+                                        <?php $compareSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/compare');?>
+                                        <?php if($compareSettings):?>
+                                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                                <a href="<?php echo $_compareUrl ?>" class="add_to_compare link-compare button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_dark r_corners vc_child tr_all color_blue_hover t_align_c"><i class="icon-docs d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Compare</span></a>
+                                            <?php endif;?>
+                                        <?php endif;?>
+
+                                        <?php $wishlistSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/wishlist');?>
+                                        <?php if ($this->helper('wishlist')->isAllow() && $wishlistSettings) : ?>
+                                            <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="add_to_wishlist link-compare button_type_6 m_left_5 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_dark r_corners vc_child tr_all color_purple_hover t_align_c m_right_5 m_md_right_0"><i class="icon-heart d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Wishlist</span></a>
+                                        <?php endif;?>
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        <?php else:?>
+            <div class="shop_isotope_container t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
+                <?php $_collectionSize = $_productCollection->count() ?>
+                <?php $_columnCount = $this->getColumnCount(); ?>
+                <?php $i=0; foreach ($_productCollection as $_product): ?>
+                    <?php if ($i++%$_columnCount==0): ?>
+                        <div class="products-grid row-fluid clearfix">
+                    <?php endif ?>
+                        <?php $storeId = Mage::app()->getStore()->getId();?>
+                        <?php Mage::getModel('review/review')->getEntitySummary($_product, $storeId);?>
+                        <div class="shop_isotope_item d_xs_inline_b">
+                            <!--product-->
+                            <figure class="fp_item t_align_c d_xs_inline_b">
+                                <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
+                                    <!--images container-->
+                                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
+                                        <div class="fp_images relative">
+                                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(270,370)->setQuality(90); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="tr_all" />
+                                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(270,370)->setQuality(90); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'thumbnail'), null, true) ?>" class="tr_all" />
+                                        </div>
+                                        <?php echo Mage::helper('illusion_settings')->getNewSpecialBlock($_product);?>
+                                    </a>
+                                    <div class="quick_btn">
+                                        <a href="<?php echo $this->getUrl('ajaxquickview/product/quickview/id/' . $_product->getId()) ?>" class="ajax"><i class="icon-eye-1"></i><?php echo $this->__('Quick View') ?></a>
+                                    </div>
+
+                                </div>
+                                <figcaption>
+                                    <h6 class="m_bottom_5"><a href="<?php echo $_product->getProductUrl();?>" class="color_dark"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h6>
+                                    <?php $categorySettings = Mage::getStoreConfig('illusion_settings/product_box_settings/category');?>
+                                    <?php if($categorySettings):?>
+                                        <?php $productCategories = $_product->getCategoryCollection();?>
+                                        <?php $index = 0;?>
+                                        <?php foreach($productCategories as $productCategory):?>
+                                            <?php $productCategoryId = $productCategory->getId();?>
+                                            <?php //if($currentCategoryId != $productCategoryId):?>
+                                                <?php $productCategoryItem = Mage::getModel('catalog/category')->load($productCategoryId);?>
+                                                <?php if($index++ > 0):?>
+                                                    <span color="color_grey">/</span>
+                                                <?php endif;?>
+                                                <a href="<?php echo $productCategoryItem->getUrl();?>" class="fs_medium color_grey d_inline_b m_bottom_3"><i><?php echo $productCategoryItem->getName();?></i></a>
+                                            <?php //endif;?>
+                                        <?php endforeach;?>
+                                    <?php endif;?>
+
+                                    <div class="im_half_container m_bottom_10">
+                                        <?php $ratings = $this->getReviewsSummaryHtml($_product, 'short');?>
+                                        <?php $priceSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/price');?>
+                                        <?php if($priceSettings):?>
+                                            <div class="color_dark d_sm_block w_sm_full d_xs_inline_m w_xs_half_column fw_ex_bold half_column <?php if($ratings):?> d_inline_m m_0 <?php endif;?> t_align_c tr_all animate_fctl fp_price with_ie product_listing_color">
+                                                <?php echo $this->getPriceHtml($_product, true); ?>
+                                            </div>
+                                        <?php endif;?>
+
+                                        <?php $ratingSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/rating');?>
+                                        <?php if($ratingSettings && $_product->getRatingSummary() && $ratings ):?>
+                                        <div class="half_column d_sm_block w_sm_full d_xs_inline_m w_xs_half_column t_sm_align_c t_xs_align_r d_inline_m t_align_r tr_all animate_fctr with_ie">
+                                            <?php echo $ratings; ?>
+                                        </div>
+                                        <?php endif;?>
+
+                                    </div>
+                                    <div class="product_description d_none m_bottom_20">
+                                        <hr class="m_bottom_12">
+                                        <p class="color_grey fs_medium m_bottom_15"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short-description') ?></p>
+                                        <hr>
+                                    </div>
+                                    <div class="clearfix fp_buttons">
+                                        <div class="half_column w_md_full m_md_bottom_10 animate_fctl tr_all f_left f_md_none with_ie">
+                                            <?php if($_product->isSaleable()): ?>
+                                                <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="button_type_6 d_inline_b color_pink transparent r_corners vc_child tr_all add_to_cart_button product_listing_addtocart">
+                                                    <span class="d_inline_m clerarfix">
+                                                        <i class="icon-basket f_left m_right_10 fs_large"></i>
+                                                        <span class="fs_medium"><?php echo $this->__('Add to Cart') ?></span>
+                                                    </span>
+                                                </a>
+                                            <?php endif;?>
+                                        </div>
+                                        <div class="f_right w_md_full animate_fctr tr_all f_left f_md_none clearfix with_ie">
+                                            <?php $compareSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/compare');?>
+                                            <?php if($compareSettings):?>
+                                                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                                    <a href="<?php echo $_compareUrl ?>" class="add_to_compare link-compare button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_dark r_corners vc_child tr_all color_blue_hover t_align_c"><i class="icon-docs d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Compare</span></a>
+                                                <?php endif;?>
+                                            <?php endif;?>
+                                            <?php $wishlistSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/wishlist');?>
+                                            <?php if ($this->helper('wishlist')->isAllow() && $wishlistSettings) : ?>
+                                                <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="add_to_wishlist link-wishlist button_type_6 m_left_5 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_dark r_corners vc_child tr_all color_purple_hover t_align_c m_right_5 m_md_right_0"><i class="icon-heart d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Wishlist</span></a>
+                                            <?php endif;?>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    <?php //endif;?>
+                    <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+                        </div>
+                    <?php endif ?>
+                <?php endforeach;?>
+            </div>
+        <?php endif;?>
+        <div class="bottom-toolbar">
+        <?php echo $this->getToolbarHtml() ?>
+        </div>
+
+<?php endif; ?>

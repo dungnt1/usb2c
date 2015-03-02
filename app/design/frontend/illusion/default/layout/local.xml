@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0.0">
+    <default>
+
+        <!-- Head -->
+        <reference name="head">
+
+            <!-- jQuery files -->
+            <action method="addJs"><script>illusion/jquery-2.1.0.min.js</script></action>
+            <action method="addJs"><script>illusion/jquery-noconflict.js</script></action>
+
+            <!-- jQuery plugins-->
+            <action method="addJs"><script>illusion/plugins/bootstrap/bootstrap.min.js</script></action>
+            <action method="addJs"><script>illusion/plugins/jquery.queryloader2.min.js</script></action>
+            <action method="addJs"><script>illusion/plugins/modernizr.js</script></action>
+
+            <action method="addJs"><script>illusion/jquery.bvalidator.js</script></action>
+            <action method="addJs"><script>illusion/plugins/srka.review.stars.min.js</script></action>
+            <action method="addJs"><script>illusion/jquery.plugin.min.js</script></action>
+            <action method="addJs"><script>illusion/jquery.countdown.min.js</script></action>
+
+
+            <!-- jQuery additional functionality -->
+            <action method="addJs"><script>illusion/jquery-functionality.js</script></action>
+
+            <!-- Libs CSS-->
+            <action method="addItem"><type>js_css</type><name>illusion/plugins/owl-carousel/owl.carousel.css</name></action>
+            <action method="addItem"><type>js_css</type><name>illusion/plugins/owl-carousel/owl.transitions.css</name></action>
+            <action method="addItem"><type>js_css</type><name>illusion/plugins/jackbox/css/jackbox.min.css</name></action>
+
+            <!-- Theme css-->
+            <action method="addItem"><type>skin_css</type><name>css/bootstrap.min.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/theme-animate.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/bvalidator.css</name></action>
+
+            <!-- Header theme settings-->
+            <block type="core/template" name="header.scripts" template="page/html/settings/header_scripts.phtml" before="-"/>
+            <block type="core/template" name="header.styles" template="page/html/settings/header_styles.phtml" before="-"/>
+
+        </reference>
+
+        <!-- Before body end -->
+        <reference name="before_body_end">
+            <block type="page/html_head" name="extra_js" as="extraJs" after="-" template="page/html/settings/footer_scripts.phtml">
+                <action method="addJs"><script>illusion/plugins/isotope.pkgd.min.js</script></action>
+                <action method="addJS"><script>illusion/jquery-ui-1.10.4.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/jquery.iosslider.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/jquery.appear.js</script></action>
+                <action method="addJs"><script>illusion/plugins/afterresize.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/jquery.elevateZoom-3.0.8.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/flexslider/jquery.flexslider-min.js</script></action>
+                <!--<action method="addJs"><script>illusion/plugins/jquery.easytabs.min.js</script></action>-->
+                <action method="addJs"><script>illusion/plugins/owl-carousel/owl.carousel.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/jackbox/js/jackbox-packed.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/twitter/jquery.tweet.min.js</script></action>
+                <action method="addJs"><script>illusion/plugins/flickr.js</script></action>
+                <action method="addJs"><script>illusion/plugins/jquery.easing.1.3.js</script></action>
+
+                <action method="addJs"><script>illusion/theme.plugins.js</script></action>
+                <action method="addJs"><script>illusion/theme.js</script></action>
+            </block>
+        </reference>
+
+        <!-- Root -->
+        <reference name="root">
+            <block type="illusion_settings/settings" name="illusion.slider" as="illusion.slider" template="page/html/home/slider.phtml"/>                                       <!-- Home page slider -->
+            <block type="illusion_settings/settings" name="illusion.side.menu" as="illusion.side.menu" template="page/html/side_menu.phtml"/>                                   <!-- Side menu settings-->
+            <block type="megamenu/navigation_top" name="illusion.megaside.menu" as="illusion.megaside.menu" template="page/html/mega_side_menu.phtml"/>                      <!-- Mega Side menu settings-->
+
+            <block type="illusion_settings/settings" name="illusion.latest.news" as="illusion.latest.news" template="page/html/home/latest_news.phtml"/>                        <!-- Latest News -->
+            <block type="illusion_settings/settings" name="illusion.brands" as="illusion.brands" template="catalog/product/brands.phtml"/>                                      <!-- Brands -->
+            <block type="illusion_settings/settings" name="illusion.back.top" as="illusion.back.top" template="page/html/back_top.phtml"/>                                      <!-- Back to top -->
+
+            <block type="core/text_list" name="slider" as="slider" translate="label">
+                <label>Slider Area</label>
+            </block>
+
+        </reference>
+
+        <!-- Header -->
+        <reference name="header">
+            <block type="illusion_settings/settings" name="illusion.header.pes" as="illusion.header.pes" template="page/html/settings/header_pes.phtml"/>                       <!-- Phone, Email, Skype -->
+            <block type="illusion_settings/settings" name="illusion.header.social" as="illusion.header.social" template="page/html/settings/header_social.phtml"/>              <!-- Header Social Block -->
+            <block type="directory/currency" name="currency" template="directory/currency.phtml"/>                                                                              <!-- Currency Block -->
+            <block type="cms/block" name="illusion_block_header_top_links">                                                                                                     <!-- Top Header links -->
+                <action method="setBlockId"><block_id>illusion_block_header_top_links</block_id></action>
+            </block>
+            <block type="core/template" name="illusion.header.form_1" as="illusion.header.form_1" template="catalogsearch/header_form_1.phtml"/>                                <!-- Header Search-->
+            <block type="illusion_settings/settings" name="illusion.header.menu" as="illusion.header.menu" template="page/html/header_menu.phtml"/>                             <!-- Header Menu -->
+            <block type="illusion_settings/settings" name="illusion.header.login" as="illusion.header.login" template="directory/login.phtml">
+                <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml"/>                                                  <!-- Remember me -->
+                <block type="inchoo_socialconnect/google_button" name="inchoo_socialconnect_google_header_button" template="inchoo/socialconnect/google/button_header.phtml" />
+                <block type="inchoo_socialconnect/facebook_button" name="inchoo_socialconnect_facebook_header_button" template="inchoo/socialconnect/facebook/button_header.phtml"/>
+                <block type="inchoo_socialconnect/twitter_button" name="inchoo_socialconnect_twitter_header_button" template="inchoo/socialconnect/twitter/button_header.phtml"/>
+                <block type="inchoo_socialconnect/linkedin_button" name="inchoo_socialconnect_linkedin_header_button" template="inchoo/socialconnect/linkedin/button_header.phtml"/>
+            </block><!-- Header Login -->
+            <block type="checkout/cart_sidebar" as="illusion.header.cart" name="illusion.header.cart" template="ajaxcartwishlistcompare/cart.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+            <!--<block type="illusion_settings/settings" name="illusion.header.cart" as="illusion.header.cart" template="directory/cart.phtml"/>                                    &lt;!&ndash; Header Cart &ndash;&gt;-->
+        </reference>
+
+
+        <!-- Footer -->
+        <reference name="footer">
+            <block type="illusion_settings/settings" name="illusion.footer.contact_us_1" as="illusion.footer.contact_us_1" template="page/html/settings/footer_contact_us_1.phtml"/>  <!-- Contact Us 1-->
+            <block type="illusion_settings/settings" name="illusion.footer.contact_us_3" as="illusion.footer.contact_us_3" template="page/html/settings/footer_contact_us_3.phtml"/>  <!-- Contact Us 3-->
+            <block type="illusion_settings/settings" name="illusion.footer.stores" as="illusion.footer.stores" template="page/html/settings/footer_stores.phtml"/>              <!-- Stores -->
+            <block type="newsletter/subscribe" name="illusion.footer.newsletter" template="newsletter/subscribe.phtml"/>                                                        <!-- Subscribe -->
+            <block type="illusion_settings/settings" name="illusion.footer.twitter" template="page/html/settings/footer_twitter.phtml"/>                                        <!-- Footer Twitter -->
+            <block type="illusion_settings/settings" name="illusion.footer.flickr" template="page/html/settings/footer_flickr.phtml"/>                                          <!-- Footer Flickr -->
+            <block type="illusion_settings/settings" name="illusion.footer.contact" template="page/html/settings/footer_contact.phtml"/>                                        <!-- Footer Flickr -->
+            <block type="illusion_settings/settings" name="illusion.footer.copyright" template="page/html/settings/footer_copyright.phtml"/>                                    <!-- Footer Copyright -->
+            <block type="illusion_settings/settings" name="illusion.footer.social.footer_1" template="page/html/settings/footer_social_1.phtml"/>                               <!-- Footer Social Block 1 -->
+            <block type="illusion_settings/settings" name="illusion.footer.social.footer_3" template="page/html/settings/footer_social_3.phtml"/>                               <!-- Footer Social Block 3 -->
+        </reference>
+
+
+        <!-- Left -->
+        <reference name="left">
+            <remove name="left.newsletter"/>
+            <remove name="right.permanent.callout"/>
+            <remove name="left.permanent.callout"/>
+            <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+            <block type="reports/product_viewed" name="left.reports.product.viewed" template="reports/product_viewed.phtml"/>
+            <!--<block type="reports/product_compared" name="right.reports.product.compared" template="reports/product_compared.phtml"/>-->
+            <!--<block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml"/>-->
+            <!--<block type="poll/activePoll" name="right.poll">-->
+            <!--<action method="setPollTemplate"><template>poll/active.phtml</template><type>poll</type></action>-->
+            <!--<action method="setPollTemplate"><template>poll/result.phtml</template><type>results</type></action>-->
+            <!--</block>-->
+            <!--<block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>-->
+            <!--<block type="paypal/logo" name="paypal.partner.right.logo" template="paypal/partner/logo.phtml"/>-->
+        </reference>
+
+        <!-- Right -->
+        <reference name="right">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+            <action method="unsetChild"><name>catalog.compare.sidebar</name></action>
+            <action method="unsetChild"><name>right.reports.product.compared</name></action>
+            <action method="unsetChild"><name>right.reports.product.viewed</name></action>
+            <action method="unsetChild"><name>wishlist</name></action>
+            <action method="unsetChild"><name>sale.reorder.sidebar</name></action>
+            <action method="unsetChild"><name>right.poll</name></action>
+            <block type="poll/activePoll" name="right.poll" after="tags_popular">
+                <action method="setPollTemplate"><template>poll/active.phtml</template><type>poll</type></action>
+                <action method="setPollTemplate"><template>poll/result.phtml</template><type>results</type></action>
+            </block>
+            <remove name="paypal.partner.right.logo"/>
+        </reference>
+
+
+
+    </default>
+
+    <catalog_category_view>
+        <reference name="product_list">
+            <block type="illusion_settings/settings" name="illusion.new.special" template="catalog/product/new_special.phtml"/>
+        </reference>
+    </catalog_category_view>
+
+
+    <catalog_category_default>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="product_list">
+            <block type="illusion_settings/settings" name="illusion.category.block" template="catalog/product/child_categories.phtml"/>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><name>currency</name></action>
+        </reference>
+
+    </catalog_category_default>
+
+    <!-- Category with layered navigation -->
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list">
+            <block type="illusion_settings/settings" name="illusion.category.block" template="catalog/product/child_categories.phtml"/>
+        </reference>
+        <!-- Remove currency switcher from sidebar -->
+        <reference name="left">
+            <action method="unsetChild">
+                <name>currency</name>
+            </action>
+        </reference>
+        <remove name="right"/>
+    </catalog_category_layered>
+
+    <customer_account translate="label">
+        <reference name="left">
+            <action method="unsetChild"><name>catalog.compare.sidebar</name></action>
+        </reference>
+    </customer_account>
+
+    <customer_account_create>
+        <reference name="customer_form_register">
+            <action method="setShowAddressFields"><value>true</value></action>
+        </reference>
+    </customer_account_create>
+
+
+    <tag_list_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+    </tag_list_index>
+
+    <tag_product_list>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="product_list">
+            <block type="illusion_settings/settings" name="illusion.category.block" template="catalog/product/child_categories.phtml"/>
+        </reference>
+    </tag_product_list>
+
+    <!-- Catalog product view -->
+    <catalog_product_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="right">
+            <block type="illusion_settings/bestseller" name="bestseller" template="catalog/product/bestseller.phtml"/>
+            <block type="reports/product_viewed" name="right.reports.product.viewed" template="reports/product_viewed.phtml"/>
+            <block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
+        </reference>
+        <reference name="product.info">
+            <block type="illusion_settings/settings" name="illusion.product.share" template="catalog/product/share.phtml"/>
+            <block type="illusion_settings/price" name="illusion.product.price" template="catalog/product/view/type/price.phtml"/>
+
+            <block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml">
+                <action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Description</title><block>catalog/product_view_description</block><template>catalog/product/view/description.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Specification</title><block>catalog/product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>custom_tab</alias><title>Custom</title><block>illusion_settings/custom</block><template>catalog/product/view/custom.phtml</template></action>
+            </block>
+            <!--<block type="catalog/product_list_upsell" name="illusion.products.upsell" template="catalog/product/list/upsell.phtml"/>-->
+
+        </reference>
+        <reference name="product.info.additional">
+            <action method="unsetChild"><name>product_tag_list</name></action>
+        </reference>
+        <reference name="tabreviews">
+            <block type="review/form" name="product.review.form" as="review_form">
+                <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+                    <label>Review Form Fields Before</label>
+                    <action method="setMayBeInvisible"><value>1</value></action>
+                </block>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <catalogsearch_result_index>
+        <reference name="left">
+            <action method="unsetChild"><name>currency</name></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <!--<checkout_onepage_index>-->
+        <!--<reference name="root">-->
+            <!--<action method="setTemplate"><template>page/2columns-left.phtml</template></action>-->
+        <!--</reference>-->
+        <!--<reference name="left">-->
+            <!--<action method="unsetChildren"></action>-->
+            <!--<block type="page/html_wrapper" name="checkout.progress.wrapper" translate="label">-->
+                <!--<label>Checkout Progress Wrapper</label>-->
+                <!--<action method="setElementId"><value>checkout-progress-wrapper</value></action>-->
+                <!--<block type="checkout/onepage_progress" name="checkout.progress" before="-" template="checkout/onepage/progress.phtml">-->
+                    <!--<block type="checkout/onepage_progress" name="billing.progress" template="checkout/onepage/progress/billing.phtml"></block>-->
+                    <!--<block type="checkout/onepage_progress" name="shipping.progress" template="checkout/onepage/progress/shipping.phtml"></block>-->
+                    <!--<block type="checkout/onepage_progress" name="shippingmethod.progress" template="checkout/onepage/progress/shipping_method.phtml"></block>-->
+                    <!--<block type="checkout/onepage_progress" name="payment.progress" template="checkout/onepage/progress/payment.phtml"></block>-->
+                <!--</block>-->
+            <!--</block>-->
+        <!--</reference>-->
+    <!--</checkout_onepage_index>-->
+
+    <!--
+Wishlist pages
+-->
+
+    <wishlist_index_index translate="label">
+        <label>Customer My Account My Wishlist</label>
+        <!-- Mage_Wishlist -->
+        <reference name="customer.wishlist.items">
+            <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.price" template="wishlist/item/column/price.phtml" after="customer.wishlist.item.info">
+                <action method="setTitle" translate="title">
+                    <title>Price</title>
+                </action>
+                <block type="wishlist/customer_wishlist_item_options" name="customer.wishlist.item.options"/>
+            </block>
+            <action method="unsetChild">
+                <name>customer.wishlist.item.remove</name>
+            </action>
+        </reference>
+        <reference name="customer.wishlist.item.cart">
+            <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.removecart" template="wishlist/item/column/remove.phtml" />
+        </reference>
+        <reference name="customer.wishlist.item.image">
+            <action method="setTitle" translate="title">
+                <title>Product Image</title>
+            </action>
+        </reference>
+        <reference name="customer.wishlist.item.cart">
+            <action method="setTitle" translate="title">
+                <title>Actions</title>
+            </action>
+        </reference>
+    </wishlist_index_index>
+
+    <catalog_product_compare_index translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </catalog_product_compare_index>
+
+    <contacts_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/noroute.phtml</template></action>
+        </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+            <action method="addCrumb"><crumbName>Contact Us</crumbName><crumbInfo><label>Contact Us</label><title>Contact Us</title></crumbInfo></action>
+        </reference>
+    </contacts_index_index>
+
+    <cms_index_index>
+        <reference name="left">
+            <block type="catalog/navigation" name="left_categories_nav" before="-" template="catalog/navigation/sidebar.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="catalog/navigation" name="right_categories_nav" before="-" template="catalog/navigation/sidebar.phtml"/>
+            <block type="reports/product_viewed" name="right.reports.product.viewed" template="reports/product_viewed.phtml"/>
+            <block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
+            <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+        </reference>
+    </cms_index_index>
+
+
+</layout>

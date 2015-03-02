@@ -1,0 +1,18 @@
+<?php
+    $tags = explode(',', $this->getPost()->getTags());
+    $tagsCount = count($tags) - 1;
+?>
+<?php if(count(tags)):?>
+    <i class="icon-tag-1 color_grey_light_2 d_inline_m m_right_5 fs_large tags_icon"></i>
+
+    <ul class="d_inline_m fw_light">
+        <?php
+        foreach ($tags as $index => $tag): ?>
+        <li class="d_inline_m"><a class="color_purple" href="<?php echo Mage::getUrl(Mage::helper('blog')->getRoute() . '/tag/' . urlencode($tag)) ?>"><?php echo $tag ?></a>
+            <?php if($index < $tagsCount):?>
+                ,
+            <?php endif;?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif;?>

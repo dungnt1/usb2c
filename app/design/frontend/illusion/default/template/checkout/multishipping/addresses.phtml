@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Ship to multiple address template
+ *
+ * @see Mage_Checkout_Block_Multishipping_Addresses
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form id="checkout_multishipping_form" action="<?php echo $this->getPostActionUrl() ?>" method="post">
+    <div class="multiple-checkout">
+        <div class="page-title title-buttons">
+            <h1><?php echo $this->__('Ship to Multiple Addresses') ?></h1>
+            <button data-action="add-new-customer-address" type="button" title="<?php echo $this->__('Enter a New Address') ?>" class="button" onclick="$('add_new_address_flag').value=1; $('checkout_multishipping_form').submit();"><span><span><?php echo $this->__('Enter a New Address') ?></span></span></button>
+        </div>
+        <input type="hidden" name="continue" value="0" id="can_continue_flag" />
+        <input type="hidden" name="new_address" value="0" id="add_new_address_flag" />
+        <h2><?php echo $this->__('Please select shipping address for applicable items') ?></h2>
+        <div class="r_corners wrapper border_grey m_bottom_10 m_xs_bottom_30">
+            <table class="responsive_table w_full t_align_l" id="multiship-addresses-table">
+                <thead>
+                <tr class="bg_light_2 color_dark">
+                    <th><?php echo $this->__('Product Image') ?></th>
+                    <th><?php echo $this->__('Description') ?></th>
+                    <th><?php echo $this->__('SKU') ?></th>
+                    <th><?php echo $this->__('Quantity') ?></th>
+                    <th><?php echo $this->__('Send To') ?></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($this->getItems() as $_index => $_item): ?>
+                    <?php if ($_item->getQuoteItem()) :?>
+                        <tr class="tr_delay">
+                            <td data-title="<?php echo $this->__('Product Image') ?>"><a href="<?php echo $_item->getProduct()->getUrl();?>"><img src="<?php echo $this->helper('catalog/image')->init($_item->getProduct(), 'thumbnail')->resize(100); ?>" width="100" height="100" alt="" /></a></td>
+                            <td data-title="<?php echo $this->__('Description') ?>"><?php echo $this->getItemHtml($_item->getQuoteItem())?></td>
+                            <td data-title="<?php echo $this->__('SKU') ?>"><?php echo $_item->getProduct()->getSku();?></td>
+                            <td data-title="<?php echo $this->__('Product Image') ?>">
+                                <div class="wrapper d_inline_m fs_medium r_corners quantity type_2 clearfix quantity">
+                                    <button type="button" onclick="var qty_el = document.getElementById('ship[<?php echo $_index ?>][<?php echo $_item->getQuoteItemId() ?>][qty]'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) qty_el.value--;return false;" class="qty-decrease f_left bg_light_3">
+                                        <i class="icon-minus "></i>
+                                    </button>
+                                    <input type="text" id="ship[<?php echo $_index ?>][<?php echo $_item->getQuoteItemId() ?>][qty]" name="ship[<?php echo $_index ?>][<?php echo $_item->getQuoteItemId() ?>][qty]" value="<?php echo $this->escapeHtml($_item->getQty()) ?>" size="2" class="input-text qty f_left" />
+                                    <button type="button" onclick="var qty_el = document.getElementById('ship[<?php echo $_index ?>][<?php echo $_item->getQuoteItemId() ?>][qty]'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase f_left bg_light_3">
+                                        <i class="icon-plus "></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td data-title="<?php echo $this->__('Send To') ?>">
+                                <?php if ($_item->getProduct()->getIsVirtual()): echo $this->__('Shipping selection is not applicable.'); else: echo '<div class="selectbox big">'.$this->getAddressesHtmlSelect($_item, $_index).'</div>'; endif; ?>
+                            </td>
+                            <td class="a-center" data-title="<?php echo $this->__('Actions') ?>">
+                                <button onclick="window.location='<?php echo $this->getItemDeleteUrl($_item) ?>'" title="<?php echo $this->__('Remove Item') ?>" class="btn-remove btn-remove2 color_grey_light_2 color_dark_hover tr_all"><i class="icon-cancel-circled-1 fs_large"></i></button>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix m_bottom_20">
+            <button type="submit" title="<?php echo $this->__('Update Qty &amp; Addresses') ?>" class="button" onclick="$('can_continue_flag').value=0"><span><span><?php echo $this->__('Update Qty &amp; Addresses') ?></span></span></button>
+        </div>
+        <script type="text/javascript">decorateTable('multiship-addresses-table')</script>
+        <div class="buttons-set">
+            <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Shopping Cart') ?></a></p>
+            <button type="submit" data-action="checkout-continue-shipping" title="<?php echo $this->__('Continue to Shipping Information') ?>" class="button<?php if ($this->isContinueDisabled()):?> disabled<?php endif; ?>" onclick="$('can_continue_flag').value=1"<?php if ($this->isContinueDisabled()):?> disabled="disabled"<?php endif; ?>><span><span><?php echo $this->__('Continue to Shipping Information') ?></span></span></button>
+        </div>
+    </div>
+</form>

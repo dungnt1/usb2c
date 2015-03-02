@@ -1,0 +1,12 @@
+<?php $twitter = $this->getBlockConfig('social/social_twitter_user');?>
+<?php $footerType = $this->getBlockConfig('footer/footer_type');?>
+
+<?php if($twitter): ?>
+    <div class="username" data-username="<?php echo $twitter;?>"></div>
+    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
+        <h5 class="color_dark fw_light m_bottom_20"><?php echo $this->__('Latest Tweets') ?></h5>
+        <!--tweet list-->
+        <div class="tweets <?php if($footerType == 'footer_2') echo 'no_carousel';?> "></div>
+        <a href="#" target="_blank" class="button_type_2 d_inline_b color_blue transparent r_corners fs_medium tr_all tw_follow"><?php echo $this->__('Follow Us') ?></a>
+    </div>
+<?php endif;?>

@@ -1,0 +1,666 @@
+<?php
+
+    $illusionSettings = $this->helper('illusion_settings');
+
+    //Font Settings
+    $fontFamily = $illusionSettings->getConfig('fonts/primary_font_family');
+    $fontSize = $illusionSettings->getConfig('fonts/primary_font_size');
+    $primaryGoogleFont = $illusionSettings->getConfig('fonts/primary_google_font');
+    $primaryCustomFont = $illusionSettings->getConfig('fonts/primary_custom_font');
+    $fontWeight = $illusionSettings->getConfig('fonts/default_font_weight');
+
+    $font = '';
+    $fontType = '';
+    if($fontFamily == 'google'){
+        $fontType .= "$primaryGoogleFont, ";
+    }
+
+    $fontType .= $primaryCustomFont;
+
+    $font .= 'font: '.$fontWeight.' '.$fontSize.'/1.5em'.' '. $fontType.';';
+    $color = 'color:'.$illusionSettings->getConfig('fonts/primary_font_color').';';
+
+    //Background Settings
+    $layoutType = $illusionSettings->getConfig('layout/layout_type');
+    $backgroundColor = $illusionSettings->getConfig('layout/layout_background_color');
+    $backgroundImage = $illusionSettings->getConfig('layout/layout_background_image');
+    $backgroundImageMode = $illusionSettings->getConfig('layout/layout_background_image_mode');
+    $media = Mage::getBaseUrl('media');
+    $backgroundPath = 'illusion/settings/background/';
+    $backgroundImageSource = ($backgroundImage) ? $media.$backgroundPath.$backgroundImage : '';
+    $backgroundPosition = $illusionSettings->getConfig('layout/layout_background_image_position');
+
+    $background = '';
+    if($layoutType == 'boxed_layout'){
+        if($backgroundImage && !empty($backgroundImage)){
+            $background .= "background-color: $backgroundColor; background-image: url(\"$backgroundImageSource\"); background-repeat: $backgroundImageMode; background-attachment: fixed; background-position: $backgroundPosition top;";
+        }else{
+            $background .= "background-color: $backgroundColor; ";
+        }
+    }else{
+        $background .= "background-color: $backgroundColor; background-image: none; background-attachment: fixed;";
+    }
+
+    //Preloader
+    $preloaderColor             = $illusionSettings->getConfig('layout/preloader_color');
+
+    //Header Horizontal Line Color
+    $horizontalLineColorStart   = $illusionSettings->getConfig('layout/horizontal_line_color_start');
+    $horizontalLineColorEnd     = $illusionSettings->getConfig('layout/horizontal_line_color_end');
+
+    //Header Background Color
+    $headerBackgroundColor      = $illusionSettings->getConfig('header/header_background_color');
+
+    //Header Links Color
+    $headerLinksColor           = $illusionSettings->getConfig('header/header_links_color');
+    $headerLinksColorHover      = $illusionSettings->getConfig('header/header_links_color_hover');
+
+    //Sticky Menu
+    $menuBackgroundColor        = $illusionSettings->getConfig('menu/menu_background_color');
+    $menuBackgroundColorHover   = $illusionSettings->getConfig('menu/menu_background_color_hover');
+    $menuTextColor              = $illusionSettings->getConfig('menu/menu_text_color');
+    $menuTextColorHover         = $illusionSettings->getConfig('menu/menu_text_color_hover');
+
+    $submenuBackgroundColor        = $illusionSettings->getConfig('menu/submenu_background_color');
+    $submenuBackgroundColorHover   = $illusionSettings->getConfig('menu/submenu_background_color_hover');
+    $submenuTextColor              = $illusionSettings->getConfig('menu/submenu_text_color');
+    $submenuTextColorHover         = $illusionSettings->getConfig('menu/submenu_text_color_hover');
+
+    //Side Menu
+    $sideMenuBackgroundColor        = $illusionSettings->getConfig('menu/side_menu_background_color');
+    $sideMenuTextColor              = $illusionSettings->getConfig('menu/side_menu_text_color');
+    $sideMenuTextColorHover         = $illusionSettings->getConfig('menu/side_menu_text_color_hover');
+
+    //social_links_color
+    $socialLinksColor               = $illusionSettings->getConfig('social/social_links_color');
+
+    $productDetailsColor            = $illusionSettings->getConfig('price_settings/product_details_color');
+    $productListingColor            = $illusionSettings->getConfig('price_settings/product_listing_color');
+    $productOnSaleColor            = $illusionSettings->getConfig('price_settings/product_onsale_color');
+
+
+    $productDetailsAddtocartBackgroundColor                 = $illusionSettings->getConfig('add_to_cart/product_details_addtocart_background_color');
+    $productDetailsAddtocartBackgroundColorHover            = $illusionSettings->getConfig('add_to_cart/product_details_addtocart_background_color_hover');
+    $productDetailsAddtocartTextColor                       = $illusionSettings->getConfig('add_to_cart/product_details_addtocart_text_color');
+    $productDetailsAddtocartTextColorHover                  = $illusionSettings->getConfig('add_to_cart/product_details_addtocart_text_color_hover');
+
+    $productlistingAddtocartBackgroundColor                 = $illusionSettings->getConfig('add_to_cart/product_listing_addtocart_background_color');
+    $productlistingAddtocartBackgroundColorHover            = $illusionSettings->getConfig('add_to_cart/product_listing_addtocart_background_color_hover');
+    $productlistingAddtocartTextColor                       = $illusionSettings->getConfig('add_to_cart/product_listing_addtocart_text_color');
+    $productlistingAddtocartTextColorHover                  = $illusionSettings->getConfig('add_to_cart/product_listing_addtocart_text_color_hover');
+
+    $add_to_wishlist_color                                  = $illusionSettings->getConfig('add_to_wishlist/color');
+    $add_to_wishlist_border_color                           = $illusionSettings->getConfig('add_to_wishlist/border_color');
+    $add_to_wishlist_background_color                       = $illusionSettings->getConfig('add_to_wishlist/background_color');
+    $add_to_wishlist_color_hover                            = $illusionSettings->getConfig('add_to_wishlist/color_hover');
+    $add_to_wishlist_border_color_hover                     = $illusionSettings->getConfig('add_to_wishlist/border_color_hover');
+    $add_to_wishlist_background_color_hover                 = $illusionSettings->getConfig('add_to_wishlist/background_color_hover');
+    $add_to_wishlist_tooltip_color                          = $illusionSettings->getConfig('add_to_wishlist/tooltip_color');
+    $add_to_wishlist_tooltip_background_color               = $illusionSettings->getConfig('add_to_wishlist/tooltip_background_color');
+
+    $tooltip_color                          = $illusionSettings->getConfig('tooltip/tooltip_color');
+    $tooltip_background_color               = $illusionSettings->getConfig('tooltip/tooltip_background_color');
+
+    $add_to_compare_color                                  = $illusionSettings->getConfig('add_to_compare/color');
+    $add_to_compare_border_color                           = $illusionSettings->getConfig('add_to_compare/border_color');
+    $add_to_compare_background_color                       = $illusionSettings->getConfig('add_to_compare/background_color');
+    $add_to_compare_color_hover                            = $illusionSettings->getConfig('add_to_compare/color_hover');
+    $add_to_compare_border_color_hover                     = $illusionSettings->getConfig('add_to_compare/border_color_hover');
+    $add_to_compare_background_color_hover                 = $illusionSettings->getConfig('add_to_compare/background_color_hover');
+    $add_to_compare_tooltip_color                          = $illusionSettings->getConfig('add_to_compare/tooltip_color');
+    $add_to_compare_tooltip_background_color               = $illusionSettings->getConfig('add_to_compare/tooltip_background_color');
+
+
+    $saleBackgroundColor                                    = $illusionSettings->getConfig('product_status/sale_background_color');
+    $saleTextColor                                          = $illusionSettings->getConfig('product_status/sale_text_color');
+    $newBackgroundColor                                     = $illusionSettings->getConfig('product_status/new_background_color');
+    $newTextColor                                           = $illusionSettings->getConfig('product_status/new_text_color');
+    $soldBackgroundColor                                    = $illusionSettings->getConfig('product_status/sold_background_color');
+    $soldTextColor                                          = $illusionSettings->getConfig('product_status/sold_text_color');
+
+
+    //Accent color one (gray)
+    $input_field_border_color                               = $illusionSettings->getConfig('accent_color_one/input_field_border_color');
+    $input_placeholder_color                                = $illusionSettings->getConfig('accent_color_one/input_placeholder_color');
+    $input_color                                            = $illusionSettings->getConfig('accent_color_one/input_color');
+    $icon_color_grey_light                                  = $illusionSettings->getConfig('accent_color_one/icon_color_grey_light');
+    $icon_color_grey_light_hover                            = $illusionSettings->getConfig('accent_color_one/icon_color_grey_light_hover');
+    $icon_border_color_grey_light                           = $illusionSettings->getConfig('accent_color_one/icon_border_color_grey_light');
+    $icon_border_color_grey_light_hover                     = $illusionSettings->getConfig('accent_color_one/icon_border_color_grey_light_hover');
+
+    $prev_next_color                                        = $illusionSettings->getConfig('prevnext/prev_next_color');
+    $prev_next_color_hover                                  = $illusionSettings->getConfig('prevnext/prev_next_color_hover');
+    $prev_next_border_color                                 = $illusionSettings->getConfig('prevnext/prev_next_border_color');
+    $prev_next_border_color_hover                           = $illusionSettings->getConfig('prevnext/prev_next_border_color_hover');
+
+    $back_top_color                                         = $illusionSettings->getConfig('accent_color_one/back_top_color');
+    $back_top_color_hover                                   = $illusionSettings->getConfig('accent_color_one/back_top_color_hover');
+    $back_top_border_color                                  = $illusionSettings->getConfig('accent_color_one/back_top_border_color');
+    $back_top_border_color_hover                            = $illusionSettings->getConfig('accent_color_one/back_top_border_color_hover');
+
+    $header_search_icon_color                               = $illusionSettings->getConfig('header/header_search_icon_color');
+    $header_search_icon_color_hover                         = $illusionSettings->getConfig('header/header_search_icon_color_hover');
+    $header_search_icon_border_color                        = $illusionSettings->getConfig('header/header_search_icon_border_color');
+    $header_search_icon_border_color_hover                  = $illusionSettings->getConfig('header/header_search_icon_border_color_hover');
+
+    $header_search_autocomplete_border                      = $illusionSettings->getConfig('header/header_search_autocomplete_border');
+    $header_search_autocomplete_background                  = $illusionSettings->getConfig('header/header_search_autocomplete_background ');
+
+    $header_login_icon_color                               = $illusionSettings->getConfig('header/header_login_icon_color');
+    $header_login_icon_color_hover                         = $illusionSettings->getConfig('header/header_login_icon_color_hover');
+    $header_login_icon_border_color                        = $illusionSettings->getConfig('header/header_login_icon_border_color');
+    $header_login_icon_border_color_hover                  = $illusionSettings->getConfig('header/header_login_icon_border_color_hover');
+    $header_login_popup_header_color                       = $illusionSettings->getConfig('header/header_login_popup_header_color');
+
+    $header_cart_icon_color                               = $illusionSettings->getConfig('header/header_cart_icon_color');
+    $header_cart_icon_color_hover                         = $illusionSettings->getConfig('header/header_cart_icon_color_hover');
+    $header_cart_icon_border_color                        = $illusionSettings->getConfig('header/header_cart_icon_border_color');
+    $header_cart_icon_border_color_hover                  = $illusionSettings->getConfig('header/header_cart_icon_border_color_hover');
+    $header_cart_popup_header_color                       = $illusionSettings->getConfig('header/header_cart_popup_header_color');
+
+
+    $footer_contact_icons                                 = $illusionSettings->getConfig('footer/footer_contact_icons');
+    $footer_contact_links                                 = $illusionSettings->getConfig('footer/footer_contact_links');
+    $footer_contact_links_hover                           = $illusionSettings->getConfig('footer/footer_contact_links_hover');
+
+
+    $purple_button_color                                  = $illusionSettings->getConfig('buttons/purple_button_color');
+    $purple_button_background_border_color                = $illusionSettings->getConfig('buttons/purple_button_background_border_color');
+    $purple_button_color_hover                            = $illusionSettings->getConfig('buttons/purple_button_color_hover');
+    $purple_button_background_border_color_hover          = $illusionSettings->getConfig('buttons/purple_button_background_border_color_hover');
+
+    $pink_button_color                                    = $illusionSettings->getConfig('buttons/pink_button_color');
+    $pink_button_background_border_color                = $illusionSettings->getConfig('buttons/pink_button_background_border_color');
+    $pink_button_color_hover                            = $illusionSettings->getConfig('buttons/pink_button_color_hover');
+    $pink_button_background_border_color_hover          = $illusionSettings->getConfig('buttons/pink_button_background_border_color_hover');
+
+    $blue_button_color                                  = $illusionSettings->getConfig('buttons/blue_button_color');
+    $blue_button_background_border_color                = $illusionSettings->getConfig('buttons/blue_button_background_border_color');
+    $blue_button_color_hover                            = $illusionSettings->getConfig('buttons/blue_button_color_hover');
+    $blue_button_background_border_color_hover          = $illusionSettings->getConfig('buttons/blue_button_background_border_color_hover');
+
+    $dark_button_color                                  = $illusionSettings->getConfig('buttons/dark_button_color');
+    $dark_button_background_border_color                = $illusionSettings->getConfig('buttons/dark_button_background_border_color');
+    $dark_button_color_hover                            = $illusionSettings->getConfig('buttons/dark_button_color_hover');
+    $dark_button_background_border_color_hover          = $illusionSettings->getConfig('buttons/dark_button_background_border_color_hover');
+
+    $tabs_text_color                                    = $illusionSettings->getConfig('tabs/tabs_text_color');
+    $tabs_background_color                              = $illusionSettings->getConfig('tabs/tabs_background_color');
+    $tabs_text_color_active                             = $illusionSettings->getConfig('tabs/tabs_text_color_active');
+    $tabs_background_color_active                       = $illusionSettings->getConfig('tabs/tabs_background_color_active');
+
+    $pagination_color                                    = $illusionSettings->getConfig('pagination/pagination_color');
+    $pagination_background_color                         = $illusionSettings->getConfig('pagination/pagination_background_color');
+    $pagination_color_active                             = $illusionSettings->getConfig('pagination/pagination_color_active');
+    $pagination_background_color_active                  = $illusionSettings->getConfig('pagination/pagination_background_color_active');
+
+    $blog_sidebutton_color                               = Mage::getStoreConfig('blog/blog/blog_sidebutton_color');
+    $blog_sidebutton_background                          = Mage::getStoreConfig('blog/blog/blog_sidebutton_background');
+    $blog_readmore_color                                 = Mage::getStoreConfig('blog/blog/blog_readmore_color');
+    $blog_readmore_color_hover                           = Mage::getStoreConfig('blog/blog/blog_readmore_color_hover');
+    $blog_title_color                                    = Mage::getStoreConfig('blog/blog/blog_title_color');
+    $blog_title_color_hover                              = Mage::getStoreConfig('blog/blog/blog_title_color_hover');
+    $blog_comments_color                                 = Mage::getStoreConfig('blog/blog/blog_comments_color');
+    $blog_comments_color_hover                           = Mage::getStoreConfig('blog/blog/blog_comments_color_hover');
+
+?>
+<style type="text/css">
+
+    body{
+        <?php echo $font;?>
+        <?php echo $color;?>
+        <?php echo $background;?>
+        overflow-x:hidden;
+    }
+
+    /*Header background color*/
+    .header_background_color {background: <?php echo $headerBackgroundColor;?>}
+
+    /*Header Top Text Color*/
+    .header_links_color {color: <?php echo $headerLinksColor;?> !important;}
+    .header_links_color:hover {color: <?php echo $headerLinksColorHover;?> !important;}
+    .illusion_block_header_top_links a{color: <?php echo $headerLinksColor;?> !important;;}
+    .illusion_block_header_top_links a:hover{color: <?php echo $headerLinksColorHover;?> !important;}
+
+
+    .bg_gradient,
+    .divider_type_2,.gradient_line,#qLbar{
+        background:<?php echo $horizontalLineColorStart;?>;
+        background:-webkit-gradient(linear,left top,right top,from(<?php echo $horizontalLineColorStart;?>),to(<?php echo $horizontalLineColorEnd;?>));
+        background:-webkit-linear-gradient(left,<?php echo $horizontalLineColorStart;?>,<?php echo $horizontalLineColorEnd;?>);
+        background:-moz-linear-gradient(left,<?php echo $horizontalLineColorStart;?>,<?php echo $horizontalLineColorEnd;?>);
+        background:-o-linear-gradient(left,<?php echo $horizontalLineColorStart;?>,<?php echo $horizontalLineColorEnd;?>);
+        background:-ms-linear-gradient(left,<?php echo $horizontalLineColorStart;?>,<?php echo $horizontalLineColorEnd;?>);
+        background:linear-gradient(left,<?php echo $horizontalLineColorStart;?>,<?php echo $horizontalLineColorEnd;?>);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $horizontalLineColorStart;?>', endColorstr='<?php echo $horizontalLineColorEnd;?>',GradientType=1 );
+    }
+
+    #qLpercentage{
+        color: <?php echo $preloaderColor;?> !important;
+    }
+
+    /* Sticky Menu*/
+    .menu_background_color { background: <?php echo $menuBackgroundColor;?> ; height:58px;}
+    .menu_background_color:hover, .current .menu_background_color{background: <?php echo $menuBackgroundColorHover;?>;}
+    .menu_text_color {color: <?php echo $menuTextColor;?>}
+    .menu_background_color.current .menu_text_color,
+    .menu_text_color:hover,
+    .menu_background_color:hover .menu_text_color{color: <?php echo $menuTextColorHover;?> !important;}
+    .submenu_background_color a{ background: <?php echo $submenuBackgroundColor;?> ;}
+    .submenu_background_color.current > .submenu_text_color, .submenu_background_color:hover > .submenu_text_color {background: <?php echo $submenuBackgroundColorHover;?> !important;}
+
+    #mt_megamenu .root > a, ul.nav-accordion li > a{ background: <?php echo $menuBackgroundColor;?> ;}
+    #mt_megamenu .root:hover > a, #mt_megamenu .current.root > a, ul.nav-accordion li.active a, ul.nav-accordion li:hover a{background: <?php echo $menuBackgroundColorHover;?>;}
+    #mt_megamenu .root > a, ul.nav-accordion li > a{color: <?php echo $menuTextColor;?> !important}
+    #mt_megamenu .root.current > a,
+    #mt_megamenu .root:hover > a,
+    ul.nav-accordion li.active a,
+    ul.nav-accordion li:hover a{color: <?php echo $menuTextColorHover;?> !important;}
+
+    #mt_megamenu div.childcontent ul li.active > a, #megamenu div.childcontent ul li a:hover, ul.nav-accordion div.childcontent ul li.active > a, ul.nav-accordion div.childcontent ul li:hover > a {
+        color: <?php echo $submenuTextColorHover;?> !important ;
+        background: <?php echo $submenuBackgroundColorHover;?> !important;
+    }
+
+    #mt_megamenu div.childcontent ul li > a, ul.nav-accordion div.childcontent ul li > a{
+        color: <?php echo $submenuTextColor;?> !important;
+        background: <?php echo $submenuBackgroundColor;?> !important;
+    }
+
+    /*Buttons*/
+    button.color_purple,
+    .color_purple[class*="button_type_"]{
+        color: <?php echo $purple_button_color;?> !important;
+        border-color: <?php echo $purple_button_background_border_color;?> !important;
+    }
+    button.color_purple:hover,
+    .color_purple[class*="button_type_"]:hover{
+        color: <?php echo $purple_button_color_hover;?> !important;
+        border-color: <?php echo $purple_button_background_border_color_hover;?> !important;
+        background-color: <?php echo $purple_button_background_border_color_hover;?> !important;
+    }
+
+
+
+    button.color_pink,
+    .color_pink[class*="button_type_"],
+    .checkout-types .btn-checkout:hover{
+        color: <?php echo $pink_button_color;?> !important;
+        border-color: <?php echo $pink_button_background_border_color;?> !important;
+        background-color: transparent !important;
+    }
+
+    button.color_pink:hover,
+    .color_pink[class*="button_type_"]:hover,
+    .checkout-types .btn-checkout{
+        color: <?php echo $pink_button_color_hover;?> !important;
+        border-color: <?php echo $pink_button_background_border_color_hover;?> !important;
+        background-color: <?php echo $pink_button_background_border_color_hover;?> !important;
+    }
+
+
+
+    button.color_blue,
+    .wrapper_box #continue_shopping:hover,
+    .wrapper_box #shopping_cart:hover,
+    button.btn-continue,
+    button.btn-update,
+    button.btn-empty,
+    .discount-form button.button,
+    .shipping-form button.button,
+    button.button{
+        color: <?php echo $blue_button_color;?> !important;
+        border-color: <?php echo $blue_button_background_border_color;?> !important;
+        background-color: transparent !important;
+    }
+
+    button.color_blue:hover,
+    .wrapper_box #continue_shopping,
+    .wrapper_box #shopping_cart,
+    button.btn-continue:hover,
+    button.btn-update:hover,
+    button.btn-empty:hover,
+    .discount-form button.button:hover,
+    .shipping-form button.button:hover,
+    button.button:hover{
+        color: <?php echo $blue_button_color_hover;?> !important;
+        border-color: <?php echo $blue_button_background_border_color_hover;?> !important;
+        background-color: <?php echo $blue_button_background_border_color_hover;?> !important;
+    }
+
+
+
+    button.color_dark:not(.button_type_6),
+    .color_dark[class*="button_type_"]:not(.button_type_6){
+        color: <?php echo $dark_button_color;?> !important;
+        border-color: <?php echo $dark_button_background_border_color;?> !important;
+        background:transparent;
+    }
+    button.color_dark:hover:not(.button_type_6),
+    .color_dark[class*="button_type_"]:hover:not(.button_type_6){
+        color: <?php echo $dark_button_color_hover;?> !important;
+        border-color: <?php echo $dark_button_background_border_color_hover;?> !important;
+        background-color: transparent;
+    }
+
+
+    /*Blog*/
+    .blog_side_container .blog_side_button{
+        background-color:<?php echo $blog_sidebutton_background;?>;
+        color: <?php echo $blog_sidebutton_color;?>;
+    }
+
+    .blog_title{
+        color: <?php echo $blog_title_color;?> !important;
+    }
+
+    .blog_title:hover{
+        color: <?php echo $blog_title_color_hover;?> !important;
+    }
+
+    .blog_read_more{
+        color: <?php echo $blog_readmore_color;?> !important;
+    }
+
+    .blog_read_more span{
+        color: <?php echo $blog_readmore_color;?> !important;
+        border-color:<?php echo $blog_readmore_color;?> !important;
+    }
+
+    .blog_read_more:hover{
+        color: <?php echo $blog_readmore_color_hover;?> !important;
+    }
+
+    .blog_read_more:hover span{
+        color: <?php echo $blog_readmore_color_hover;?> !important;
+        border-color:<?php echo $blog_readmore_color_hover;?> !important;
+    }
+
+    .blog_comments i{
+        color: <?php echo $blog_comments_color;?> !important;
+    }
+
+    .blog_comments:hover i{
+        color: <?php echo $blog_comments_color_hover;?> !important;
+    }
+
+
+    /*Side Menu*/
+    #side_menu {background: <?php echo $sideMenuBackgroundColor;?> ;}
+    .side_menu_text_color {color: <?php echo $sideMenuTextColor;?> !important; }
+    li.current > .side_menu_text_color {color: <?php echo $sideMenuTextColorHover;?> !important;}
+    .side_menu_text_color:hover, .side_menu_text_color.current{color: <?php echo $sideMenuTextColorHover;?> !important;}
+
+    /* Social Links Color */
+    .social_links_color {color: <?php echo $socialLinksColor;?>;}
+
+    .product_details_color {color: <?php echo $productDetailsColor ? $productDetailsColor.' !important' : ''?>;}
+    .product_listing_color {color: <?php echo $productListingColor ? $productListingColor.' !important' : ''?>;}
+    .product_onsale_color {color: <?php echo $productOnSaleColor ? $productOnSaleColor.' !important' : ''?>;}
+
+    .dropdown_2_container.shoppingcart .dropdown_2 .total_price .price, #shopping-cart-totals-table tr td strong{color: <?php echo $productListingColor;?>; }
+
+    [class*="button_type_"].product_details_addtocart{
+        background:<?php echo $productDetailsAddtocartBackgroundColor ? $productDetailsAddtocartBackgroundColor.' !important' : ''?>;
+        color:<?php echo $productDetailsAddtocartTextColor ? $productDetailsAddtocartTextColor.' !important' : ''?>;
+        border-color: <?php echo $productDetailsAddtocartBackgroundColor ? $productDetailsAddtocartBackgroundColor.' !important' : ''?>;
+    }
+
+    [class*="button_type_"].product_details_addtocart:hover{
+        background:<?php echo $productDetailsAddtocartBackgroundColorHover ? $productDetailsAddtocartBackgroundColorHover.' !important' : ''?>;
+        color:<?php echo $productDetailsAddtocartTextColorHover ? $productDetailsAddtocartTextColorHover.' !important' : ''?>;
+        border-color: <?php echo $productDetailsAddtocartBackgroundColor ? $productDetailsAddtocartBackgroundColor.' !important' : ''?>;
+    }
+
+    [class*="button_type_"].product_listing_addtocart{
+        background:<?php echo $productlistingAddtocartBackgroundColor ? $productlistingAddtocartBackgroundColor.' !important' : ''?>;
+        color:<?php echo $productlistingAddtocartTextColor ? $productlistingAddtocartTextColor.' !important' : ''?>;
+        border-color: <?php echo $productlistingAddtocartBackgroundColorHover ? $productlistingAddtocartBackgroundColorHover.' !important' : ''?>;
+    }
+
+    [class*="button_type_"].product_listing_addtocart:hover{
+        background:<?php echo $productlistingAddtocartBackgroundColorHover ? $productlistingAddtocartBackgroundColorHover.' !important' : ''?>;
+        color:<?php echo $productlistingAddtocartTextColorHover ? $productlistingAddtocartTextColorHover.' !important' : ''?>;
+        border-color: <?php echo $productlistingAddtocartBackgroundColorHover ? $productlistingAddtocartBackgroundColorHover.' !important' : ''?>;
+    }
+
+    .sale_color{
+        background:<?php echo $saleBackgroundColor ? $saleBackgroundColor.' !important' : ''?>;
+        color:<?php echo $saleTextColor ? $saleTextColor.' !important' : ''?>;
+    }
+
+    .new_color{
+        background:<?php echo $newBackgroundColor ? $newBackgroundColor.' !important' : ''?>;
+        color:<?php echo $newTextColor ? $newTextColor.' !important' : ''?>;
+    }
+
+    .sold_color{
+        background:<?php echo $soldBackgroundColor ? $soldBackgroundColor.' !important' : ''?>;
+        color:<?php echo $soldTextColor ? $soldTextColor.' !important' : ''?>;
+    }
+
+    /*Add to wishlist*/
+    .add_to_wishlist{
+        color: <?php echo $add_to_wishlist_color;?> !important;
+        background-color: <?php echo $add_to_wishlist_background_color;?> !important;
+        border-color:<?php echo $add_to_wishlist_border_color;?> !important;
+    }
+
+    .add_to_wishlist:hover{
+        color: <?php echo $add_to_wishlist_color_hover;?> !important;
+        background-color: <?php echo $add_to_wishlist_background_color_hover;?> !important;
+        border-color:<?php echo $add_to_wishlist_border_color_hover;?> !important;
+    }
+
+    .tooltip{
+        color:<?php echo $tooltip_color;?> !important;
+        background-color:<?php echo $tooltip_background_color;?> !important;
+    }
+
+    /*Add to compare*/
+    .add_to_compare{
+        color: <?php echo $add_to_compare_color;?> !important;
+        background-color: <?php echo $add_to_compare_background_color;?> !important;
+        border-color:<?php echo $add_to_compare_border_color;?> !important;
+    }
+
+    .add_to_compare:hover{
+        color: <?php echo $add_to_compare_color_hover;?> !important;
+        background-color: <?php echo $add_to_compare_background_color_hover;?> !important;
+        border-color:<?php echo $add_to_compare_border_color_hover;?> !important;
+    }
+
+
+
+    /*Accent color one (gray)*/
+    textarea,
+    input:not([type="submit"]),
+    .selectbox span.select{
+        border:1px solid <?php echo $input_field_border_color;?>;
+        color: <?php echo $input_color;?>;
+    }
+
+
+    /*placeholder*/
+    ::-webkit-input-placeholder{
+        color: <?php echo $input_placeholder_color;?>;
+    }
+    input::-moz-placeholder{
+        color:<?php echo $input_placeholder_color;?>;
+    }
+    ::ms-input-placeholder{
+        color:<?php echo $input_placeholder_color;?>;
+    }
+
+
+    .carousel_color{
+        color: <?php echo $icon_color_grey_light;?>;
+    }
+
+    .carousel_color:hover{
+        color: <?php echo $icon_color_grey_light_hover;?>;
+    }
+
+    .carousel_border_color[class*="icon_wrap"] {
+        border-color: <?php echo $icon_border_color_grey_light;?>;
+    }
+
+    .carousel_border_color[class*="icon_wrap"]:hover {
+        border-color: <?php echo $icon_border_color_grey_light_hover;?>;
+    }
+
+    /*Prev/next*/
+    .prev_next_color{
+        color: <?php echo $prev_next_color;?>;
+    }
+
+    .prev_next_color:hover{
+        color: <?php echo $prev_next_color_hover;?>;
+    }
+
+    .prev_next_border_color{
+        border-color: <?php echo $prev_next_border_color;?>;
+    }
+
+    .prev_next_border_color:hover{
+        border-color: <?php echo $prev_next_border_color_hover;?> !important;
+    }
+
+    /*Back to top*/
+    .back_top_color{
+        color: <?php echo $back_top_color;?>;
+    }
+
+    .back_top_color:hover{
+        color: <?php echo $back_top_color_hover;?>;
+    }
+
+    .back_top_border_color{
+        border-color: <?php echo $back_top_border_color;?>;
+    }
+
+    .back_top_border_color:hover{
+        border-color: <?php echo $back_top_border_color_hover;?> !important;
+    }
+
+
+    /*Header search*/
+    .header_search_icon_color {
+        color: <?php echo $header_search_icon_color;?>;
+    }
+
+    .header_search_icon_color:hover {
+        color: <?php echo $header_search_icon_color_hover;?>;
+    }
+
+    .header_search_icon_border_color{
+        border-color:<?php echo $header_search_icon_border_color;?>;
+    }
+
+    .header_search_icon_border_color:hover{
+        border-color: <?php echo $header_search_icon_border_color_hover;?> !important;
+    }
+
+    /*Header login*/
+
+    .header_login_icon_color {
+        color: <?php echo $header_login_icon_color;?>;
+    }
+    .dropdown_2_container.login:hover .header_login_icon_color .icon-lock {
+        color: <?php echo $header_login_icon_color_hover;?>;
+    }
+    .header_login_icon_border_color {
+        border-color:<?php echo $header_login_icon_border_color;?>;
+    }
+    .dropdown_2_container:hover .header_login_icon_border_color:hover {
+        border-color:<?php echo $header_login_icon_border_color_hover;?>;
+    }
+    .dropdown_2_container.login .dropdown_2:before{
+        border-bottom-color: <?php echo $header_login_popup_header_color;?>;
+    }
+
+    .dropdown_2_container.login .dropdown_2{
+        border-top-color: <?php echo $header_login_popup_header_color;?>;
+    }
+
+    .header_cart_icon_color {
+        color: <?php echo $header_cart_icon_color;?>;
+    }
+    .dropdown_2_container.shoppingcart:hover .header_cart_icon_color .icon-basket {
+        color: <?php echo $header_cart_icon_color_hover;?>;
+    }
+    .header_cart_icon_border_color {
+        border-color:<?php echo $header_cart_icon_border_color;?>;
+    }
+
+    .dropdown_2_container:hover .header_cart_icon_border_color,  .dropdown_2_container.shoppingcart:hover > [class*="icon_wrap_"] {
+        border-color:<?php echo $header_cart_icon_border_color_hover;?>;
+    }
+    .dropdown_2_container.shoppingcart .dropdown_2:before{
+        border-bottom-color: <?php echo $header_cart_popup_header_color;?>;
+    }
+
+    .dropdown_2_container.shoppingcart .dropdown_2{
+        border-top-color: <?php echo $header_cart_popup_header_color;?>;
+    }
+
+    /*Tabs*/
+    .tabs > ul li a{
+        color: <?php echo $tabs_text_color;?>;
+        background-color: <?php echo $tabs_background_color;?>;
+    }
+
+    .tabs > ul li.active a{
+        color: <?php echo $tabs_text_color_active;?>;
+        background-color: <?php echo $tabs_background_color_active;?>;
+        border-color: <?php echo $tabs_background_color_active;?>;
+    }
+
+    .tabs .active + li a{
+        border-left-color: <?php echo $tabs_background_color_active;?>;
+    }
+
+
+    /*Pagination*/
+    ul.paginations li a{
+        color: <?php echo $pagination_color;?>;
+        background-color: <?php echo $pagination_background_color;?>;
+    }
+
+    ul.paginations li.active a, .paginations li a:hover{
+        color: <?php echo $pagination_color_active;?>;
+        background-color: <?php echo $pagination_background_color_active;?>;
+        border-color: <?php echo $pagination_background_color_active;?> !important;
+    }
+
+    .paginations .active + li a, .paginations li:hover + li a{
+        border-left-color: <?php echo $pagination_background_color_active;?> !important;
+    }
+
+
+
+
+
+
+    /*End color one (gray)*/
+
+
+    /*Footer*/
+    .footer_contact_icons.color_pink{
+        color: <?php echo $footer_contact_icons;?>;
+        border-color: <?php echo $footer_contact_icons;?>;
+    }
+
+    .footer_contact_links.color_pink_hover, span.footer_contact_links{
+        color: <?php echo $footer_contact_links;?>;
+    }
+
+    .footer_contact_links.color_pink_hover:hover{
+        color: <?php echo $footer_contact_links_hover;?>;
+    }
+
+    .button_type_2.footer_contact_links:hover{
+        border-color: <?php echo $footer_contact_links_hover;?> !important;
+    }
+
+</style>

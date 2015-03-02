@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <illusion>
+            <title>Illusion</title>
+            <sort_order>999</sort_order>
+            <children>
+                <upsell>
+                    <title>UpSell Settings</title>
+                    <sort_order>20</sort_order>
+                    <action>adminhtml/system_config/edit/section/upsell</action>
+                </upsell>
+                <crosssell>
+                    <title>CrossSell Settings</title>
+                    <sort_order>25</sort_order>
+                    <action>adminhtml/system_config/edit/section/crosssell</action>
+                </crosssell>
+                <settings>
+                    <title>Theme Settings</title>
+                    <sort_order>100</sort_order>
+                    <action>adminhtml/system_config/edit/section/illusion_settings</action>
+                </settings>
+            </children>
+        </illusion>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <upsell>
+                                        <title>UpSell Settings</title>
+                                    </upsell>
+                                    <crosssell>
+                                        <title>CrossSell Settings</title>
+                                    </crosssell>
+                                    <illusion_settings>
+                                        <title>Theme Settings</title>
+                                    </illusion_settings>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <illusion>
+                        <title>Illusion</title>
+                        <sort_order>999</sort_order>
+                        <children>
+                            <upsell>
+                                <title>UpSell Settings</title>
+                                <sort_order>20</sort_order>
+                                <action>adminhtml/system_config/edit/section/upsell</action>
+                            </upsell>
+                            <crosssell>
+                                <title>CrossSell Settings</title>
+                                <sort_order>25</sort_order>
+                                <action>adminhtml/system_config/edit/section/crosssell</action>
+                            </crosssell>
+                            <settings>
+                                <title>Theme Settings</title>
+                                <sort_order>100</sort_order>
+                                <action>adminhtml/system_config/edit/section/illusion_settings</action>
+                            </settings>
+                        </children>
+                    </illusion>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,126 @@
+#newsletter_background_layer {
+    position: absolute;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#newsletter_box_layer {
+    position: fixed;
+    z-index: 9999;
+    background-color: #ffffff;
+    width: 700px;
+    height: auto;
+    overflow: hidden;
+    top: 40%;
+    text-align: center;
+    display: inline-block;
+    padding:0 5px;
+}
+
+#newsletter_box_title {
+    height: auto;
+    overflow: hidden;
+}
+
+#newsletter_box_title span{
+    font-weight: 700;
+}
+
+#newsletter_box_block_1 {
+    width: 350px;
+    text-align: left;
+}
+#newsletter_box_block_2 {
+    height: auto;
+    text-align: left;
+    margin: 0  0 10px 0 ;
+    width: 350px;
+}
+#newsletter_box_block_3 {
+    text-align: justify;
+}
+
+#newsletter_box_close {
+    float:right;
+    cursor: pointer;
+}
+.newsletter_box_lines {
+
+    display: block;
+    height: 1px;
+    width: 100%;
+    clear: both;
+    margin: 5px 0;
+ }
+#newsletter_box_subscribe {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin: 0 0 20px 0;
+}
+#newsletter_box_subscribe_input {
+    float: left;
+    clear: both;
+}
+#newsletter_box_subscribe_input input {
+    width: 300px;
+}
+#newsletter_box_subscribe_submit {
+    width: 80px;
+    float: left;
+}
+
+#newsletter_box_subscribe_submit a {
+    width: 117px;
+    height: 34px;
+    display: block;
+    line-height: 34px;
+    font-size: 12px;
+    color: #000000;
+    margin: 1px 0 0 0;
+}
+
+#newsletter_box_subscribe_response {
+    text-align: left;
+    margin: 10px 0 0 30px;
+    height: 15px;
+}
+
+#newsletter_box_subscribe_response_success {
+    display: none;
+}
+
+#newsletter_box_subscribe_response_error {
+    color: #ea6868;
+    text-align: left;
+    height: auto;
+    overflow: hidden;
+}
+
+#newsletter_box_subscribe_response_success {
+    color: #35ea49;
+}
+
+.newsletter_image{
+    width:45%;
+}
+.newsletter_text_form.part{
+    width:50%;
+}
+
+.s_17{
+    font-size:1.7em !important;
+}
+
+#newsletter-dont-show{
+    float: left;
+    padding: 0 15px 15px;
+    width: 100%;
+}

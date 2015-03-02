@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/newsletter-popup.css</name><params/></action>
+            <action method="addJs"><script>illusion/newsletter.js</script></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="illusion_newsletterpopup/newsletterSubscribers" name="newsletterpopup" template="newsletter/popup.phtml" after="-"/>
+        </reference>
+    </default>
+</layout>

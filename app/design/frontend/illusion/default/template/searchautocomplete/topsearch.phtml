@@ -1,0 +1,42 @@
+<?php
+    $illusionSettings = Mage::helper('illusion_settings');
+    $headerType = $illusionSettings->getConfig('header/header_type');
+    $_categories = $illusionSettings->getCategories();
+?>
+
+<?php if($headerType == 'header_1'):?>
+
+    <form role="search" class="relative type_2 f_left type_3 f_xs_none t_xs_align_l m_xs_bottom_15" id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+        <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>"  class="input-text r_corners fw_light bg_light w_full" placeholder="Search entire store here..." />
+        <button class="color_grey_light header_search_icon_color color_purple_hover tr_all" type="submit">
+            <i class="icon-search"></i>
+        </button>
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+    </form>
+
+<?php elseif($headerType == 'header_2'):?>
+
+    <form role="search" class="bg_light animate_ vc_child t_align_r fw_light tr_all trf_xs_none" id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+        <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>"  class="input-text r_corners d_inline_m" placeholder="Search entire store here..." />
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+    </form>
+
+<?php elseif($headerType == 'header_3'):?>
+
+    <form role="search" class="bg_light animate_ vc_child t_align_r fw_light tr_all trf_xs_none header_3" id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+        <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>"  class="input-text r_corners d_inline_m" placeholder="Search entire store here..." />
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+    </form>
+
+<?php endif;?>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+    searchForm.initAutocomplete('<?php echo $this->helper('searchautocomplete')->getSuggestUrl() ?>', 'search_autocomplete');
+    //]]>
+</script>
+
+
+
+<?php echo Mage::helper('searchautocomplete')->getStyle(); ?>

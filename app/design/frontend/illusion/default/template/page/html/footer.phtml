@@ -1,0 +1,132 @@
+<hr class="divider_type_2">
+
+<footer role="contentinfo" class="bg_light_3">
+
+    <?php
+        $illusionSettings = Mage::helper('illusion_settings');
+        $footerType = $illusionSettings->getConfig('footer/footer_type');
+    ?>
+
+    <?php if($footerType == 'footer_1'):?>
+    <!--top part-->
+    <section class="footer_top_part">
+        <div class="container relative">
+            <div class="row">
+                <?php echo $this->getChildHtml('illusion.footer.contact_us_1');?>                                       <!--contact-->
+                <?php// echo $this->getChildHtml('illusion.footer.stores');?>                                             <!-- stores -->
+
+                <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
+                    <?php $illusionInformation = Mage::getModel('cms/block')->load('illusion_services_block'); ?>
+                    <?php if($illusionInformation->getIsActive()):?>
+                        <h5 class="color_dark m_bottom_20 fw_light"><?php echo $illusionInformation->getTitle(); ?></h5>
+                        <?php echo $illusionInformation->getContent();?>
+                    <?php endif;?>
+                    <!-- cms block -->
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
+                    <?php $illusionInformation = Mage::getModel('cms/block')->load('illusion_solutions_block'); ?>
+                    <?php if($illusionInformation->getIsActive()):?>
+                        <h5 class="color_dark m_bottom_20 fw_light"><?php echo $illusionInformation->getTitle(); ?></h5>
+                        <?php echo $illusionInformation->getContent();?>
+                    <?php endif;?>
+                    <!-- cms block -->
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
+                    <?php $illusionOffers = Mage::getModel('cms/block')->load('illusion_support_block'); ?>
+                    <?php if($illusionOffers->getIsActive()):?>
+                        <h5 class="color_dark m_bottom_20 fw_light"><?php echo $illusionOffers->getTitle(); ?></h5>
+                        <?php echo $illusionOffers->getContent();?>
+                    <?php endif;?>
+                    <!-- cms block -->
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_50 m_xs_bottom_30">
+                    <?php echo $this->getChildHtml('illusion.footer.newsletter');?>                                     <!--subscribe-->
+                </div>
+            </div>
+        </div>
+    <hr class="m_bottom_45 divider_type_3 m_xs_bottom_30">
+    <div class="container">
+        <div class="row">
+            <?php// echo $this->getChildHtml('illusion.footer.social.footer_1');?>                                             <!--social buttons-->
+
+            <div class="col-lg-12 col-md-5 col-sm-6 m_xs_bottom_30 t_xs_align_l t_align_r">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('illusion_credit_card_footer_block')->toHtml(); ?>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <?php echo $this->getChildHtml('illusion.footer.copyright');?>                                                      <!--copyright-->
+
+    <?php elseif($footerType == 'footer_2'):?>
+        <!--top part-->
+        <section class="footer_top_part">
+            <div class="container relative">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row">
+                            <?php echo $this->getChildHtml('blog.footer');?>                                            <!-- blog -->
+                            <?php echo $this->getChildHtml('illusion.footer.twitter');?>                                <!-- twitter -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row">
+                            <?php echo $this->getChildHtml('illusion.footer.flickr');?>                                 <!-- flickr photostream -->
+                            <?php echo $this->getChildHtml('illusion.footer.contact');?>                                <!-- contact form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php echo $this->getChildHtml('illusion.footer.copyright');?>                                                  <!--copyright-->
+
+    <?php elseif($footerType == 'footer_3'):?>
+        <!--top part-->
+        <section class="footer_top_part">
+            <div class="container relative">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row">
+                            <?php echo $this->getChildHtml('blog.footer3');?>                                           <!-- blog -->
+                            <?php echo $this->getChildHtml('illusion.footer.twitter');?>                                <!--twitter-->
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row">
+                            <!--facebook plugin-->
+                            <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
+                                <h5 class="color_dark fw_light m_bottom_15"><?php echo $this->__('Join Us on Facebook') ?></h5>
+                                <?php $facebookAccount = trim(Mage::getStoreConfig('illusion_settings/social/social_facebook_user'));?>
+                                <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2F<?php echo $facebookAccount;?>&amp;width=235&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=438889712801266" style="border:none; overflow:hidden; width:235px; height:258px;"></iframe>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
+                                <?php echo $this->getChildHtml('illusion.footer.newsletter');?>                         <!--subscribe-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="m_bottom_45 divider_type_3 m_xs_bottom_30">
+            <div class="container">
+                <div class="row">
+                    <!--about us-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 fw_light m_bottom_30">
+                        <?php $illusionAboutUs = Mage::getModel('cms/block')->load('illusion_about_us_block'); ?>
+                        <?php if($illusionAboutUs->getIsActive()):?>
+                            <h5 class="color_dark m_bottom_20"><?php echo $illusionAboutUs->getTitle(); ?></h5>
+                            <?php echo $illusionAboutUs->getContent();?>
+                        <?php endif;?>
+                    </div>
+                    <?php echo $this->getChildHtml('illusion.footer.contact_us_3');?>                                   <!--contact info-->
+                    <?php echo $this->getChildHtml('illusion.footer.social.footer_3');?>                                <!--social buttons-->
+                </div>
+            </div>
+        </section>
+        <?php echo $this->getChildHtml('illusion.footer.copyright');?>                                                  <!--copyright-->
+    <?php endif;?>
+</footer>

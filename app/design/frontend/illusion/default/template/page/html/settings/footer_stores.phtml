@@ -1,0 +1,18 @@
+<div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
+    <h5 class="color_dark fw_light m_bottom_20"><?php echo $this->__('Stores') ?></h5>
+    <ul class="vr_list_type_4 color_dark fw_light w_break">
+        <?php $groups = Mage::app()->getWebsites();?>
+        <?php foreach($groups as $group):?>
+            <?php foreach($group->getGroups() as $website):?>
+                <li class="m_bottom_12">
+                    <a href="<?php echo $website->getUrl();?>" class="color_dark d_inline_b">
+                        <span class="icon_wrap_size_0 circle color_grey_light_5 d_block tr_inherit f_left">
+                            <i class="icon-angle-right"></i>
+                        </span>
+                        <?php echo $website->getName();?>
+                    </a>
+                </li>
+            <?php endforeach;?>
+        <?php endforeach;?>
+    </ul>
+</div>

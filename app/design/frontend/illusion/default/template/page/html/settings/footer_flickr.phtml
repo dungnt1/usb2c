@@ -1,0 +1,7 @@
+<?php $flickrPhotoStream = $this->getBlockConfig('social/social_flickr_photo_stream'); ?>
+<?php if($flickrPhotoStream):?>
+<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_sm_bottom_30">
+    <h5 class="color_dark fw_light m_bottom_23"><?php echo $this->__('Flickr Photo Stream') ?></h5>
+    <ul class="flickr_list nine_items clearfix" data-flickr-options='{"qstrings":{"id" : "<?php echo $flickrPhotoStream;?>"}}'></ul>
+</div>
+<?php endif;?>

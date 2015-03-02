@@ -1,0 +1,38 @@
+<?php if ($this->isActivePopUp()): ?>
+    <?php
+        $transBackground        = Mage::getStoreConfig('cookies/config/background_color');
+        $opacity                = Mage::getStoreConfig('cookies/config/background_opacity');
+        $readMore               = Mage::getStoreConfig('cookies/config/link_rm');
+    ?>
+    <script type="text/javascript">
+
+        jQuery(function() {
+            if (AcceptCookies.readCookie() != 1) {
+
+                var bcgColor = '<?php echo $transBackground; ?>';
+                var opacity = "<?php echo $opacity; ?>";
+
+                setTimeout(function(){
+                    jQuery('#accept-cookies').attr('style',' opacity:'+opacity+'; width:100%; background:'+bcgColor+'');
+                    AcceptCookies.boxOpen();
+                }, 3000);
+            }
+        });
+
+        <?php if (is_numeric($this->getCookieLifeTime())): ?>AcceptCookies.setCookieLiveTime(<?php echo $this->getCookieLifeTime(); ?>);<?php endif; ?>
+        <?php if ($this->getCookieName()): ?>AcceptCookies.setCookieName('<?php echo $this->getCookieName(); ?>');<?php endif; ?>
+        AcceptCookies.setBaseUrl('<?php echo $this->getBaseUrl(); ?>');
+
+    </script>
+
+    <div id="accept-cookies">
+        <div class="container">
+            <?php if($message = $this->getText()):?>
+                <p class="f_left"><?php echo $message;?></p>
+            <?php endif;?>
+            <button type="button" class="f_right button_type_8 m_right_10 m_left_10 tr_all color_read_more fs_medium r_corners p_05" onclick="window.open('<?php echo $readMore;?>')"><?php echo $this->getTitleRM();?></button>
+            <button type="button" class="f_right button_type_8 tr_all color_blue fs_medium r_corners p_05" onclick="AcceptCookies.boxClose();"><?php echo $this->getTitleAC();?></button>
+        </div>
+    </div>
+
+<?php endif; ?>

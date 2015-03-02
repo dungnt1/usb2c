@@ -1,0 +1,91 @@
+<?php
+    $illusion = $this->helper('illusion_settings');
+    $_helper= Mage::helper('catalog/category');
+    $_categories = $illusion->getCategories();
+
+    $currentUrl = $this->getCurrentUrl();
+    $homeUrl = $this->getUrl();
+
+    $headerType = $illusion->getConfig('header/header_type');
+?>
+
+<!--main navigation-->
+<button id="menu_button" class="r_corners tr_all color_blue db_centered m_bottom_20 d_none d_xs_block">
+    <i class="icon-menu"></i>
+</button>
+<!--main navigation-->
+
+<nav role="navigation" class="d_inline_m d_xs_none m_xs_right_0 m_right_15 m_sm_right_5 t_align_l m_xs_bottom_15">
+    <ul class="hr_list main_menu <?php if($headerType != 'header_2'){ echo 'type_2';};?> fw_light">
+
+        <?php foreach($_categories as $_category):?>
+            <?php $categoryChildren = $_category->getChildren(); ?>
+            <li class="container3d relative f_xs_none m_xs_bottom_5  <?php if($this->getAppearsInCategory($_category)) echo ' current ';?>" >
+                <a class="color_dark fs_large relative r_xs_corners menu_text_color menu_background_color" href="<?php echo $_helper->getCategoryUrl($_category);?>"><?php echo $_category->getName();?>
+                    <?php if($categoryChildren->count()):?>
+                        <i class="icon-angle-down d_inline_m no_children"></i>
+                    <?php else:?>
+                        <i class="icon-angle-down d_inline_m no_children"></i>
+                    <?php endif;?>
+                </a>
+                <?php if($categoryChildren->count()) : ?>
+                    <ul class="sub_menu r_xs_corners bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
+                        <?php foreach($categoryChildren as $_categoryChild) : ?>
+                            <?php $_categoryChildModel = Mage::getModel('catalog/category')->load($_categoryChild->getId());?>
+                            <?php $categoryGrandchildren = $_categoryChild->getChildren(); ?>
+                            <li class="<?php if($categoryGrandchildren->count()) echo 'container3d relative'; ?> <?php if($this->getAppearsInCategory($_categoryChild)) echo ' current ';?> submenu_background_color">
+                                <a href="<?php echo $_helper->getCategoryUrl($_categoryChildModel);?>" class="d_block color_dark relative submenu_text_color"><?php echo $_categoryChildModel->getName();?>
+                                    <?php if($categoryGrandchildren->count()):?>
+                                        <i class="icon-angle-right"></i>
+                                    <?php endif;?>
+                                </a>
+                                <?php if($categoryGrandchildren->count()):?>
+                                    <ul class="sub_menu bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
+                                        <?php foreach($categoryGrandchildren as $_categoryChild) : ?>
+                                            <?php $_categoryChildModel = Mage::getModel('catalog/category')->load($_categoryChild->getId());?>
+                                            <li class="submenu_background_color <?php if($this->getAppearsInCategory($_categoryChild)) echo ' current ';?>">
+                                                <a href="<?php echo $_helper->getCategoryUrl($_categoryChildModel);?>" class="d_block color_dark relative submenu_text_color"><?php echo $_categoryChildModel->getName();?></a>
+                                            </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                <?php endif;?>
+                            </li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
+            </li>
+        <?php endforeach;?>
+            <li class="container3d relative f_xs_none m_xs_bottom_5  <?php if($currentUrl == $this->getUrl('contacts')) echo ' current ';?> " >
+                <a class="color_dark fs_large relative r_xs_corners menu_text_color menu_background_color" href="<?php echo $this->getUrl('');?>">
+                    <?php echo $this->__('Portfolio');?>
+                    <i class="icon-angle-down d_inline_m no_children"></i>
+                </a>
+            </li>
+            <li class="container3d relative f_xs_none m_xs_bottom_5  <?php if($currentUrl == $this->getUrl('contacts')) echo ' current ';?> " >
+                <a class="color_dark fs_large relative r_xs_corners menu_text_color menu_background_color" href="<?php echo $this->getUrl('');?>">
+                    <?php echo $this->__('Custom Shaped Drivers');?>
+                    <i class="icon-angle-down d_inline_m no_children"></i>
+                </a>
+            </li>
+            <li class="container3d relative f_xs_none m_xs_bottom_5  <?php if($currentUrl == $this->getUrl('contacts')) echo ' current ';?> " >
+                <a class="color_dark fs_large relative r_xs_corners menu_text_color menu_background_color" href="<?php echo $this->getUrl('');?>">
+                    <?php echo $this->__('Web Store');?>
+                    <i class="icon-angle-down d_inline_m no_children"></i>
+                </a>
+            </li>
+
+        <?php if(Mage::getStoreConfig('blog/blog/enabled')):?>
+            <li class="container3d relative f_xs_none m_xs_bottom_5  <?php if($this->getCurrentUrl() == Mage::getBaseUrl().Mage::getStoreConfig('blog/blog/route')) echo ' current ';?>" >
+                <a class="color_dark fs_large relative r_xs_corners menu_text_color menu_background_color" href="<?php echo Mage::getBaseUrl().Mage::getStoreConfig('blog/blog/route');?>"><?php echo Mage::getStoreConfig('blog/blog/title');?>
+                    <i class="icon-angle-down d_inline_m no_children"></i>
+                </a>
+            </li>
+        <?php endif;?>
+            <li class="container3d relative f_xs_none m_xs_bottom_5  <?php if($currentUrl == $this->getUrl('contacts')) echo ' current ';?> " >
+                <a class="color_dark fs_large relative r_xs_corners menu_text_color menu_background_color" href="<?php echo $this->getUrl('contacts');?>">
+                    <?php echo $this->__('Contact');?>
+                    <i class="icon-angle-down d_inline_m no_children"></i>
+                </a>
+            </li>
+    </ul>
+</nav>

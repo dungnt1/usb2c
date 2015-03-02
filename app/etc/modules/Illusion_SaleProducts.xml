@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Illusion_SaleProducts>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Illusion_SaleProducts>
+    </modules>
+</config>

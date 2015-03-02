@@ -1,0 +1,86 @@
+<?php
+
+$routeName = Mage::app()->getRequest()->getRouteName();
+$identifier = Mage::getSingleton('cms/page')->getIdentifier();
+
+$_currPageIdentifier = '';
+$_adbannerdisplayConditionField = '';
+if($routeName == 'cms' && $identifier == 'home') {
+    $_currPageIdentifier = 'home';
+    $_adbannerdisplayConditionField = 'position_home';
+} else if(Mage::registry('product')){
+    $_currPageIdentifier = 'product';
+    $_adbannerdisplayConditionField = 'position_product';
+} else if(Mage::registry('current_category')){
+    $_currPageIdentifier = 'category';
+    $_adbannerdisplayConditionField = 'position_category';
+}
+
+
+
+$adbanner_model = Mage::getModel('illusion_adbanner/adbanner');
+                  
+if(Mage::getStoreConfig('adbanner/adbanneradvancedsettings/adbannerdisplayrandomlyenabled',Mage::app()->getStore())) {
+    $collection = $adbanner_model->getCollection()
+		->addFieldToFilter($_adbannerdisplayConditionField,'1')
+		->addFieldToFilter('status','1')
+		->addFieldToFilter('position_right','1');
+    $collection->getSelect()
+    ->order(new Zend_Db_Expr('RAND()'))
+    ->limit('1');
+} else {    
+    $_advbannerID = Mage::getStoreConfig('adbanner/adbanneradvancedsettings/adbannerid',Mage::app()->getStore());
+    $collection = $adbanner_model->getCollection()
+		->addFieldToFilter($_adbannerdisplayConditionField,'1')
+                ->addFieldToFilter('status','1')
+                ->addFieldToFilter('adbanner_id',$_advbannerID)    
+		->addFieldToFilter('position_right','1');
+}
+foreach ($collection as $item){
+    $_advBannerTitle = '';                   
+    if(Mage::getStoreConfig('adbanner/adbanneradvancedsettings/adbannerdisplaylabelenabled',Mage::app()->getStore())){
+        $_advBannerTitle = '<div style="clear:both;">'.$item->getTitle().'</div>';
+    }
+    
+    $styleStr = '';
+    $styleOuterStr = '';
+    $_height = Mage::getStoreConfig('adbanner/adbanneradvancedsettings/adbannerimgheight',Mage::app()->getStore());
+    if($_height != '' && is_numeric($_height)){
+       $styleStr = 'max-height:'.$_height.'px;';
+       $styleOuterStr = 'max-height:'.($_height+2).'px;';
+    }
+    
+    $_width = Mage::getStoreConfig('adbanner/adbanneradvancedsettings/adbannerimgwidth',Mage::app()->getStore());
+    if($_width != '' && is_numeric($_height)){
+       $styleStr .= 'max-width:190px; width:'.$_width.'px;'; 
+       $styleOuterStr .= 'max-width:190px; width:'.($_width+2).'px;'; 
+    }
+    
+
+    
+    if($item->getAdvmode() == 0){    ?>
+
+        <div class="advertising_area t_align_c bg_light_2 color_grey m_bottom_45 m_xs_bottom_30">
+            <span class="tt_uppercase "><?php echo $_advBannerTitle; ?></span>
+        </div>
+<?php
+?>
+<div style="<?php echo $styleStr; ?>">
+    <?php echo $item->getAdvcode(); ?>
+</div>
+<?php         
+    } else if($item->getAdvmode() == 1){    
+?>
+
+        <div class="advertising_area t_align_c bg_light_2 color_grey m_bottom_45 m_xs_bottom_30">
+            <span class="tt_uppercase "><?php echo $_advBannerTitle; ?></span>
+            <div class="tt_uppercase bg_light_3 vc_child">
+                <div class="d_inline_m  fw_light lh_medium w_full">
+                    <div style="<?php echo $styleOuterStr; ?>"><a href="<?php echo $item->getLink(); ?>" target="_blank" style="color:#FFF; text-decoration:none;"><img src="<?php echo Mage::getBaseUrl('media').$item->getImage(); ?>" style="<?php echo $styleStr; ?>" alt="<?php echo $item->getTitle(); ?>" title="<?php echo $item->getTitle(); ?>" /></a></div>
+                </div>
+            </div>
+        </div>
+<?php    
+    }
+}
+?> 

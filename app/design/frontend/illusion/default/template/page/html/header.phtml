@@ -1,0 +1,203 @@
+<div id="base" data-base="<?php echo Mage::getBaseUrl();?>"></div>
+
+<?php
+    $illusionSettings = Mage::helper('illusion_settings');
+    $headerType = $illusionSettings->getConfig('header/header_type');
+?>
+
+
+<header role="banner" class="relative
+<?php if($headerType == 'header_3') {
+    echo 'type_3';
+} else if($headerType == 'header_2'){
+    echo 'type_2';
+}?>
+">
+
+
+    <span class="gradient_line"></span>
+
+    <?php if($headerType == 'header_1'):?>
+
+        <!--top part-->
+        <section class="header_top_part p_top_0 p_bottom_0 header_background_color">
+            <div class="container">
+                <div class="row">
+                    <!--contact info-->
+                    <div class="col-lg-5 col-md-4 col-sm-5 t_xs_align_c">
+                        <?php echo $this->getChildHtml('illusion.header.pes');?>
+                    </div>
+                    <div class="col-lg-7 col-md-8 col-sm-7 t_align_r t_xs_align_c">
+                    	<div class="d_inline_m relative dropdown min_width container3d">
+                            <a href="#">Live talk</a>
+                        </div>
+                        <nav class="d_inline_m m_right_10 m_xs_right_0">                                                <!--mini nav-->
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('illusion_header_top_links_block')->toHtml(); ?>
+                        </nav>
+                        <br class="d_none d_xs_block">
+                        <div class="d_inline_m relative dropdown min_width container3d">
+                            <?php echo $this->getChildHtml('store_language');?>                                         <!-- Languages Block -->
+                        </div>
+                        <div class="d_inline_m relative dropdown min_width container3d">
+                            <?php echo $this->getChildHtml('currency');?>                                               <!-- Currency Block -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!--header bottom part-->
+        <section class="header_bottom_part type_2 bg_light">
+            <div class="container">
+                <div class="d_table w_full d_xs_block">
+                    <!--logo-->
+                    <div class="col-lg-3 col-md-3 col-sm-3 d_table_cell d_xs_block f_none v_align_m logo t_xs_align_c">
+                        <a href="<?php echo $this->getUrl();?>" class="d_inline_m m_xs_top_20 m_xs_bottom_20">
+                            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>">
+                        </a>
+                    </div>
+                    <?php echo $this->getChildHtml('illusion.header.form_1');?>
+                    <div class="col-lg-9 col-md-9 col-sm-9 d_table_cell d_xs_block f_none t_xs_align_c">
+                        <!--searchform-->
+                        <?php echo $this->getChildHtml('topSearch') ?>
+
+                        <div class="f_right clearfix f_xs_none d_xs_inline_b t_xs_align_l m_xs_bottom_15">
+                            <?php echo $this->getChildHtml('illusion.header.cart');?>   <!-- Cart Block -->
+                            <?php echo $this->getChildHtml('illusion.header.login');?>  <!-- Login Block -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="d_xs_none">
+
+        <section class="sticky_part bg_light">
+            <div class="container t_xs_align_c">
+                <?php if(!Mage::getStoreConfig('megamenu/general/active')):?>
+                    <?php echo $this->getChildHtml('illusion.header.menu');?>
+                <?php else:?>
+                    <?php echo $this->getChildHtml('megamenu.nav.top');?>
+                <?php endif;?>
+            </div>
+        </section>
+
+    <?php elseif($headerType == 'header_2'):?>
+
+        <section class="header_top_part p_top_0 p_bottom_0 header_background_color">    <!-- Header Top part -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-sm-5 t_xs_align_c">
+                        <?php echo $this->getChildHtml('illusion.header.pes');?>        <!-- Phone, Email, Skype -->
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-sm-7 t_align_r t_xs_align_c">
+                        <?php echo $this->getChildHtml('illusion.header.social');?>     <!-- Header Social Block -->
+                        <div class="d_inline_m relative dropdown min_width container3d">
+                            <?php echo $this->getChildHtml('store_language');?>         <!-- Languages Block -->
+                        </div>
+                        <div class="d_inline_m relative dropdown min_width container3d">
+                            <?php echo $this->getChildHtml('currency');?>               <!-- Currency Block -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="header_bottom_part bg_light">                                   <!-- Header Bottom part -->
+            <div class="container">
+                <div class="d_table w_full d_xs_block">
+                    <div class="d_table_cell d_xs_block f_none v_align_m logo t_xs_align_c">  <!-- Logo -->
+                        <a href="<?php echo $this->getUrl('');?>" class="d_inline_m m_xs_top_20 m_xs_bottom_20">
+                            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>">
+                        </a>
+                    </div>
+                    <div class="t_align_r d_table_cell d_xs_block f_none">
+                        <div class="relative clearfix t_align_r t_xs_align_c">
+                            <?php if(!Mage::getStoreConfig('megamenu/general/active')):?>
+                                <?php echo $this->getChildHtml('illusion.header.menu');?>
+                            <?php else:?>
+                                <?php echo $this->getChildHtml('megamenu.nav.top');?>
+                            <?php endif;?>
+                            <!--searchform button-->
+                            <div class="relative d_inline_m search_buttons d_xs_none">
+                                <button class="icon_wrap_size_2 circle color_grey_light_2 header_search_icon_color header_search_icon_border_color tr_all color_purple_hover"><i class="icon-cancel"></i></button>
+                                <button class="icon_wrap_size_2 active circle color_grey_light_2 header_search_icon_color header_search_icon_border_color tr_all color_purple_hover"><i class="icon-search"></i></button>
+                            </div>
+                            <!--searchform-->
+                            <?php echo $this->getChildHtml('topSearch') ?>
+
+                            <div class="m_left d_inline_m clearfix f_xs_none d_xs_inline_b t_xs_align_l m_xs_bottom_15 header_2">
+                                <?php echo $this->getChildHtml('illusion.header.cart');?>   <!-- Cart Block -->
+                                <?php echo $this->getChildHtml('illusion.header.login');?>  <!-- Login Block -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <?php elseif($headerType == 'header_3'):?>
+
+        <!--top part-->
+        <section class="header_top_part p_top_0 p_bottom_0 header_background_color">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 col-md-6 col-sm-5 t_xs_align_c">
+                        <?php echo $this->getChildHtml('illusion.header.pes');?>        <!-- Phone, Email, Skype -->
+                    </div>
+
+                    <div class="col-lg-7 col-md-6 col-sm-7 t_align_r t_xs_align_c">
+
+                        <?php echo $this->getChildHtml('illusion.header.social');?>     <!-- Header Social Block -->
+
+                        <div class="d_inline_m relative dropdown min_width container3d">
+                            <?php echo $this->getChildHtml('store_language');?>         <!-- Languages Block -->
+                        </div>
+
+                        <div class="d_inline_m relative dropdown min_width container3d">
+                            <?php echo $this->getChildHtml('currency');?>               <!-- Currency Block -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!--header bottom part-->
+        <section class="header_bottom_part type_2 bg_light">
+            <div class="container">
+                <!--logo-->
+                <div class="t_align_c">
+                    <a href="<?php echo $this->getUrl('');?>" class="d_inline_m m_top_8 m_bottom_5 m_xs_top_20 m_xs_bottom_20">
+                        <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <hr class="d_xs_none">
+        <section class="sticky_part bg_light">
+            <div class="container t_align_r relative t_md_align_c">
+                <?php if(!Mage::getStoreConfig('megamenu/general/active')):?>
+                    <?php echo $this->getChildHtml('illusion.header.menu');?>
+                <?php else:?>
+                    <?php echo $this->getChildHtml('megamenu.nav.top');?>
+                <?php endif;?>
+                <div class="relative d_inline_m search_buttons d_xs_none">
+                    <button class="icon_wrap_size_2 circle color_grey_light_2 header_search_icon_color header_search_icon_border_color tr_all color_purple_hover"><i class="icon-cancel"></i></button>
+                    <button class="icon_wrap_size_2 active circle color_grey_light_2 header_search_icon_color header_search_icon_border_color tr_all color_purple_hover"><i class="icon-search"></i></button>
+                </div>
+                <!--searchform-->
+                <?php echo $this->getChildHtml('topSearch') ?>
+
+                <div class="d_inline_m clearfix f_xs_none d_xs_inline_b t_xs_align_l m_xs_bottom_15 m_left header_2">
+                    <?php echo $this->getChildHtml('illusion.header.cart');?>   <!-- Cart Block -->
+                    <?php echo $this->getChildHtml('illusion.header.login');?>  <!-- Login Block -->
+                </div>
+            </div>
+        </section>
+
+    <?php endif;?>
+
+
+
+</header>

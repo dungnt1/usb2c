@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <catalog_product_view>
+        <reference name="product.info.additional">
+            <block type="illusion_adbanner/adbanner" before="product.info.description" name="adbanner" as="adbanner_adbanner">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplaycontentblockenabled">
+                    <template>adbanner/adbanner.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerright" as="adbanner_adbannerright">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayrightblockenabled">
+                    <template>adbanner/adbannerright.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerleft" as="adbanner_adbannerleft">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayleftblockenabled">
+                    <template>mcsadbanner/adbannerleft.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+
+    <catalog_category_default>
+        <reference name="content">
+            <block type="illusion_adbanner/adbanner" after="product_list" name="adbanner" as="adbanner_adbanner">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplaycontentblockenabled">
+                    <template>adbanner/adbanner.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerright" as="adbanner_adbannerright">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayrightblockenabled">
+                    <template>adbanner/adbannerright.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerleft" as="adbanner_adbannerleft">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayleftblockenabled">
+                    <template>adbanner/adbannerleft.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="content">
+            <block type="illusion_adbanner/adbanner" after="product_list" name="adbanner" as="adbanner_adbanner">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplaycontentblockenabled">
+                    <template>adbanner/adbanner.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerright" as="adbanner_adbannerright">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayrightblockenabled">
+                    <template>adbanner/adbannerright.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerleft" as="adbanner_adbannerleft">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayleftblockenabled">
+                    <template>adbanner/adbannerleft.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_category_layered>
+
+    <blog_index_index>
+        <reference name="content">
+            <block type="illusion_adbanner/adbanner" after="product_list" name="adbanner" as="adbanner_adbanner">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplaycontentblockenabled">
+                    <template>adbanner/adbanner.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerright" as="adbanner_adbannerright">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayrightblockenabled">
+                    <template>adbanner/adbannerright.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerleft" as="adbanner_adbannerleft">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayleftblockenabled">
+                    <template>adbanner/adbannerleft.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </blog_index_index>
+    
+    <cms_index_index>
+        <reference name="content">
+            <block type="illusion_adbanner/adbanner" after="product_list" name="adbanner" as="adbanner_adbanner">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplaycontentblockenabled">
+                    <template>adbanner/adbanner.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerright" as="adbanner_adbannerright">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayrightblockenabled">
+                    <template>adbanner/adbannerright.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="illusion_adbanner/adbanner" after="-" name="adbannerleft" as="adbanner_adbannerleft">
+                <action method="setTemplate" ifconfig="adbanner/adancedadbannerblocksettings/adbannerdisplayleftblockenabled">
+                    <template>adbanner/adbannerleft.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>

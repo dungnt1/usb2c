@@ -1,0 +1,119 @@
+<?php if ($this->isActivePopUp()): ?>
+    <?php
+        $image = false;
+        $loadingImage           = Mage::getBaseUrl('media') . 'illusion/settings/config/' . Mage::getStoreConfig('illusion_ajaxcartwishlistcompare/config/loading_image');
+
+        if(Mage::getStoreConfig('newsletterpopup/general/image')){
+            $image = true;
+            $bckImage               = Mage::getBaseUrl('media') . 'illusion/settings/newsletter/background/' . Mage::getStoreConfig('newsletterpopup/general/image');
+        }
+
+        $transBackground        = Mage::getStoreConfig('newsletterpopup/config/background_color');
+        $opacity                = Mage::getStoreConfig('newsletterpopup/config/background_opacity');
+    ?>
+    <script type="text/javascript">
+
+        jQuery(function() {
+            if (NewsletterSubscribers.readCookie() != 1) {
+
+                var loading = '<img src ="<?php echo $loadingImage; ?>"/>';
+                var bcgColor = '<?php echo $transBackground; ?>';
+                var opacity = "<?php echo $opacity; ?>";
+
+
+                jQuery('#newsletter_background_layer').css('height', jQuery(document).height()+'px');
+                setTimeout(function(){
+                    jQuery('#newsletter-loading').html(loading);
+                    jQuery('#newsletter-loader').attr('style','position: fixed;top: 0%; z-index:9997; left: 0%; opacity:'+opacity+'; width:100%;height: 100%; background:'+bcgColor+'');
+                    NewsletterSubscribers.boxOpen();
+                }, 3000);
+
+            }
+            jQuery('#newsletter_box_layer').css('left', document.body.clientWidth/2 - jQuery('#newsletter_box_layer').width()/2 + 'px');
+            jQuery('#newsletter_submit').click(function(){
+                var email = jQuery('#newsletter_email').val();
+                jQuery.post(NewsletterSubscribers.getBaseUrl()+'newsletter/subscriber/ajax/', {'email':email}, function(resp) {
+                    var response = jQuery.parseJSON(resp);
+                    if (response['errorMsg']) {
+                        jQuery('#newsletter_box_subscribe_response_error').html(response['errorMsg']);
+                    } else {
+                        NewsletterSubscribers.createCookie();
+                        jQuery('#newsletter_box_subscribe_response_error').html('');
+                        jQuery('#newsletter_box_subscribe_response_success').html(response['successMsg']);
+                        jQuery('#newsletter_box_subscribe_form').css('display','none');
+                        jQuery('#newsletter_box_subscribe_response_success').css('display','block');
+                        setTimeout('NewsletterSubscribers.boxClose()', 1000)
+                    }
+                });
+            });
+            jQuery('#newsletter_box_close').click(function(){
+                NewsletterSubscribers.boxClose();
+            });
+
+        });
+
+        <?php if (is_numeric($this->getCookieLifeTime())): ?>
+        NewsletterSubscribers.setCookieLiveTime(<?php echo $this->getCookieLifeTime(); ?>);
+        <?php endif; ?>
+        <?php if ($this->getCookieName()): ?>
+        NewsletterSubscribers.setCookieName('<?php echo $this->getCookieName(); ?>');
+        <?php endif; ?>
+        NewsletterSubscribers.setBaseUrl('<?php echo $this->getBaseUrl(); ?>');
+
+    </script>
+
+    <div id="newsletter-loader">
+        <div id="newsletter-loading" style ="position: fixed;top: 50%;left: 50%;margin-top: -50px; background-color: <?php echo $transBackground;?>"></div>
+    </div>
+    <div id="newsletter_background_layer">
+        <div id="newsletter_box_layer" class="r_corners">
+            <div id="newsletter_box_close" class="color_grey_light tr_all">
+                <i class="icon-cancel-1"></i>
+            </div>
+            <div id="newsletter_content" class="f_left p_15">
+                <div id="newsletter_box_title">
+                    <?php if ($this->getTitle()): ?>
+                        <h3 class="color_dark fw_light m_bottom_5 m_top_0 s_17">
+                            <?php echo $this->getTitle() ?>
+                        </h3>
+                    <?php endif; ?>
+                </div>
+
+                <?php if($image):?>
+                <div class="newsletter_image f_left m_top_20">
+                    <img src="<?php echo $bckImage;?>"/>
+                </div>
+                <?php endif;?>
+
+                <div class="newsletter_text_form f_right m_top_20 <?php if($image) echo ' part ';?>">
+                    <?php if ($this->getText()): ?>
+                        <p id="newsletter_box_block_3" class="fw_light">
+                            <?php echo $this->getText() ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <div id="newsletter_box_subscribe">
+                        <div id="newsletter_box_subscribe_response_error" class="fw_light"></div>
+                        <div id="newsletter_box_subscribe_response_success" class="fw_light"></div>
+                        <div id="newsletter_box_subscribe_form">
+                            <div id="newsletter_box_subscribe_input" class="m_top_10 m_bottom_10">
+                                <input onclick="if(this.value=='<?php echo $this->__('Email'); ?>') this.value=''" onblur="if(this.value=='') this.value='<?php echo $this->__('Email'); ?>'" id="newsletter_email" name="subscribe_email" value="<?php echo $this->__('Email'); ?>" type="text" class="input-text r_corners color_grey w_full fw_light">
+                            </div>
+                            <button onclick="javascript:void(0)" id="newsletter_submit" class="c_both f_left button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners"><?php echo $this->__('Subscribe'); ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="newsletter-dont-show">
+                <div class="f_left">
+                    <input name="is_subscribed" type="checkbox" id="checkbox_newsletter" value="1" id="is_subscribed" class="d_none">
+                    <label for="checkbox_newsletter" class="d_inline_m m_right_10 m_bottom_3 m_top_8 m_xs_top_0">&nbsp;</label>
+                </div>
+                <div class="f_left">
+                    <label for="checkbox_newsletter" class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Don\'t show this popup again') ?></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <illusion>
+            <title>Illusion</title>
+            <sort_order>999</sort_order>
+            <children>
+                <adbanner translate="title" module="illusion_adbanner">
+                    <title>AdBanner</title>
+                    <sort_order>45</sort_order>
+                    <children>
+                        <items translate="title" module="illusion_adbanner">
+                            <title>Manage AdBanner</title>
+                            <sort_order>0</sort_order>
+                            <action>adbanner/adminhtml_adbanner</action>
+                        </items>
+                        <configuration>
+                            <title>Configuration</title>
+                            <sort_order>1</sort_order>
+                            <action>adminhtml/system_config/edit/section/adbanner</action>
+                        </configuration>
+                    </children>
+                </adbanner>
+            </children>
+        </illusion>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <adbanner>
+                                        <title>AdBanner</title>
+                                    </adbanner>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <illusion>
+                        <title>Illusion</title>
+                        <sort_order>999</sort_order>
+                        <children>
+                            <adbanner translate="title" module="illusion_adbanner">
+                                <title>AdBanner</title>
+                                <sort_order>45</sort_order>
+                                <children>
+                                    <items translate="title" module="illusion_adbanner">
+                                        <title>Manage AdBanner</title>
+                                        <sort_order>0</sort_order>
+                                        <action>adbanner/adminhtml_adbanner</action>
+                                    </items>
+                                    <configuration>
+                                        <title>Configuration</title>
+                                        <sort_order>1</sort_order>
+                                        <action>adminhtml/system_config/edit/section/adbanner</action>
+                                    </configuration>
+                                </children>
+                            </adbanner>
+                        </children>
+                    </illusion>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

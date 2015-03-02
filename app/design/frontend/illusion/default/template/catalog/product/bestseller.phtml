@@ -1,0 +1,28 @@
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <div class="m_bottom_40 m_xs_bottom_30">
+        <h5 class="fw_light color_dark m_bottom_23"><?php echo $this->__('Bestsellers') ?></h5>
+        <?php $_collectionSize = count($_products->getItems()) ?>
+        <ul>
+            <?php foreach ($_products->getItems() as $_product):?>
+            <li class="clearfix m_bottom_35 m_xs_bottom_30">
+                <a href="<?php echo $_product->getProductUrl() ?>" class="f_left d_block f_sm_none f_xs_left d_sm_inline_b m_sm_bottom_5 m_xs_bottom_0 r_corners wrapper m_right_20" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(80, 80)->setQuality(90); ?>" width="80" height="80" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+                </a>
+                <a href="<?php echo $_product->getProductUrl() ?>" class="color_dark lh_small d_block m_bottom_10 tr_all"><?php echo $this->htmlEscape($_product->getName()) ?></a>
+
+                <?php $priceSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/price');?>
+                <?php if($priceSettings):?>
+                    <p class="color_dark fs_medium fw_ex_bold fp_price m_bottom_3 product_listing_color">
+                        <?php echo $this->getPriceHtml($_product, true); ?>
+                    </p>
+                <?php endif;?>
+
+                <?php $ratingSettings = Mage::getStoreConfig('illusion_settings/product_box_settings/rating');?>
+                <?php if($ratingSettings): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php endif; ?>
+            </li>
+            <?php endforeach;?>
+        </ul>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <illusion_adbanner_adminhtml_adbanner_index>
+        <reference name="content">
+            <block type="illusion_adbanner/adminhtml_adbanner" name="illusion_adbanner.banner"></block>
+        </reference>
+    </illusion_adbanner_adminhtml_adbanner_index>
+</layout>

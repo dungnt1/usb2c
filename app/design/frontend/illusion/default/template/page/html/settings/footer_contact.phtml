@@ -1,0 +1,19 @@
+<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_sm_bottom_30">
+    <h5 class="color_dark fw_light m_bottom_23"><?php echo $this->__('Contact Form') ?></h5>
+    <form id="contactform" class="no_captcha">
+        <ul>
+            <li class="m_bottom_10">
+                <input type="text" name="name" data-bvalidator="required" placeholder="Your name*" id="contact_name" class="w_full r_corners fw_light bg_light">
+            </li>
+            <li class="m_bottom_10">
+                <input type="email" name="email" data-bvalidator="required,email" placeholder="Your email address*" id="contact_email" class="w_full r_corners fw_light bg_light">
+            </li>
+            <li class="m_bottom_20">
+                <textarea class="w_full d_block r_corners fw_light height_3 fw_italic color_grey" data-bvalidator="required" name="comment" id="contact_comment" placeholder="Message *"></textarea>
+            </li>
+            <li>
+                <button type="submit" class="fs_medium button_type_2 color_purple transparent r_corners tr_all"><?php echo $this->__('Submit') ?></button>
+            </li>
+        </ul>
+    </form>
+</div>

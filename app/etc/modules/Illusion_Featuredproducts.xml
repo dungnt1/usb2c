@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Illusion_Featuredproducts>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Illusion_Settings/>
+
+            </depends>
+        </Illusion_Featuredproducts>
+    </modules>
+</config>

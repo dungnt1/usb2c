@@ -1,0 +1,19 @@
+<ul class="hr_list fs_small color_grey_light contact_info_list">
+    <?php if($phone = Mage::getStoreConfig('general/store_information/phone')):?>
+        <li class="m_right_20 f_xs_none m_xs_right_0 m_xs_bottom_5">
+            <a href="tel:<?php echo $phone;?>" class="header_links_color color_grey_light d_inline_b color_black_hover" ><span class="circle icon_wrap_size_1 d_inline_m m_right_8"><i class="icon-phone-1"></i></span><?php echo $phone;?></a>
+        </li>
+    <?php endif;?>
+
+    <?php if($mail = Mage::getStoreConfig('trans_email/ident_general/email')):?>
+        <li class="m_right_20 f_xs_none m_xs_right_0 m_xs_bottom_5">
+            <a href="mailto:<?php echo $mail;?>" class="header_links_color color_grey_light d_inline_b color_black_hover"><span class="circle icon_wrap_size_1 d_inline_m m_right_8"><i class="icon-mail-alt"></i></span><?php echo $mail;?></a>
+        </li>
+    <?php endif;?>
+
+    <?php if($skype = $this->getBlockConfig('social/social_skype')):?>
+        <li class="m_right_20 f_xs_none m_xs_right_0 m_xs_bottom_5">
+            <a href="skype://<?php echo $skype;?>?call" class="header_links_color color_grey_light d_inline_b color_black_hover"><span class="circle icon_wrap_size_1 d_inline_m m_right_8"><i class="icon-skype-1"></i></span><?php echo $skype;?></a>
+        </li>
+    <?php endif;?>
+</ul>

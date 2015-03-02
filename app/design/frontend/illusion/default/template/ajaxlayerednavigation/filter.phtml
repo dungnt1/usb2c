@@ -1,0 +1,105 @@
+<?php
+    $baseUrl            = Mage::helper('illusion_ajaxlayerednavigation')->getBaseUrlFilter();
+    $params             = trim(Mage::helper('illusion_ajaxlayerednavigation')->prepareParams($this->getRequest()->getParams()));
+    $currencies         = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+    $toolBarStatus      = Mage::getStoreConfig('illusion_ajaxlayerednavigation/config/toolbar');
+    $sliderStatus       = Mage::getStoreConfig('illusion_ajaxlayerednavigation/config/slider');
+?>
+    <?php if ($sliderStatus == 1) { ?>
+        <div id="slider-range"></div>
+        <div class="clearfix m_bottom_20">
+            <input type="text" readonly class="f_left half_column first_limit color_dark fw_light" id="low_price">
+            <input type="text" readonly class="f_right half_column t_align_r last_limit color_dark fw_light" id="high_price">
+        </div>
+    <?php } else { ?>
+        <ul class="m_bottom_20">
+            <?php foreach ($this->getItems() as $_item): ?>
+                <li class="m_bottom_10">
+                    <?php if ($_item->getCount() > 0): ?>
+                        <a class="fw_light color_dark" href="<?php echo $this->urlEscape($_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></a>
+                    <?php else: ?>
+                        <?php echo $_item->getLabel() ?>
+                    <?php endif; ?>
+                    <span class="fw_light color_grey">(<?php echo $_item->getCount() ?>)</span>
+                </li>
+            <?php endforeach ?>
+        </ul>
+<?php } ?>
+<?php 
+        $baseCurrencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
+        $currentCurrencyCode = Mage::app()->getStore()->getCurrentCurrencyCode();
+        $rate = round(Mage::helper('directory')->currencyConvert(1.0000, $baseCurrencyCode, $currentCurrencyCode),2);
+        if($this->_currMaxPrice > 0){$currencyMax = $this->_currMaxPrice;} else{$currencyMax = $this->getMaxRangePrice; }
+        if($this->_currMinPrice > 0){$currencyMin = $this->_currMinPrice;} else{$currencyMin = $this->getMinRangePrice;}
+        $minRange = $this->getMinRangePrice();
+        $maxRange = $this->getMaxRangePrice();
+        $minRange = $minRange * $rate;
+        $maxRange = $maxRange * $rate;
+        if(!isset($_GET['rate'])) {
+            $currencyMax = $currencyMax * $rate;
+            $currencyMin = $currencyMin * $rate;
+        }
+?>
+<script type ="text/javascript">
+//<![CDATA[  
+    jQuery(function() {
+        var currencies = "<?php echo $currencies; ?>";
+        var toolbar_status = "<?php echo $toolBarStatus; ?>";
+        var rate = "<?php echo $rate; ?>";
+        var min = "<?php echo $minRange; ?>"
+            min = Number(min);
+//            min = min.format(2, 3, '.', ',');
+        var max = "<?php echo $maxRange; ?>"
+            max = Number(max);
+//            max = max.format(2, 3, '.', ',');
+        var currentMinPrice = "<?php echo $currencyMin; ?>"
+            currentMinPrice = Number(currentMinPrice);
+        var currentMaxPrice = "<?php echo $currencyMax; ?>"
+        currentMaxPrice = Number(currentMaxPrice);
+        var params = "<?php echo trim($params); ?>";
+        params = jQuery.trim(params);
+
+        //slider
+        jQuery( "#slider-range" ).slider({
+            range: true,
+            min: min,
+            max: max,
+            values: [ currentMinPrice, currentMaxPrice ],
+            slide: function( event, ui ) {
+                jQuery('#low_price').val(currencies + ui.values[0]);
+                jQuery('#high_price').val(currencies + ui.values[1]);
+            },
+            stop: function( event, ui ) {
+                var first =   ui.values[0];
+                var last  =  ui.values[1];
+                var baseUrl = '<?php echo $baseUrl; ?>'+'?rate='+rate+'&first='+first+'&last='+last+params;
+                ajaxLayeredNavigation(baseUrl);
+            }
+        });
+
+        jQuery('#low_price').val(currencies + jQuery("#slider-range").slider("values", 0));
+        jQuery('#high_price').val(currencies + jQuery("#slider-range").slider("values", 1));
+
+
+        jQuery('#slider-range a:first').addClass('first_item');
+        jQuery('#slider-range a:last').addClass('last_item');
+
+        //tooltip
+//        jQuery('.button.btn-cart').attr('data-original-title',jQuery('button.btn-cart').attr('title'));
+//        jQuery('.link-wishlist').attr('data-original-title',jQuery('.link-wishlist').attr('title'));
+//        jQuery('.link-compare').attr('data-original-title',jQuery('.link-compare').attr('title'));
+//        jQuery('.email-friend-a').attr('data-original-title',jQuery('.email-friend-a').attr('title'));
+//        jQuery('.brand_item').attr('data-original-title',jQuery('.brand_item').attr('title'));
+//        jQuery('button.btn-cart, .link-wishlist, .link-compare,.email-friend-a,.brand_item').attr('rel', 'tooltip');
+//        jQuery("[rel=tooltip]").tooltip();
+
+    });
+
+    Number.prototype.format = function(n, x, s, c) {
+        var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+            num = this.toFixed(Math.max(0, ~~n));
+
+        return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+    };
+ //]]>
+</script>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <illusion>
+            <title>Illusion</title>
+            <sort_order>999</sort_order>
+            <children>
+                <ajaxcartwishlistcompare>
+                    <title>Ajax Cart,Wishlist,Compare</title>
+                    <sort_order>5</sort_order>
+                    <action>adminhtml/system_config/edit/section/illusion_ajaxcartwishlistcompare</action>
+                </ajaxcartwishlistcompare>
+            </children>
+        </illusion>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <illusion_ajaxcartwishlistcompare>
+                                        <title>Ajax Cart,Wishlist,Compare</title>
+                                    </illusion_ajaxcartwishlistcompare>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <illusion>
+                        <title>Illusion</title>
+                        <sort_order>999</sort_order>
+                        <children>
+                            <ajaxcartwishlistcompare>
+                                <title>Ajax Cart,Wishlist,Compare</title>
+                                <sort_order>5</sort_order>
+                                <action>adminhtml/system_config/edit/section/illusion_ajaxcartwishlistcompare</action>
+                            </ajaxcartwishlistcompare>
+                        </children>
+                    </illusion>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

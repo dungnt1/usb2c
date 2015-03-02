@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <illusion>
+            <title>Illusion</title>
+            <sort_order>999</sort_order>
+            <children>
+                <cookies>
+                    <title>Accept Cookies</title>
+                    <sort_order>41</sort_order>
+                    <action>adminhtml/system_config/edit/section/cookies</action>
+                </cookies>
+            </children>
+        </illusion>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <cookies>
+                                        <title>Accept Cookies</title>
+                                    </cookies>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <illusion>
+                        <title>Illusion</title>
+                        <sort_order>999</sort_order>
+                        <children>
+                            <cookies>
+                                <title>Accept Cookies</title>
+                                <sort_order>41</sort_order>
+                                <action>adminhtml/system_config/edit/section/cookies</action>
+                            </cookies>
+                        </children>
+                    </illusion>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

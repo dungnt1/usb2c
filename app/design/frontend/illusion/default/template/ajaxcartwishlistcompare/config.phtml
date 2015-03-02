@@ -1,0 +1,37 @@
+<?php
+    $enableModule               = Mage::getStoreConfig('illusion_ajaxcartwishlistcompare/config/enabled');
+    $loadingImage               = Mage::getBaseUrl('media') . 'illusion/settings/config/' . Mage::getStoreConfig('illusion_ajaxcartwishlistcompare/config/loading_image');
+    $backgroundColor            = Mage::getStoreConfig('illusion_ajaxcartwishlistcompare/config/background_color');
+    $opacity                    = Mage::getStoreConfig('illusion_ajaxcartwishlistcompare/config/background_opacity');
+    $isLogin                    = Mage::getSingleton('customer/session')->isLoggedIn();
+    $titleBoxShopping           = $this->__('Go to shopping cart');
+    $titleBoxShoppingContinue   = $this->__('Continue Shopping');
+    $titleBoxShoppingW          = $this->__('Go to wishlist');
+    $titleBoxShoppingC          = $this->__('Go to list Compare');
+    $confirmDelete              = $this->__('Are you sure you would like to remove this item ?');
+    $addToCartSuccesful         = $this->__('Add product to  Cart sucessfully');
+    $addToWishlistSuccesful     = $this->__('Add product to Wishlist successfully');
+    $addToCompareSuccesful      = $this->__('Add product to Compare successfully');
+
+    if(!$enableModule) return ;
+
+?>
+<div id="ajaxconfig_info" class="d_none">
+    <a href="<?php echo Mage::getBaseUrl();?>"></a>
+    <div><img src="<?php echo $loadingImage;?>" alt="<?php echo $this->__('Loading Image'); ?>" /></div>
+    <button name ="<?php echo $backgroundColor;?>" value="<?php echo $opacity;?>" ></button>
+    <input type="hidden" value="<?php echo $isLogin;?>"/>
+    <input type="hidden" id="enable_module" value="<?php echo $enableModule;?>"/>
+<!--    <input class="effect_to_cart" type="hidden" value ="--><?php //echo $effect_to_cart;?><!--"/>-->
+    <input class="title_shopping_cart" type="hidden" value ="<?php echo $titleBoxShopping;?>"/>
+    <input class="title_shopping_continue" type="hidden" value ="<?php echo $titleBoxShoppingContinue;?>"/>
+    <input class="title_shopping_wishlist" type="hidden" value ="<?php echo $titleBoxShoppingW;?>"/>
+    <input class="title_shopping_compare" type="hidden" value ="<?php echo $titleBoxShoppingC;?>"/>
+    <input class="confirm_delete_product" type="hidden" value ="<?php echo $confirmDelete;?>"/>
+    <input class="title_add_to_cart" type="hidden" value ="<?php echo $addToCartSuccesful;?>"/>
+    <input class="title_add_to_wishlist" type="hidden" value ="<?php echo $addToWishlistSuccesful;?>"/>
+    <input class="title_add_to_compare" type="hidden" value ="<?php echo $addToCompareSuccesful;?>"/>
+<!--    <input class="using_ssl" type="hidden" value ="--><?php //echo $usingSsl;?><!--"/>-->
+</div>
+<div id="ajaxcart-checkout-content" style="display:none;"></div>
+<div id ="productHaveOption"  style="display:block;" ></div>

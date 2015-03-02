@@ -1,0 +1,125 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $_count = count($this->getGalleryImages());
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+    <div class="clearfix">
+        <?php $i=0;?>
+        <div class="thumbnails_carousel t_align_c f_left m_right_20">
+            <ul id="thumbnails">
+                <?php if (count($this->getGalleryImages()) > 0): ?>
+                    <?php foreach ($this->getGalleryImages() as $_image): ?>
+                        <?php if ($i++%5==0): ?>
+                            <li>
+                        <?php endif ?>
+                            <a href="#" data-zoom-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(800,1100); ?>" data-image="<?php if($this->getLayout()->getBlock('root')->getTemplate() == 'page/1column.phtml') {echo Mage::helper('illusion_settings')->getResize($this->getProduct(),$_image->getFile(),800,1000);} else {echo Mage::helper('illusion_settings')->getResize($this->getProduct(),$_image->getFile(),370,510);}?>" class="<?php if($i==1):?> active <?php endif;?>d_block wrapper r_corners tr_all translucent m_bottom_10">
+                                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(80); ?>" width="80" height="80" alt="" class="r_corners">
+                            </a>
+                        <?php if ($i%5==0 || $i==$_count): ?>
+                            </li>
+                        <?php endif ?>
+                    <?php endforeach;?>
+                <?php endif;?>
+            </ul>
+            <div class="helper-list"></div>
+        </div>
+        <div class="wrapper r_corners container_zoom_image relative">
+            <img id="img_zoom" src="<?php if($this->getLayout()->getBlock('root')->getTemplate() == 'page/1column.phtml') {echo Mage::helper('illusion_settings')->getResize($_product,null,800,1000);} else {echo Mage::helper('illusion_settings')->getResize($_product,null,370,510);}?>" data-zoom-image="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(800,1100);?>" alt="">
+            <?php echo Mage::helper('illusion_settings')->getNewSpecialBlock($_product);?>
+        </div>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        jQuery().ready(function(){
+            var carousel = jQuery('.thumbnails_carousel'),
+                thumbnails = carousel.find('#thumbnails'),
+                hItems = jQuery('.helper-list');
+
+
+            carousel.flexslider({
+                selector:"#thumbnails > li",
+                controlNav:false,
+                direction: "vertical",
+                animation:"slide",
+                slideshow:false,
+                smoothHeight:true,
+                animationSpeed:700,
+                prevText:'',
+                nextText:'',
+                start: function(){
+                    var button = carousel.find('.flex-direction-nav').css('marginTop',carousel.hasClass('type_2') ? '20px' : '45px').addClass('clearfix d_inline_b').find('a');
+                    button.addClass('d_block icon_wrap_size_5 circle color_grey_light tr_all color_blue_hover');
+                    button.eq(0).html('<i class="icon-angle-up"></i>').parent().addClass('f_left m_right_5')
+                    button.eq(1).html('<i class="icon-angle-down"></i>').parent().addClass('f_left');
+                }
+            });
+
+            var el = document.getElementById("thumbnails");
+            if(el.children.length <= 5) el.parentNode.parentNode.querySelector('.flex-direction-nav').style.display = "none";
+
+            thumbnails.find('li:not(.clone) a[data-zoom-image]').each(function(i){
+                var self = jQuery(this),
+                    href = self.data('zoom-image');
+                self.attr('data-index',i);
+                hItems.append('<a data-group="product" class="jackbox" href='+href+'></a>');
+            });
+
+
+            jQuery('.flex-active-slide a').on('click',function(e){
+                e.preventDefault();
+                var index = jQuery(this).attr('data-image');
+                jQuery('.flex-active-slide').children().removeClass('active');
+                jQuery(this).addClass('active');
+                jQuery('#img_zoom').attr('src',index);
+            });
+
+
+        });
+
+    //]]>
+    </script>
+<?php else: ?>
+    <div class="clearfix">
+        <div class="wrapper r_corners container_zoom_image relative">
+            <?php
+            $_img = '<img id="img_zoom" data-zoom-image="'. $this->helper('catalog/image')->init($_product, 'image')->resize(800,1100).'" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(370,510).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+            <?php echo Mage::helper('illusion_settings')->getNewSpecialBlock($_product);?>
+        </div>
+
+    </div>
+<?php endif; ?>

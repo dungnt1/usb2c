@@ -1,0 +1,74 @@
+<?php
+    $customer = Mage::getSingleton('customer/session');
+?>
+
+<div class="relative f_right m_right_10 dropdown_2_container login t_left">
+    <button class="icon_wrap_size_2 header_login_icon_color header_login_icon_border_color circle tr_all">
+        <i class="icon-lock tr_inherit"></i>
+    </button>
+    <div class="dropdown_2 bg_light shadow_1 tr_all">
+        <?php if(!$customer->getCustomerId()):?>
+            <div class="c_both f_left w_100">
+                <h5 class="fw_light color_dark m_bottom_23 f_left"><?php echo $this->__('Login') ?></h5>
+                <div class="f_right">
+                    <?php if(
+                        Mage::getSingleton('inchoo_socialconnect/google_oauth2_client')->isEnabled() ||
+                        Mage::getSingleton('inchoo_socialconnect/facebook_oauth2_client')->isEnabled() ||
+                        Mage::getSingleton('inchoo_socialconnect/twitter_oauth_client')->isEnabled() ||
+                        Mage::getSingleton('inchoo_socialconnect/linkedin_oauth2_client')->isEnabled()
+                    ):?>
+                    <h5 class="fw_light color_dark m_bottom_23 f_left"><?php echo $this->__('Or login with:') ?></h5>
+                    <?php endif;?>
+                    <div class="f_right">
+                        <?php echo $this->getChildHtml('inchoo_socialconnect_google_header_button'); ?>
+                        <?php echo $this->getChildHtml('inchoo_socialconnect_facebook_header_button'); ?>
+                        <?php echo $this->getChildHtml('inchoo_socialconnect_twitter_header_button'); ?>
+                        <?php echo $this->getChildHtml('inchoo_socialconnect_linkedin_header_button'); ?>
+                    </div>
+                </div>
+
+
+            </div>
+            <form class="login_form m_bottom_20 c_both" action="<?php echo $this->helper('customer')->getLoginPostUrl() ?>" method="post" id="header-login-form">
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <ul>
+                    <li class="m_bottom_10 relative">
+                        <i class="icon-user login_icon fs_medium color_grey_light_2"></i>
+                        <input type="text" name="login[username]" data-bvalidator="required,email" placeholder="Email Address" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email r_corners color_grey w_full fw_light" title="<?php echo $this->__('Email Address') ?>" />
+                    </li>
+                    <li class="m_bottom_10 relative">
+                        <i class="icon-lock login_icon fs_medium color_grey_light_2"></i>
+                        <input type="password" name="login[password]" data-bvalidator="required" placeholder="Password" class="input-text required-entry validate-password r_corners color_grey w_full fw_light" id="pass" title="<?php echo $this->__('Password') ?>" />
+                    </li>
+                    <li class="m_bottom_23">
+                        <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                    </li>
+                    <li class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+                            <button class="button_type_5 tr_all color_blue transparent fs_medium r_corners"><?php echo $this->__('Login') ?></button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 t_align_r lh_medium">
+                            <a href="<?php echo $this->helper('customer')->getForgotPasswordUrl();?>" class="color_scheme color_purple_hover fs_small"><?php echo $this->__('Forgot your password?') ?></a><br>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <div class="bg_light_2 im_half_container sc_footer">
+                <h5 class="fw_light color_dark d_inline_m half_column"><?php echo $this->__('New Customer?') ?></h5>
+                <div class="half_column t_align_r d_inline_m">
+                    <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button_type_5 t_xs_align_c d_inline_b tr_all r_corners color_purple transparent fs_medium" onclick="window.location='<?php echo $this->helper('customer')->getRegisterUrl() ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+                </div>
+            </div>
+        <?php else: ?>
+            <h5 class="fw_light color_dark m_bottom_23"><?php echo $this->__('Hi, ').$customer->getCustomer()->getName() ?></h5>
+            <div class="bg_light_2 im_half_container sc_footer">
+                <h5 class="fw_light color_dark d_inline_m half_column">&nbsp;</h5>
+                <div class="half_column t_align_r d_inline_m">
+                    <button type="button" title="<?php echo $this->__('Logout') ?>" class="button_type_5 t_xs_align_c d_inline_b tr_all r_corners color_purple transparent fs_medium" onclick="window.location='<?php echo $this->getUrl('customer/account/logout'); ?>';"><span><span><?php echo $this->__('Logout') ?></span></span></button>
+                </div>
+            </div>
+        <?php endif;?>
+    </div>
+</div>
+
+

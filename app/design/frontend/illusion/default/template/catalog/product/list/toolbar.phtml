@@ -1,0 +1,131 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+
+    <?php if( $this->isExpanded() ): ?>
+        <div class="clearfix m_bottom_10">
+            <div class="selectbox w_xs_full m_right_10 sort-by" style="">
+                <p class="d_inline_m fs_medium m_right_15 m_top_8"><?php echo $this->__('Sort by:') ?></p>
+            </div>
+            <div class="selectbox w_xs_full m_right_10 sort-by here">
+                <select onchange="setLocation(this)">
+                    <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                        <?php if($this->isOrderCurrent($_key)): ?>
+                            <?php $selectedType = $this->__($_order);?>
+                        <?php endif;?>
+                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                            <?php echo $this->__($_order) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="selectbox w_xs_full m_right_10 sort-by here">
+                <select onchange="setLocation(this.value)">
+                    <option value="<?php echo $this->getOrderUrl(null, 'asc') ?>" <?php if($this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif;?>>
+                        <?php echo $this->__('Ascending Direction') ?>
+                    </option>
+                    <option value="<?php echo $this->getOrderUrl($_key, 'desc') ?>" <?php if($this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif;?>>
+                        <?php echo $this->__('Descending Direction') ?>
+                    </option>
+                </select>
+            </div>
+
+            <?php if( $this->isEnabledViewSwitcher() ): ?>
+                <ul class="hr_list f_right fs_medium paginations t_align_c f_xs_none">
+                    <?php $_modes = $this->getModes(); ?>
+                    <?php if($_modes && count($_modes)>1): ?>
+                        <?php $i=0;?>
+                        <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                            <?php if($this->isModeActive($_code)): ?>
+                                <li class="active">
+                                    <a title="<?php echo $_label ?>" href="<?php echo $this->getModeUrl($_code); ?>" data-shop-layout="<?php echo ($_label == 'Grid') ? 'grid' : 'list';?>" class="<?php echo ($i == 0) ? 'rc_first_hr': 'rc_last_hr';?> color_dark">
+                                        <?php if($_label == 'Grid'):?>
+                                            <i class="icon-layout fs_large"></i>
+                                        <?php else:?>
+                                            <i class="icon-menu"></i>
+                                        <?php endif;?>
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li>
+                                    <a title="<?php echo $_label ?>" href="<?php echo $this->getModeUrl($_code); ?>" class="<?php echo ($i == 0) ? 'rc_first_hr': 'rc_last_hr';?> color_dark" data-shop-layout="<?php echo ($_label == 'Grid') ? 'grid' : 'list';?>">
+                                        <?php if($_label == 'Grid'):?>
+                                            <i class="icon-layout fs_large"></i>
+                                        <?php else:?>
+                                            <i class="icon-menu"></i>
+                                        <?php endif;?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                            <?php $i++;?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            <?php endif;?>
+        </div>
+    <?php endif; ?>
+
+
+    <hr class="m_bottom_10">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-7 m_bottom_15">
+            <p class="d_inline_m fs_medium m_right_15">
+                <?php if($this->getLastPageNum()>1): ?>
+                    <?php echo $this->__('Results %s - %s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+                <?php else: ?>
+                    <?php echo $this->__('Results %s ', $this->getTotalNum()) ?>
+                <?php endif; ?>
+            </p>
+
+            <p class="d_inline_m fs_medium m_right_5"><?php echo $this->__('Show') ?></p>
+            <div class="selectbox show_per_page_select type_2 m_right_5 d_inline_m limiter small">
+                <select>
+                    <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                        <?php if($this->isLimitCurrent($_key)): ?>
+                            <?php $selected = $_limit;?>
+                        <?php endif;?>
+                        <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                            <?php echo $_limit; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <p class="d_inline_m fs_medium"><?php echo $this->__('per page') ?></p>
+        </div>
+
+        <?php echo $this->getPagerHtml() ?>
+
+    </div>
+<?php endif ?>

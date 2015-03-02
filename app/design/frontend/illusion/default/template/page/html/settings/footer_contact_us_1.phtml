@@ -1,0 +1,46 @@
+<div class="col-lg-3 col-md-3 col-sm-3 m_bottom_50 m_xs_bottom_30">
+    <h5 class="color_dark fw_light m_bottom_20"><?php echo $this->__('Contact Us') ?></h5>
+
+    <ul class="vr_list_type_5 color_dark m_bottom_12 fw_light w_break">
+
+        <?php if($phone = Mage::getStoreConfig('general/store_information/phone')):?>
+            <li class="m_bottom_8">
+                <div class="icon_wrap_size_1 circle color_pink footer_contact_icons f_left">
+                    <i class="icon-phone-1 fs_medium"></i>
+                </div>
+                <a class="color_dark color_pink_hover footer_contact_links tr_all" href="tel:<?php echo $phone;?>"><?php echo $phone;?></a>
+            </li>
+        <?php endif;?>
+
+        <?php if($mail = Mage::getStoreConfig('trans_email/ident_general/email')):?>
+            <li class="m_bottom_8">
+                <div class="icon_wrap_size_1 circle color_pink footer_contact_icons f_left">
+                    <i class="icon-mail-alt fs_small"></i>
+                </div>
+                 <a href="mailto:<?php echo $mail;?>" class="color_dark color_pink_hover footer_contact_links tr_all"><?php echo $mail;?></a>
+            </li>
+        <?php endif;?>
+
+        <?php if($skype = $this->getBlockConfig('social/social_skype')):?>
+            <li class="m_bottom_8">
+                <div class="icon_wrap_size_1 circle color_pink footer_contact_icons f_left">
+                    <i class="icon-skype fs_medium"></i>
+                </div>
+                <a href="skype://<?php echo $skype;?>?call" class="color_dark color_pink_hover footer_contact_links tr_all"><?php echo $skype;?></a>
+            </li>
+        <?php endif;?>
+
+        <?php if($address = Mage::getStoreConfig('general/store_information/address')):?>
+            <li class="color_default">
+                <div class="d_inline_m icon_wrap_size_1 color_pink footer_contact_icons circle m_right_10">
+                    <i class="icon-location"></i>
+                </div>
+                <span class="footer_contact_links"><?php echo $address;?></span>
+            </li>
+        <?php endif;?>
+    </ul>
+
+    <?php if($address = Mage::getStoreConfig('general/store_information/address')):?>
+        <a href="https://maps.google.com/maps?&amp;q=<?php echo $address;?>" target="_blank" class="button_type_2 color_dark r_corners tr_all color_pink_hover footer_contact_links d_inline_m fs_medium t_md_align_c w_break"><?php echo $this->__('Open in Google Maps') ?></a>
+    <?php endif;?>
+</div>

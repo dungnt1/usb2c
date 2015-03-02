@@ -1,0 +1,28 @@
+<?php
+    $_product = Mage::registry('current_product');
+?>
+<div class="m_top_15">
+    <p class="fw_light d_inline_m m_right_8"><?php echo $this->__('Share') ?>: </p>
+    <ul class="dotted_list type_2 color_grey_light_2 d_inline_m">
+        <li class="m_right_30 relative d_inline_m">
+            <a href="http://www.facebook.com/sharer.php?u=<?php echo $_product->getUrl();?>" onClick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=220,width=600');return false;" class="facebook_color">
+                <i class="icon-facebook m_right_2 color_grey_light_2 tr_all fs_large"></i><i class="fs_medium color_grey tr_all"></i>
+            </a>
+        </li>
+        <li class="m_right_30 relative d_inline_m">
+            <a href="https://twitter.com/share?url=<?php echo $_product->getUrl();?>" onClick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600');return false;" class="twitter_color">
+                <i class="icon-twitter m_right_2 color_grey_light_2 tr_all fs_large"></i><i class="fs_medium color_grey tr_all"></i>
+            </a>
+        </li>
+        <li class="m_right_30 relative d_inline_m">
+            <a href="https://plus.google.com/share?url=<?php echo $_product->getUrl();?>" onClick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="googleplus_color">
+                <i class="icon-gplus-1 m_right_2 color_grey_light_2 tr_all fs_large"></i><i class="fs_medium color_grey tr_all"></i>
+            </a>
+        </li>
+        <li class="m_right_30 relative d_inline_m">
+            <a href="http://www.pinterest.com/pin/create/button/?url=<?php echo $_product->getUrl();?>" data-pin-do="buttonPin" data-pin-config="above" class="pinterest_color" onClick="window.open(this.href,'_blank', 'width=700, height=300');return false;">
+                <i class="icon-pinterest m_right_2 color_grey_light_2 tr_all fs_large"></i><i class="fs_medium color_grey tr_all"></i>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,66 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+$options = $this->getChild('customer.wishlist.item.options')
+    ->setItem($item)
+    ->getConfiguredOptions();
+?>
+
+
+    <?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
+        <div class="wrapper fs_medium r_corners d_inline_b quantity type_2 clearfix m_bottom_10">
+            <button type="button" onclick="var qty_el = document.getElementById('qty[<?php echo $item->getId() ?>]'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) qty_el.value--;return false;" class="qty-decrease f_left bg_light_3">
+                <i class="icon-minus "></i>
+            </button>
+            <input type="text" id="qty[<?php echo $item->getId() ?>]" class="input-text qty validate-not-negative-number f_left" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" />
+            <button type="button" onclick="var qty_el = document.getElementById('qty[<?php echo $item->getId() ?>]'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase f_left bg_light_3">
+                <i class="icon-plus "></i>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if ($product->isSaleable()): ?>
+        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" onclick="addWItemToCart(<?php echo $item->getId()?>);" class="here_m button_type_6 d_inline_b color_pink transparent r_corners vc_child tr_all add_to_cart_button product_listing_addtocart">
+            <span class="d_inline_m clerarfix"><i class="icon-basket f_left m_right_5"></i><span class="fs_medium f_right"><?php echo $this->__('Add to Cart') ?></span></span>
+        </button>
+    <?php else: ?>
+        <?php if ($product->getIsSalable()): ?>
+            <p class="availability in-stock fw_light"><span><?php echo $this->__('In stock') ?></span></p>
+        <?php else: ?>
+            <p class="availability out-of-stock fw_light"><span><?php echo $this->__('Out of stock') ?></span></p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+<?php foreach($this->getSortedChildren() as $childName):?>
+    <?php echo $this->getChildHtml($childName, false);?>
+<?php endforeach;?>
+<?php if ($product->isVisibleInSiteVisibility()): ?>
+    <a title="<?php echo $this->__('Edit Item');?>" class="link-edit color_grey_light_2 color_dark_hover tr_all f_left m_top_5" href="<?php echo $this->getItemConfigureUrl($item) ?>"><i class="icon-edit fs_large"></i>
+<?php endif ?>
+

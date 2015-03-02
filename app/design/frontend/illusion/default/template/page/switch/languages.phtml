@@ -1,0 +1,79 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ *
+ */
+?>
+
+<?php if(count($this->getStores())>1): ?>
+
+	<?php
+		$currStoreName = '';
+		$currStoreCode = '';
+        $store = '';
+        $stores = '';
+		$stores .= '<ul class="sub_menu vr_list tr_all t_align_l bg_light fs_small">';
+
+		foreach($this->getStores() as $_store){
+			$storeName = $this->__($this->escapeHtml($_store->getName()));
+			$storeId = $_store->getId();
+			$storeCode = $_store->getCode();
+            $storeLocale = substr($_store->getLocaleCode(),0,2);
+            $image = '';
+            if (is_array(getimagesize($this->getSkinUrl('images/flags/flag_'. strtolower($storeLocale).'.jpg')))) {
+                $src  = $this->getSkinUrl('images/flags/flag_'. strtolower($storeLocale).'.jpg');
+                $image = '<img src="'.$src.'" class="f_left m_right_5"/>';
+            }
+            $stores .= '<li><a href="'.$_store->getCurrentUrl().'" class="d_block color_dark">'.$image.$storeName.'</a></li>';
+		}
+        $stores.= '</ul>';
+
+        //Current store
+        $currentStoreId = $this->getCurrentStoreId();
+        $currentStore = Mage::getModel('core/store')->load($currentStoreId);
+        $storeLocale = substr(Mage::app()->getLocale()->getLocaleCode(),0,2);
+        $currentStoreName = $this->__($this->escapeHtml($currentStore->getName()));
+        $curImage = '';
+        if (is_array(getimagesize($this->getSkinUrl('images/flags/flag_'. strtolower($storeLocale).'.jpg')))) {
+            $currentScr = $this->getSkinUrl('images/flags/flag_'. strtolower($storeLocale) .'.jpg');
+            $curImage = '<img src="'.$currentScr.'" alt="" class="f_left m_right_5">';
+        }
+
+        $store .= '<a href="#" onclick="return false;" class="color_dark not_hover fs_small bg_light relative header_background_color">
+                        '.$curImage.$currentStoreName.'<i class="icon-angle-down m_left_8 color_grey d_inline_b"></i>
+                  </a>';
+
+    ?>
+
+    <?php echo $store;?>
+    <?php echo $stores;?>
+
+<?php endif; ?>

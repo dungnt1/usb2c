@@ -1,0 +1,228 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Edit customer address template
+ *
+ * @see Mage_Customer_Block_Address_Edit
+ */
+?>
+<?php if($this->getTitle()): ?>
+<h4 class="title_type r_corners wrapper m_bottom_23 bg_light_2 counter_inc color_dark">
+    <?php echo $this->getTitle() ?>
+</h4>
+<?php endif; ?>
+
+<div class="clearfix m_bottom_20">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate" class="m_bottom_40 m_bottom_30">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+    <div class="clearfix m_bottom_20">
+        <h5 class="color_dark f_left fw_light"><?php echo $this->__('Contact Information') ?></h5>
+        <p class="fw_light fs_medium f_right required_l"><?php echo $this->__('Required field') ?></p>
+    </div>
+    <ul>
+        <?php if($this->isDefaultShipping()): ?>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 m_bottom_15">
+                    <label class="d_inline_b fw_normal w_full m_top_8 m_xs_top_0"><?php echo $this->__('Default Shipping Address') ?></label>
+                </div>
+            </li>
+        <?php endif;?>
+        <?php if($this->isDefaultBilling()): ?>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 m_bottom_15">
+                    <label class="d_inline_b fw_normal w_full m_top_8 m_xs_top_0"><?php echo $this->__('Default Billing Address') ?></label>
+                </div>
+            </li>
+        <?php endif;?>
+
+        <?php echo $this->getNameBlockHtml(); ?>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="company" class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Company') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" class="input-text input-text r_corners fw_light color_grey w_full <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+            </div>
+        </li>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="telephone" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Telephone') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" data-bvalidator="required" class="input-text input-text r_corners fw_light color_grey w_full  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
+            </div>
+        </li>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="fax" class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Fax') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text input-text r_corners fw_light color_grey w_full <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
+            </div>
+        </li>
+    </ul>
+    <div class="clearfix m_bottom_20 m_top_35">
+        <h5 class="color_dark f_left fw_light"><?php echo $this->__('Address Information') ?></h5>
+    </div>
+    <ul>
+        <li class="row">
+            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <?php $bStreet = Mage::helper('illusion_settings')->getValidation('street'); ?>
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="street_1" class="<?php if($bStreet) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Address') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="text" name="street[]" data-bvalidator="<?php echo $bStreet;?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text r_corners fw_light color_grey w_full <?php echo $_streetValidationClass ?>" />
+            </div>
+        </li>
+
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label for="street_<?php echo $_i;?>" class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__("Address $_i") ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $_streetValidationClass ?>" />
+                </div>
+            </li>
+        <?php endfor; ?>
+
+        <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+            <?php $bVat = Mage::helper('illusion_settings')->getValidation('vat_id'); ?>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label for="vat_id" class="<?php if($bVat) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__("VAT Number") ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="vat_id" data-bvalidator="<?php echo $bVat;?>" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" id="vat_id" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                </div>
+            </li>
+        <?php endif; ?>
+
+        <li class="row">
+            <?php $bCity = Mage::helper('illusion_settings')->getValidation('city'); ?>
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="city" class="<?php if($bCity) echo ' required ' ;?>d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__("City") ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="text" name="city" data-bvalidator="<?php echo $bCity;?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
+            </div>
+        </li>
+
+        <li class="row">
+            <?php $bZip = Mage::helper('illusion_settings')->getValidation('postcode');?>
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label class="<?php if($bZip) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="postcode"><?php echo $this->__('Zip/Postal Code') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="text" name="postcode" data-bvalidator="<?php echo $bZip;?>" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="r_corners fw_light color_grey w_full input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+            </div>
+        </li>
+
+        <li class="row">
+            <div class="field">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="region_id"><?php echo $this->__('State/Province') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <div class="selectbox w_xs_full fe_width_2 m_right_10 big">
+                        <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;" data-bvalidator="required">
+                            <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                        </select>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                            //]]>
+                        </script>
+                        <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getRegion()) ?>" title="<?php echo $this->__('State/Province') ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="country"><?php echo $this->__('Country') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <div class="selectbox w_xs_full fe_width_2 m_right_10 big">
+                    <?php echo $this->getCountryHtmlSelect() ?>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul>
+
+        <li class="row <?php if($this->canSetAsDefaultBilling()) echo ' control' ?>">
+
+            <?php if($this->canSetAsDefaultBilling()): ?>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 m_bottom_15">
+                    <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Use as My Default Billing Address') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 m_bottom_15">
+                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" id="primary_billing" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox d_none" />
+                    <label for="primary_billing" class="d_inline_m m_right_10 m_bottom_3 m_top_8 m_xs_top_0">&nbsp;</label>
+                </div>
+            <?php else: ?>
+                <input type="hidden" name="default_billing" value="1" />
+            <?php endif; ?>
+        </li>
+
+        <li class="row <?php if($this->canSetAsDefaultShipping()) echo ' control ' ?>">
+
+            <?php if($this->canSetAsDefaultShipping()): ?>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 m_bottom_15">
+                    <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Use as My Default Shipping Address') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 m_bottom_15">
+                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as My Default Shipping Address') ?>" class="checkbox d_none" />
+                    <label for="primary_shipping" class="d_inline_m m_right_10 m_bottom_3 m_top_8 m_xs_top_0">&nbsp;</label>
+                </div>
+            <?php else: ?>
+                <input type="hidden" name="default_shipping" value="1" />
+            <?php endif; ?>
+        </li>
+    </ul>
+
+    <ul>
+        <li class="clearfix">
+            <button data-action="save-customer-address" class="button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners" type="submit"><?php echo $this->__('Save Address') ?></button>
+        </li>
+    </ul>
+
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+</script>

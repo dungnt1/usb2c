@@ -1,0 +1,58 @@
+<?php if(Mage::getStoreConfig('illusion_settings/menu/menu_type') == 'side_menu'):?>
+    <?php
+        $illusion = $this->helper('illusion_settings');
+        $_helper= Mage::helper('catalog/category');
+        $_categories = $illusion->getCategories();
+
+        $currentUrl = $this->getCurrentUrl();
+        $homeUrl = $this->getUrl();
+        $logoSrc = Mage::getStoreConfig('design/header/logo_src');
+        $catalogSearchHelper =  $this->helper('catalogsearch');
+
+    ?>
+
+    <!--side menu-->
+    <button id="open_side_menu" class="icon_wrap_size_2 circle color_black">
+        <i class="icon-menu"></i>
+    </button>
+    <div id="side_menu">
+        <header class="m_bottom_30 d_table w_full">
+            <!--logo-->
+            <div class="d_table_cell half_column v_align_m">
+                <a href="<?php echo $this->getUrl('');?>">
+                    <img src="<?php echo $this->getSkinUrl($logoSrc); ?>" alt="<?php echo $this->getLogoAlt() ?>">
+                </a>
+            </div>
+            <!--close sidemenu button-->
+            <div class="d_table_cell half_column v_align_m t_align_r">
+                <button class="icon_wrap_size_2 circle color_grey_light_2 d_inline_m" id="close_side_menu">
+                    <i class="icon-cancel"></i>
+                </button>
+            </div>
+        </header>
+        <hr class="divider_type_4 m_bottom_20">
+        <!--searchform-->
+        <form role="search" class="m_bottom_20 relative type_2" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+            <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>"  class="input-text r_corners fw_light bg_light w_full" placeholder="Search" />
+            <button class="color_grey_light color_purple_hover tr_all" type="submit">
+                <i class="icon-search"></i>
+            </button>
+        </form>
+        <hr class="divider_type_4 m_bottom_25">
+        <!--main menu-->
+        <nav>
+            <ul class="side_main_menu fw_light">
+                <?php $rootMenus = $this->getRootMenu(); ?>
+                <?php foreach($rootMenus as $rootMenu): ?>
+                    <?php echo $this->getLayout()->createBlock($this->getType($rootMenu->getType())->getBlock())->setMenu($rootMenu)->drawItemLink() ?>
+                <?php endforeach; ?>
+
+
+
+            </ul>
+        </nav>
+    </div>
+<?php endif;?>
+<script type="text/javascript">
+    selectCurrent();
+</script>

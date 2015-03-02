@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <illusion translate="label" module="illusion_acceptcookies">
+            <label>Illusion</label>
+            <sort_order>150</sort_order>
+        </illusion>
+    </tabs>
+    <sections>
+        <cookies translate="label" module="illusion_acceptcookies">
+            <label>Accept Cookies</label>
+            <tab>illusion</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>41</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <config translate="label">
+                    <label>General Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <isactive translate="label">
+                            <label>Show Accept Cookies Popup</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </isactive>
+                        <background_color translate="label">
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </background_color>
+                        <background_opacity translate="label">
+                            <label>Background Opacity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </background_opacity>
+                        <cookiename translate="label">
+                            <label>Cookie Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If you change this name, popup show again for all customers]]></comment>
+                        </cookiename>
+                        <cookielifetime translate="label">
+                            <label>Cookie Life Time (days)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[After days popup show again]]></comment>
+                        </cookielifetime>
+                        <message translate="label">
+                            <label>Message</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </message>
+                        <title_ac translate="label">
+                            <label>Accept Cookie Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_ac>
+                        <title_rm translate="label">
+                            <label>Read More Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_rm>
+                        <link_rm translate="label">
+                            <label>Read More Link</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </link_rm>
+                    </fields>
+                </config>
+            </groups>
+        </cookies>
+    </sections>
+</config>

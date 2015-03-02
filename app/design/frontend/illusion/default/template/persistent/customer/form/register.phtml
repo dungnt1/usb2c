@@ -1,0 +1,232 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/register.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Register */
+?>
+<h4 class="r_corners wrapper m_bottom_23 counter_inc color_dark"><?php echo $this->__('Create an Account') ?></h4>
+<div class="clearfix m_bottom_20">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+<div class="clearfix m_bottom_20">
+    <h5 class="color_dark f_left fw_light"><?php echo $this->__('Personal Information') ?></h5>
+    <p class="fw_light fs_medium f_right required_l"><?php echo $this->__('Required field') ?></p>
+    <?php echo $this->getChildHtml('form_fields_before')?>
+</div>
+<form class="m_bottom_40 m_bottom_30" action="<?php echo $this->getPostActionUrl() ?>" method="post" id="validate-form" >
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+    <ul>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="input_1" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('E-mail') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="email" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" data-bvalidator="required,email" class="input-text r_corners fw_light color_grey w_full" title="Email Address" value="" id="email_address input_1" name="email"/>
+            </div>
+        </li>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="input_2" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Password') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="password" data-bvalidator="minlength[6],required" class="input-text r_corners fw_light color_grey w_full required-entry" title="Password" id="password_input_2" name="password"/>
+            </div>
+        </li>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="input_2" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Repeat Password') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="password" data-bvalidator="equalto[password_input_2],required" value="" class="input-text r_corners fw_light color_grey w_full required-entry" title="Password" id="confirmation" name="confirmation"/>
+            </div>
+        </li>
+        <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php if ($_dob->isEnabled()): ?>
+            <li class="row"><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
+        <?php endif ?>
+
+        <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+        <?php if ($_taxvat->isEnabled()): ?>
+            <li class="row"><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+        <?php endif ?>
+
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+        <?php if ($_gender->isEnabled()): ?>
+            <li class="row"><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+        <?php endif ?>
+
+        <?php if ($this->isNewsletterEnabled()): ?>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 m_bottom_15">
+                    <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Sign up for our newsletter') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 m_bottom_15">
+                    <input name="is_subscribed" type="checkbox" id="checkbox_3" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="d_none">
+                    <label for="checkbox_3" class="d_inline_m m_right_10 m_bottom_3 m_top_8 m_xs_top_0">&nbsp;</label>
+                </div>
+            </li>
+        <?php endif ?>
+
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8 m_bottom_10 m_xs_bottom_0">
+                <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Receive special offers from our partners') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 m_bottom_10 m_xs_bottom_0">
+                <input type="checkbox" id="checkbox_4" name="" class="d_none">
+                <label for="checkbox_4" class="d_inline_m m_right_10 m_top_8 m_xs_top_0">&nbsp;</label>
+            </div>
+        </li>
+    </ul>
+
+    <?php if($this->getShowAddressFields()): ?>
+        <input type="hidden" name="create_address" value="1" />
+        <div class="clearfix m_bottom_20 m_top_35">
+            <h5 class="color_dark f_left fw_light"><?php echo $this->__('Address Information') ?></h5>
+        </div>
+
+        <ul>
+            <li class="row">
+                <?php $bCompany = Mage::helper('illusion_settings')->getValidation('company');?>
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="<?php if($bCompany) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="company"><?php echo $this->__('Company') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="company" id="company" data-bvalidator="<?php echo $bCompany;?>" value="<?php echo $this->escapeHtml($this->getFormData()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                </div>
+            </li>
+            <li class="row">
+                <?php $bTelephone = Mage::helper('illusion_settings')->getValidation('telephone');?>
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="<?php if($bTelephone) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="telephone"><?php echo $this->__('Telephone') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="telephone" id="telephone" data-bvalidator="<?php echo $bTelephone;?>" value="<?php echo $this->escapeHtml($this->getFormData()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" />
+                </div>
+            </li>
+
+            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <?php $bStreet = Mage::helper('illusion_settings')->getValidation('street'); ?>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="<?php if($bStreet) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="street_1"><?php echo $this->__('Address') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="street[]" data-bvalidator="<?php echo $bStreet;?>" value="<?php echo $this->escapeHtml($this->getFormData()->getStreet(0)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="r_corners fw_light color_grey w_full input-text <?php echo $_streetValidationClass ?>" />
+                </div>
+            </li>
+            <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+            <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                <li class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                        <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="street_<?php echo $_i ?>"><?php echo $this->__("Address $_i") ?></label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                        <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getFormData()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+            <?php endfor; ?>
+
+            <li class="row">
+                <?php $bCity = Mage::helper('illusion_settings')->getValidation('city');?>
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="<?php if($bCity) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="city"><?php echo $this->__('City') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="city" id="city" data-bvalidator="<?php echo $bCity;?>" value="<?php echo $this->escapeHtml($this->getFormData()->getCity()) ?>" title="<?php echo $this->__('City') ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" />
+                </div>
+            </li>
+
+            <li class="row">
+                <?php $bZip = Mage::helper('illusion_settings')->getValidation('postcode');?>
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="<?php if($bZip) echo 'required ';?> d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="postcode"><?php echo $this->__('Zip/Postal Code') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" name="postcode" id="postcode" data-bvalidator="<?php echo $bZip;?>" value="<?php echo $this->escapeHtml($this->getFormData()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" class="r_corners fw_light color_grey w_full fe_width_1 input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                </div>
+            </li>
+
+            <li class="row">
+                <div class="field">
+                    <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                        <label class="d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="region_id"><?php echo $this->__('State/Province') ?></label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                        <div class="selectbox w_xs_full fe_width_2 m_right_10 big">
+                            <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;" data-bvalidator="required">
+                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                            </select>
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                $('region_id').setAttribute('defaultValue', "<?php echo $this->getFormData()->getRegionId() ?>");
+                                //]]>
+                            </script>
+                            <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getRegion()) ?>" title="<?php echo $this->__('State/Province') ?>" class="r_corners fw_light color_grey w_full input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0" for="country"><?php echo $this->__('Country') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <div class="selectbox w_xs_full fe_width_2 m_right_10 big">
+                        <?php echo $this->getCountryHtmlSelect() ?>
+                    </div>
+                </div>
+            </li>
+            <?php echo $this->getChildHtml('form.additional.info'); ?>
+
+            <input type="hidden" name="default_billing" value="1" />
+            <input type="hidden" name="default_shipping" value="1" />
+        </ul>
+    <?php endif;?>
+    <ul>
+        <li class="clearfix">
+            <button class="button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners" type="submit"><?php echo $this->__('Create') ?></button>
+        </li>
+    </ul>
+
+    <?php echo $this->getChildHtml('inchoo_socialconnect_register'); ?>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php if($this->getShowAddressFields()): ?>
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+    <?php endif; ?>
+    //]]>
+</script>
+
+

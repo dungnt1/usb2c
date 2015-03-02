@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <illusion>
+            <title>Illusion</title>
+            <sort_order>999</sort_order>
+            <children>
+                <sale_products>
+                    <title>SaleProducts Slider</title>
+                    <sort_order>33</sort_order>
+                    <action>adminhtml/system_config/edit/section/sale_products</action>
+                </sale_products>
+            </children>
+        </illusion>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <sale_products>
+                                        <title>SaleProducts Slider</title>
+                                    </sale_products>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <illusion>
+                        <title>Illusion</title>
+                        <sort_order>999</sort_order>
+                        <children>
+                            <sale_products>
+                                <title>SaleProducts Slider</title>
+                                <sort_order>33</sort_order>
+                                <action>adminhtml/system_config/edit/section/sale_products</action>
+                            </sale_products>
+                        </children>
+                    </illusion>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

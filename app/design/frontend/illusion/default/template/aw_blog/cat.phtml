@@ -1,0 +1,56 @@
+ <?php $posts = $this->getPosts(); ?>
+<?php if (count($posts)): ?>
+    <?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+    <?php foreach ($posts as $post): ?>
+        <article class="clearfix m_bottom_50 m_xs_bottom_30 blog_post">
+            <!--date,category,likes-->
+            <div class="blog_side_container w_sm_auto f_left f_xs_none m_xs_bottom_5">
+                <!--date-->
+            <span class="d_block d_xs_inline_b m_xs_right_5 blog_side_button r_corners bg_color_purple color_light not_hover t_align_c blog_date m_bottom_5">
+                <?php $createdTime= strtotime($post->getCreatedTime()); ?>
+                <span class="d_block day_of_the_month fw_light"><?php echo date("d", $createdTime); ;?></span>
+                <span class="d_block tt_uppercase fs_medium"><?php echo date("M", $createdTime); ;?></span>
+            </span>
+            </div>
+            <!--post content-->
+            <figure>
+                <?php if($image = $post->getImage()):?>
+                    <a class="color_dark" href="<?php echo $post->getAddress();?>">
+                        <?php $image_url  = Mage::getBaseUrl('media').'blog/'.$image;?>
+                        <img class="r_corners m_bottom_20" alt="" src="<?php echo $image_url;?>">
+                    </a>
+                <?php endif;?>
+                <figcaption>
+                    <h3 class="fw_light color_dark"><a class="color_dark blog_title" href="<?php echo $post->getAddress();?>"><?php echo $post->getTitle(); ?></a></h3>
+                    <ul class="dotted_list m_bottom_5 color_grey_light_2">
+                        <li class="m_right_15 relative d_inline_m">
+                        <span class="color_grey fs_small">
+                            <i><?php echo $this->__('By') ?> <?php echo $post->getUser(); ?></i>
+                        </span>
+                        </li>
+                        <?php $postCats = $post->getCats(); ?>
+                        <?php if (!empty($postCats)): ?>
+                            <li class="m_right_15 relative d_inline_m">
+                                <?php foreach ($postCats as $title => $url): ?>
+                                    <a href="<?php echo $url; ?>" class="fs_medium color_grey"><i><?php echo $title; ?></i></a>
+                                <?php endforeach; ?>
+                            </li>
+                        <?php endif;?>
+                        <?php if ($this->getCommentsEnabled()): ?>
+                            <li class="m_right_15 relative d_inline_m">
+                                <a href="<?php echo $post->getAddress();?>#postComment" class="color_scheme_hover blog_comments">
+                                    <i class="icon-chat-empty m_right_2 color_grey_light_2 tr_all"></i><i class="fs_medium color_grey tr_all"><?php echo ($post->getCommentCount()) ? $post->getCommentCount() : 0;?></i>
+                                </a>
+                            </li>
+                        <?php endif;?>
+                    </ul>
+                    <p class="fw_light m_bottom_12"><?php echo nl2br($post->getPostContent()); ?></p>
+                </figcaption>
+            </figure>
+        </article>
+
+    <?php endforeach; ?>
+ <?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+<?php else: ?>
+    <?php echo Mage::helper('blog')->__('No Posts in this Category.'); ?>
+<?php endif; ?>

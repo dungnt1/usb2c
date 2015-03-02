@@ -1,0 +1,83 @@
+<?php
+	$helper = Mage::helper('illusion_brands');
+	$brands = $this->getLoadedBrands();
+    $brandsEnable = Mage::getStoreConfig('brands/general/enable');
+//    $brandsHomepage = Mage::getStoreConfig('brands/general/homepage');
+    $brandsTitle = Mage::getStoreConfig('brands/general/title');
+    $brandsDescription = Mage::getStoreConfig('brands/general/description');
+    $_collectionSize = count($brands);
+    $brandsItems = Mage::getStoreConfig('brands/general/items');
+    $brandAttrLabel = $this->getBrandAttributeTitle();
+    $srcAttribute = 'src';
+    $imgClasses = '';
+    $animationsEnable = Mage::getStoreConfig('illusion_settings/layout/animations_enable');
+
+?>
+
+<?php if ($brands && $brandsEnable): ?>
+    <section class="section_offset">
+        <div class="container">
+            <h3 class="color_dark fw_light m_bottom_15 t_align_c" <?php if($animationsEnable):?>data-appear-animation="bounceInLeft"<?php endif;?>><?php echo $brandsTitle;?></h3>
+            <p class="m_bottom_35 t_align_c" <?php if($animationsEnable):?>data-appear-animation="bounceInLeft"<?php endif;?> data-appear-animation-delay="200"><?php echo $brandsDescription;?></p>
+            <p class="m_bottom_35 t_align_c" <?php if($animationsEnable):?>data-appear-animation="bounceInLeft"<?php endif;?> data-appear-animation-delay="200"><?php echo $this->__("We work with marketing and advertising agencies to provide customized USB flash drives for ad campaigns and PR use - fulfilling orders with short delivery times and complex technical specifications. We have earned the trust of thousands of clients, inlcuding these fine companies:");?></p>
+            <div class="relative" <?php if($animationsEnable):?>data-appear-animation="bounceInLeft"<?php endif;?> data-appear-animation-delay="400">
+                <div class="t_xs_align_c">
+                    <div class="owl-carousel clients brands t_align_c" data-plugin-options='{"pagination":true,"transitionStyle" : "backSlide"}' data-nav="c_nav_">
+                        <!--item-->
+                        <?php $i = 0;?>
+                        <?php foreach ($brands as $brand): ?>
+                            <?php if ($i++%$brandsItems==0): ?>
+                                <div>
+                                    <div class="row">
+                            <?php endif ?>
+
+                                        <?php
+                                        $brandPageUrl = $this->getBrandPageUrl($brand);
+                                        $brandImageUrl = $this->getBrandImageUrl($brand);
+                                        $brandDetailsHtml = '';
+
+                                        if (!$helper->isShowImage()){
+                                            $brandDetailsHtml = '<span class="brand-wrapper"><span class="brand-name">'. $brand .'</span></span>';
+                                        } else{
+                                            if ($brandImageUrl) {
+                                                $brandPageUrl ? $imgTitle='' : $imgTitle="title=\"{$brandAttrLabel}: {$brand}\"";
+                                                $brandDetailsHtml = "<img {$imgClasses} {$srcAttribute}=\"{$brandImageUrl}\" alt=\"{$brand}\" {$imgTitle}/>";
+                                            } else {
+                                                if ($helper->isShowImageFallbackToText()){
+                                                    $brandDetailsHtml = '<span class="brand-wrapper"><span class="brand-name">'. $brand .'</span></span>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        <?php if ($brandDetailsHtml): ?>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
+                                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
+                                                    <a href="<?php echo $brandPageUrl; ?>" class="d_block translucent tr_all wrapper r_corners" title="<?php echo $this->__('Click to see more products from %s', $brand); ?>">
+                                                        <?php echo $brandDetailsHtml; ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+
+                                <?php if ($i%$brandsItems==0 || $i==$_collectionSize): ?>
+                                    </div>
+                                </div>
+                                <?php endif ?>
+
+
+                        <?php endforeach;?>
+
+
+                    </div>
+                </div>
+                <!--carousel nav-->
+                <button class="icon_wrap_size_5 circle color_grey_light carousel_color carousel_border_color tr_all color_blue_hover c_nav_prev nav_type_2 d_md_none">
+                    <i class="icon-left-open-big"></i>
+                </button>
+                <button class="icon_wrap_size_5 circle color_grey_light carousel_color carousel_border_color tr_all color_blue_hover c_nav_next nav_type_2 d_md_none">
+                    <i class="icon-right-open-big"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>

@@ -1,0 +1,20 @@
+<?php
+    $illusionSettings = Mage::helper('illusion_settings');
+    $store = Mage::app()->getStore();
+    $fontFamily = $illusionSettings->getConfig('fonts/primary_font_family', $store);
+    $fontWeights = $illusionSettings->getConfig('fonts/primary_font_weights', $store);
+
+    //Custom CSS
+    $customCSS = '';
+    if($illusionSettings->getConfig('css/css_file')){
+        $customCSS = Mage::getBaseUrl('media') . 'illusion/settings/css/' . $illusionSettings->getConfig('css/css_file');
+    }
+
+?>
+<?php if($fontFamily == 'google'): ?>
+    <link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $illusionSettings->getConfig('fonts/primary_google_font', $store)).':';?><?php echo str_replace(' ', '', $fontWeights);?>' rel='stylesheet' type='text/css' />
+<?php endif; ?>
+
+<?php if($customCSS):?>
+    <link href="<?php echo $customCSS;?>" type="text/css" rel="stylesheet"/>
+<?php endif;?>

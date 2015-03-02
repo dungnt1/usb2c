@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <illusion translate="label" module="illusion_ajaxcartwishlistcompare">
+            <label>Illusion</label>
+            <sort_order>150</sort_order>
+        </illusion>
+    </tabs>
+    <sections>
+        <illusion_ajaxcartwishlistcompare translate="label" module="illusion_ajaxcartwishlistcompare">
+            <label>Ajax Cart, Wishlist, Compare</label>
+            <tab>illusion</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>5</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <config translate="label">
+                    <label>General Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Module</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <show_confirm translate="label">
+                            <label>Show confirm box</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_confirm>
+                        <background_color translate="label">
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </background_color>
+                        <background_opacity translate="label">
+                            <label>Background Opacity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </background_opacity>
+                        <loading_image translate="label comment">
+                            <label>Loading Image</label>
+                            <comment>Allowed file types: jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">illusion/settings/config</upload_dir>
+                            <base_url type="media" scope_info="1">illusion/settings/config</base_url>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </loading_image>
+                    </fields>
+                </config>
+            </groups>
+        </illusion_ajaxcartwishlistcompare>
+    </sections>
+</config>

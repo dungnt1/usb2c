@@ -1,0 +1,106 @@
+<div class="col-lg-3 col-md-3 col-sm-3 m_bottom_30 m_xs_bottom_20">
+    <h5 class="color_dark m_bottom_20 fw_light"><?php echo $this->__('Stay Connected') ?></h5>
+    <ul class="hr_list social_icons">
+        <!--tooltip_container class is required-->
+
+        <?php if($socialFacebook = $this->getBlockConfig('social/social_facebook')):?>
+            <li class="m_right_15 m_bottom_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Follow Us on Facebook') ?></span>
+                <a href="<?php echo $socialFacebook;?>" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-facebook fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialTwitter = $this->getBlockConfig('social/social_twitter')):?>
+            <li class="m_right_15 m_bottom_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Follow Us on Twitter') ?></span>
+                <a href="<?php echo $socialTwitter;?>" class="d_block twitter icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-twitter fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialGPlus = $this->getBlockConfig('social/social_gplus')):?>
+            <li class="m_right_15 m_bottom_15 m_sm_right_0 tooltip_container m_xs_right_15">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Google Plus') ?></span>
+                <a href="<?php echo $socialGPlus;?>" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-gplus-1 fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialPinterest = $this->getBlockConfig('social/social_pinterest')):?>
+            <li class="m_right_15 m_md_right_0 m_sm_right_15 m_bottom_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Pinterest') ?></span>
+                <a href="<?php echo $socialPinterest;?>" class="d_block pinterest icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-pinterest fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialDribble = $this->getBlockConfig('social/social_dribble')):?>
+            <li class="m_bottom_15 m_md_right_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Dribbble') ?></span>
+                <a href="<?php echo $socialDribble;?>" class="d_block dribbble icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-dribbble fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialFlick = $this->getBlockConfig('social/social_flickr')):?>
+            <li class="m_right_15 m_bottom_15 tooltip_container m_sm_right_0 m_xs_right_15">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Flickr') ?></span>
+                <a href="<?php echo $socialFlick;?>" class="d_block flickr icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-flickr-1 fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialYoutube = $this->getBlockConfig('social/social_youtube')):?>
+            <li class="m_right_15 m_bottom_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Youtube') ?></span>
+                <a href="<?php echo $socialYoutube;?>" class="d_block youtube icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-youtube-play fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialVimeo = $this->getBlockConfig('social/social_vimeo')):?>
+            <li class="m_right_15 m_bottom_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Vimeo') ?></span>
+                <a href="<?php echo $socialVimeo;?>" class="d_block vimeo icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-vimeo fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialInstagram = $this->getBlockConfig('social/social_instagram')):?>
+            <li class="m_right_15 m_bottom_15 tooltip_container m_sm_right_0 m_xs_right_15">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('Instagram') ?></span>
+                <a href="<?php echo $socialInstagram;?>" class="d_block instagram icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-instagramm fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($socialLinkedin = $this->getBlockConfig('social/social_linkedin')):?>
+            <li class="m_bottom_15 tooltip_container">
+                <!--tooltip-->
+                <span class="d_block r_corners color_default tooltip fs_small tr_all"><?php echo $this->__('LinkedIn') ?></span>
+                <a href="<?php echo $socialLinkedin;?>" class="d_block linkedin icon_wrap_size_2 circle color_grey_light_2" target="_blank">
+                    <i class="icon-linkedin-squared fs_small"></i>
+                </a>
+            </li>
+        <?php endif;?>
+    </ul>
+</div>

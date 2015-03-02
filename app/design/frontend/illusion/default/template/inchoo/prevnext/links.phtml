@@ -1,0 +1,39 @@
+<?php 
+/**
+ * @category    Inchoo
+ * @package     Inchoo_Prevnext
+ * @author      Branko Ajzele <ajzele@gmail.com>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+
+<?php if(!Mage::getStoreConfig('illusion_settings/prevnext/enable')) return;?>
+<?php $_prev = $this->getPreviousProduct(); ?>
+<?php $_next = $this->getNextProduct(); ?>
+
+<?php if($_prev || $_next): ?>
+
+<div class="block inchoo_prevnext p_absolute w_100">
+    
+    <?php if($_prev): ?>
+        <div class="inchoo_prevnext_prev f_left">
+            <div class="inchoo_prevnext_link">
+                <button rel="prev" class="product-prev prev_next_color prev_next_border_color left circle icon_wrap_size_2 color_blue_hover color_grey_light_4 tr_all m_left_15 m_top_15" title="<?php echo $this->escapeHtml($_prev->getName()); ?>" onclick="location.href='<?php echo $_prev->getProductUrl(); ?>'">
+                    <i class="icon-angle-left fs_large"></i>
+                </button>
+            </div>
+        </div><?php /* #inchoo_prevnext_prev */ ?>
+    <?php endif; ?>
+
+    <?php if($_next): ?>
+        <div class="inchoo_prevnext_next f_right">
+            <div class="inchoo_prevnext_link">
+                <button rel="next" class="product-next prev_next_color prev_next_border_color right circle icon_wrap_size_2 color_blue_hover color_grey_light_4 tr_all m_right_15 m_top_15" title="<?php echo $this->escapeHtml($_next->getName()); ?>" onclick="location.href='<?php echo $_next->getProductUrl(); ?>'">
+                    <i class="icon-angle-right fs_large"></i>
+                </button>
+            </div>
+        </div><?php /* #inchoo_prevnext_next */ ?>
+    <?php endif; ?>
+    
+</div>
+<?php endif; ?>

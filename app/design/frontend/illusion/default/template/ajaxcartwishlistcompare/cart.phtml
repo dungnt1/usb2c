@@ -1,0 +1,63 @@
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        var enable_module = jQuery('#enable_module').val();
+        if(enable_module==0) return false;
+    })
+
+</script>
+<?php $_cartQty = $this->getSummaryCount() ?>
+<div class="relative f_right dropdown_2_container shoppingcart t_left">
+    <button class="icon_wrap_size_2 header_cart_icon_color header_cart_icon_border_color circle tr_all">
+        <i class="icon-basket tr_inherit"></i>
+    </button>
+    <div class="dropdown_2 bg_light shadow_1 tr_all p_top_0">
+        <div class="sc_header bg_light_2 fs_small color_grey">
+            <?php $_cartQty = $this->getSummaryCount() ?>
+                <span class="top-cart-title">
+                    <span>
+                        <?php
+                            $count = $this->helper('checkout/cart')->getSummaryCount();
+                            if( $count == 1 ){
+                                echo $text = $this->__('You have %s item in your cart', $count);
+                            }elseif( $count > 0 ){
+                                echo $text = $this->__('You have %s items in your cart', $count);
+                            }else{
+                                echo $text = $this->__('You have 0 item in your cart');
+                            }
+                        ?>
+                    </span>
+                </span>
+<!--            Recently added item(s)-->
+        </div>
+        <ul class="added_items_list" id="cart-sidebar">
+            <?php $_items = $this->getRecentItems() ?>
+            <?php if (count($_items)): ?>
+                <?php foreach ($_items as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach; ?>
+                <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+            <?php else:?>
+                <p class="empty m_bottom_20 color_dark"><?php echo $this->__('Your shopping cart is empty!') ?></p>
+            <?php endif;?>
+        </ul>
+        <div class="total_price bg_light_2 t_align_r fs_medium m_bottom_15">
+            <ul>
+                <li class="color_dark">
+                    <span class="fw_ex_bold"><?php echo $this->__('Subtotal') ?>:</span>
+                    <span class="fw_ex_bold d_inline_b m_left_15 price t_align_l color_pink">
+                        <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix border_none p_top_0 sc_footer">
+            <?php if ($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+                <?php echo $this->getChildHtml('extra_actions') ?>
+            <a href="<?php echo $this->getCheckoutUrl() ?>" class="button_type_5 d_block color_pink transparent f_right r_corners tr_all fs_medium m_left_5">Checkout</a>
+            <?php endif;?>
+            <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>" class="button_type_5 d_block color_dark f_right r_corners color_pink_hover tr_all fs_medium">
+                <?php echo $this->__('View Cart') ?>
+            </a>
+        </div>
+    </div>
+</div>

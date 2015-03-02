@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <!--<cms_index_index>-->
+        <!--<reference name="content">-->
+            <!--<block type="illusion_brands/brands" after="illusionfeaturedproducts" name="illusion.brands.slider" as="illusion.brands.slider" template="brands/brand_slider.phtml"/>-->
+        <!--</reference>-->
+    <!--</cms_index_index>-->
+</layout> 

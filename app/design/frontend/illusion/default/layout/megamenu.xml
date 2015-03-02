@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/****************************************************** 
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+-->
+<layout version="0.1.0">
+    <default>
+        <block type="megamenu/megamenu" name="megamenu.nav">
+            <action method="addType"><type>category</type><model>catalog/category</model><block>megamenu/type_category</block></action>
+            <action method="addType"><type>cms_page</type><model>cms/page</model><block>megamenu/type_cms</block></action>
+            <action method="addType"><type>static_block</type><model>cms/block</model><block>megamenu/type_static</block></action>
+            <action method="addType"><type>widget</type><model>widget/widget_instance</model><block>megamenu/type_widget</block></action>
+        </block>
+        <reference name="head">
+            <action method="addCss" ifconfig="megamenu/general/active"><stylesheet>magenthemes/megamenu/css/megamenu.css</stylesheet></action>
+            <action method="addJs" ifconfig="megamenu/general/active"><script>magenthemes/megamenu/megamenu.js</script></action>
+			<!--<action method="addJs" ifconfig="megamenu/general/active"><script>magenthemes/megamenu/jquery/1.7.1/jquery.min.js</script></action>-->
+			<action method="addJs" ifconfig="megamenu/general/active"><script>magenthemes/megamenu/plugins.js</script></action>
+			<action method="addJs" ifconfig="megamenu/general/active"><script>magenthemes/megamenu/jquery.funcymenu.js</script></action>
+            <action method="addJs" ifconfig="megamenu/general/mobile_menu"><script>magenthemes/megamenu/drillmenu.js</script></action>
+            <action method="addJs" ifconfig="megamenu/general/active"><script>magenthemes/megamenu/jquery.sticky.js</script></action>
+        </reference>
+        <reference name="header">
+            <action method="unsetChild" ifconfig="megamenu/general/active"><block>catalog.topnav</block></action>
+            <block type="megamenu/navigation_top" name="megamenu.nav.top">
+                <action method="setTemplate" ifconfig="megamenu/general/active"><template>megamenu/navigation/top.phtml</template></action>
+            </block>
+        </reference>
+    </default>
+</layout>

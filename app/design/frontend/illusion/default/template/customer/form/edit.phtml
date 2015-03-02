@@ -1,0 +1,128 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<h4 class="title_type r_corners wrapper m_bottom_23 bg_light_2 counter_inc color_dark"><?php echo $this->__('Edit Account Information') ?></h4>
+<div class="clearfix m_bottom_20">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+<div class="clearfix m_bottom_20">
+    <h5 class="color_dark f_left fw_light"><?php echo $this->__('Account Information') ?></h5>
+    <p class="fw_light fs_medium f_right required_l"><?php echo $this->__('Required field') ?></p>
+</div>
+<form class="m_bottom_40 m_bottom_30" action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="validate-form" autocomplete="off">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <ul>
+        <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
+        <li class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="input_1" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('E-mail') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                <input type="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" data-bvalidator="required,email" class="input-text r_corners fw_light color_grey w_full" title="<?php echo $this->__('Email Address') ?>" value="" id="email_address input_1" name="email"/>
+            </div>
+        </li>
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php if ($_dob->isEnabled()): ?>
+            <li class="row"><?php echo $_dob->setDate($this->getCustomer()->getDob())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+        <?php if ($_taxvat->isEnabled()): ?>
+            <li class="row"><?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+        <?php if ($_gender->isEnabled()): ?>
+            <li class="row"><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></li>
+        <?php endif ?>
+        <li class="control row">
+            <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                <label for="change_password" class="d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Change Password') ?></label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 m_bottom_15">
+                <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="<?php echo $this->__('Change Password') ?>"<?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox d_none" />
+                <label for="change_password" class="d_inline_m m_right_10 m_bottom_3 m_top_8 m_xs_top_0">&nbsp;</label>
+            </div>
+        </li>
+    </ul>
+    <div class="fieldset" style="display:none;">
+        <div class="clearfix m_bottom_20 m_top_35">
+            <h5 class="color_dark f_left fw_light"><?php echo $this->__('Change Password') ?></h5>
+        </div>
+        <ul>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label for="current_password" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Current Password') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="text" class="input-text d_none" name="dummy" id="dummy" />
+                    <input type="password" title="<?php echo $this->__('Current Password') ?>" class="input-text r_corners fw_light color_grey w_full" data-bvalidator="" name="current_password" id="current_password" />
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label for="password" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('New Password') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="password" title="<?php echo $this->__('New Password') ?>" class="input-text r_corners fw_light color_grey w_full" name="password" data-bvalidator="required" id="password" />
+                </div>
+            </li>
+            <li class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 m_bottom_10">
+                    <label for="confirmation" class="required d_inline_b fw_light w_full m_top_8 m_xs_top_0"><?php echo $this->__('Repeat New Password') ?></label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_10">
+                    <input type="password" title="<?php echo $this->__('Confirm New Password') ?>" class="input-text r_corners fw_light color_grey w_full" data-bvalidator="required,equalto[password]" name="confirmation" id="confirmation" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul>
+        <li class="clearfix">
+            <button class="button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners" type="submit"><?php echo $this->__('Save') ?></button>
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+    //<![CDATA[
+    function setPasswordForm(arg){
+        if(arg){
+            $('current_password').up(3).show();
+            jQuery('#current_password').attr('data-bvalidator','required');
+            jQuery('#password').attr('data-bvalidator','minlength[6],required');
+            jQuery('#confirmation').attr('data-bvalidator','minlength[6],required,equalto[password]');
+
+        }else{
+            $('current_password').up(3).hide();
+            jQuery('#current_password').attr('data-bvalidator','');
+            jQuery('#password').attr('data-bvalidator','');
+            jQuery('#confirmation').attr('data-bvalidator','');
+        }
+    }
+    <?php if($this->getCustomer()->getChangePassword()): ?>
+    setPasswordForm(true);
+    <?php endif; ?>
+    //]]>
+</script>

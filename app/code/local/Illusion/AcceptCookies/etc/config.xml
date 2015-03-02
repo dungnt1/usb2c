@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Illusion_AcceptCookies>
+            <version>1.0.0</version>
+        </Illusion_AcceptCookies>
+    </modules>
+    <global>
+        <models>
+            <illusion_acceptcookies>
+                <class>Illusion_AcceptCookies_Model</class>
+                <resourceModel>illusion_acceptcookies_resource</resourceModel>
+            </illusion_acceptcookies>
+            <illusion_acceptcookies_resource>
+                <class>Illusion_AcceptCookies_Model_Resource</class>
+            </illusion_acceptcookies_resource>
+        </models>
+        <blocks>
+            <illusion_acceptcookies>
+                <class>Illusion_AcceptCookies_Block</class>
+            </illusion_acceptcookies>
+        </blocks>
+        <helpers>
+            <illusion_acceptcookies>
+                <class>Illusion_AcceptCookies_Helper</class>
+            </illusion_acceptcookies>
+        </helpers>
+    </global>
+    <default>
+        <cookies>
+            <config>
+                <isactive>1</isactive>
+                <background_color>#121315</background_color>
+                <background_opacity>0.95</background_opacity>
+                <title_ac><![CDATA[Accept Cookies]]></title_ac>
+                <title_rm><![CDATA[Read More]]></title_rm>
+                <link_rm><![CDATA[http://www.cookielaw.org/the-cookie-law/]]></link_rm>
+                <cookiename>accept_cookies</cookiename>
+                <cookielifetime>999</cookielifetime>
+                <message><![CDATA[Please note this website requires cookies in order to function correctly, they do not store any specific information about you personally.]]></message>
+                <prm_title><![CDATA[Cookie Laws within the EU]]></prm_title>
+                <prm_message><![CDATA[On 26th May 2012, new laws came into force in the EU that affect most web sites. If cookies are used in a site, the Privacy and Electronic Communications (EC Directive) (Amendment) Regulations 2011 (UK Government Regulations) asks that the website user must give consent to the use and placing of the cookies.]]></prm_message>
+            </config>
+        </cookies>
+    </default>
+    <frontend>
+        <layout>
+            <updates>
+                <illusion_acceptcookies>
+                    <file>illusion_acceptcookies.xml</file>
+                </illusion_acceptcookies>
+            </updates>
+        </layout>
+    </frontend>
+</config>

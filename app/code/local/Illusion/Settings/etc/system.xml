@@ -1,0 +1,2340 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <illusion translate="label" module="illusion_settings">
+            <label>Illusion</label>
+            <sort_order>150</sort_order>
+        </illusion>
+    </tabs>
+    <sections>
+        <upsell translate="label" module="illusion_settings">
+            <label>UpSell Settings</label>
+            <tab>illusion</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Module</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>
+                        <title translate="label">
+                            <label>UpSell Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </title>
+                        <auto_play translate="label">
+                            <label>Upsell Auto Play</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_true_truefalse</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_play>
+                        <items>
+                            <label>Products per layout</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <single translate="label">
+                            <label>Single product per slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_true_truefalse</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<p class="note">If Yes than only one product will be inside slider</p>]]></comment>
+                        </single>
+                        <items_1column translate="label">
+                            <label>Products for 1 column layout</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <depends>
+                                <single>false</single>
+                            </depends>
+                            <comment><![CDATA[<p class="note">No. of products inside one slider, for 1column layout</p>]]></comment>
+                        </items_1column>
+                        <items_2column translate="label">
+                            <label>Products for 2 columns layout</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <depends>
+                                <single>false</single>
+                            </depends>
+                            <comment><![CDATA[<p class="note">No. of products inside one slider, for 2columns layout, left or right</p>]]></comment>
+                        </items_2column>
+                        <items_3column translate="label">
+                            <label>Products for 3 columns layout</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <depends>
+                                <single>false</single>
+                            </depends>
+                            <comment><![CDATA[<p class="note">No. of products inside one slider, for 3columns layout</p>]]></comment>
+                        </items_3column>
+                    </fields>
+                </settings>
+            </groups>
+        </upsell>
+        <crosssell translate="label" module="illusion_settings">
+            <label>CrossSell Settings</label>
+            <tab>illusion</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>25</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Module</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>
+                        <title translate="label">
+                            <label>CrossSell Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </title>
+                        <auto_play translate="label">
+                            <label>CrossSell Auto Play</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_true_truefalse</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_play>
+                        <items>
+                            <label>Products per layout</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <single translate="label">
+                            <label>Single product per slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_true_truefalse</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<p class="note">If Yes than only one product will be inside slider</p>]]></comment>
+                        </single>
+                        <items_1column translate="label">
+                            <label>Products for 1 column layout</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <depends>
+                                <single>false</single>
+                            </depends>
+                            <comment><![CDATA[<p class="note">No. of products inside one slider, for 1column layout</p>]]></comment>
+                        </items_1column>
+                        <items_2column translate="label">
+                            <label>Products for 2 columns layout</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <depends>
+                                <single>false</single>
+                            </depends>
+                            <comment><![CDATA[<p class="note">No. of products inside one slider, for 2columns layout, left or right</p>]]></comment>
+                        </items_2column>
+                        <items_3column translate="label">
+                            <label>Products for 3 columns layout</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <depends>
+                                <single>false</single>
+                            </depends>
+                            <comment><![CDATA[<p class="note">No. of products inside one slider, for 3columns layout</p>]]></comment>
+                        </items_3column>
+                    </fields>
+                </settings>
+            </groups>
+        </crosssell>
+        <illusion_settings translate="label" module="illusion_settings">
+            <label>Theme Settings</label>
+            <tab>illusion</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <layout translate="label">
+                    <label>Layout</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <layout translate="label">
+                            <label>Layout</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </layout>
+                        <layout_type translate="label">
+                            <label>Layout Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_layout_type</source_model>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_preview</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </layout_type>
+                        <layout_background translate="label">
+                            <label>Background</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <layout_type>boxed_layout</layout_type>
+                            </depends>
+                        </layout_background>
+                        <layout_background_color translate="label">
+                            <label>Background Color</label>
+                            <comment>Background color only for boxed layout type</comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <layout_type>boxed_layout</layout_type>
+                            </depends>
+                        </layout_background_color>
+                        <layout_background_image translate="label">
+                            <label>Background Image</label>
+                            <comment>Background image only for boxed layout type</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">illusion/settings/background</upload_dir>
+                            <base_url type="media" scope_info="1">illusion/settings/background</base_url>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <layout_type>boxed_layout</layout_type>
+                            </depends>
+                        </layout_background_image>
+                        <layout_background_image_mode>
+                            <label>Background Repeat</label>
+                            <comment>Background image repeat only for boxed layout type</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_background_type</source_model>
+                            <sort_order>20</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <layout_type>boxed_layout</layout_type>
+                            </depends>
+                        </layout_background_image_mode>
+                        <layout_background_image_position>
+                            <label>Background Image Position</label>
+                            <comment>Background image position only for boxed layout type</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_background_position</source_model>
+                            <sort_order>25</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <layout_type>boxed_layout</layout_type>
+                            </depends>
+                        </layout_background_image_position>
+                        <horizontal_line_color translate="label">
+                            <label>Horizontal Line Color</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </horizontal_line_color>
+                        <horizontal_line_color_start translate="label">
+                            <label>Gradient color starts with</label>
+                            <comment>This color will be used in horizontal lines (1px)</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </horizontal_line_color_start>
+                        <horizontal_line_color_end translate="label">
+                            <label>Gradient color ends with</label>
+                            <comment>This color will be used in horizontal lines (1px)</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </horizontal_line_color_end>
+                        <preloader_header translate="label">
+                            <label>Preloader</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </preloader_header>
+                        <preloader_color translate="label">
+                            <label>Preloader color</label>
+                            <comment>This color will be used in preloader on page loads</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </preloader_color>
+                        <animations translate="label">
+                            <label>Animations</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </animations>
+                        <animations_enable translate="label">
+                            <label>Enable animations</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </animations_enable>
+                    </fields>
+                </layout>
+                <fonts>
+                    <label>Fonts</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <appearance translate="label">
+                            <label>Main Fonts</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </appearance>
+                        <primary_font_family translate="label">
+                            <label>Font Family</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_font_type</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </primary_font_family>
+                        <primary_google_font translate="label">
+                            <label>Google Font</label>
+                            <comment><![CDATA[<strong style="color:red;">Important</strong>: Most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field <strong>Font Weight</strong> below) for selected font. Otherwise font will not be displayed. Refer to <a target="_blank" href="http://www.google.com/webfonts">Google Web Fonts</a> to check if the selected weight is available for your font.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_fonts</frontend_model>
+                            <source_model>illusion_settings/system_config_source_appearance_fonts</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <primary_font_family>google</primary_font_family>
+                            </depends>
+                        </primary_google_font>
+                        <primary_custom_font translate="label">
+                            <label>Custom Font</label>
+                            <comment><![CDATA[Type in your custom font stack, e.g.:<br/><em>sans-serif, Arial, Tahoma</em>.<br/><strong style="color:red;">Important</strong>: Do not add trailing semicolon.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <primary_font_family>custom</primary_font_family>
+                            </depends>
+                        </primary_custom_font>
+                        <primary_font_size translate="label">
+                            <label>Font Size</label>
+                            <comment>Size of the regular text.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_font_size</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </primary_font_size>
+                        <primary_font_color translate="label">
+                            <label>Font Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>This color will be set in body</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </primary_font_color>
+                        <primary_font_weights translate="label">
+                            <label>Font Weights</label>
+                            <comment><![CDATA[Specify the weight of the font. You can only use <strong>numeric font weights</strong> which are available for the CSS property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"><em>font-weight</em></a>. E.g. normal weight is <em>400</em>, bold is <em>700</em>.<br/><strong style="color:red;">Important</strong>: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to <a href="http://www.google.com/webfonts">Google Web Fonts</a> to check if the selected weight is available for your font.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <primary_font_family>google</primary_font_family>
+                            </depends>
+                        </primary_font_weights>
+                        <default_font_weight translate="label">
+                            <label>Default Font Weight</label>
+                            <comment><![CDATA[Specify the default weight of the font. You can only use <strong>numeric font weights</strong> Normal weight is <em>400</em>, bold is <em>700</em>. <br/><strong style="color:red;">Important</strong>: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to <a href="http://www.google.com/webfonts">Google Web Fonts</a> to check if the selected weight is available for your font.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </default_font_weight>
+                    </fields>
+                </fonts>
+                <css translate="label">
+                    <label>Custom CSS</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>9</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <header translate="label">
+                            <label>Custom CSS</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header>
+                        <css_file translate="label">
+                            <label>CSS File</label>
+                            <comment>If there is a need, upload here you custom css</comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir>media/illusion/settings/css</upload_dir>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </css_file>
+                    </fields>
+                </css>
+                <header translate="label">
+                    <label>Header</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <header translate="label">
+                            <label>Header Type</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header>
+                        <header_type translate="label">
+                            <label>Header Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_header_type</source_model>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_preview</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header_type>
+                        <header_background translate="label">
+                            <label>Header Background</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_background>
+                        <header_background_color translate="label">
+                            <label>Header Background Color</label>
+                            <comment>This color will be used for header background</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_background_color>
+                        <header_links translate="label">
+                            <label>Header Links</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header_links>
+                        <header_links_color translate="label">
+                            <label>Header links color</label>
+                            <comment>This color will be used links (phone, email, skype, about, blog, contact, ...)</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_links_color>
+                        <header_links_color_hover translate="label">
+                            <label>Header links color on hover</label>
+                            <comment>This color will be used links (phone, email, skype, about, blog, contact, ...)</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_links_color_hover>
+                        <header_search translate="label">
+                            <label>Header Search Block</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header_search>
+                        <header_search_icon_color translate="label">
+                            <label>Header Search Icon Color</label>
+                            <comment>Color of search icon in header</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_search_icon_color>
+                        <header_search_icon_color_hover translate="label">
+                            <label>Header Search Icon Color on Hover</label>
+                            <comment>Color of search icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_search_icon_color_hover>
+                        <header_search_icon_border_color translate="label">
+                            <label>Header Search Icon Border Color</label>
+                            <comment>Border color of search icon in header (only for Header 2 and Header 3)</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_search_icon_border_color>
+                        <header_search_icon_border_color_hover translate="label">
+                            <label>Header Search Icon Border Color on Hover</label>
+                            <comment>Border color of search icon in header on hover(only for Header 2 and Header 3)</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_search_icon_border_color_hover>
+                        <header_login>
+                            <label>Header Login Block</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header_login>
+                        <header_login_icon_color>
+                            <label>Header Login Icon Color</label>
+                            <comment>Color of login icon in header</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_login_icon_color>
+                        <header_login_icon_color_hover>
+                            <label>Header Login Icon Color on Hover</label>
+                            <comment>Color of login icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_login_icon_color_hover>
+                        <header_login_icon_border_color>
+                            <label>Header Login Icon Border Color</label>
+                            <comment>Border color of login icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>105</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_login_icon_border_color>
+                        <header_login_icon_border_color_hover>
+                            <label>Header Login Icon Border Color on Hover</label>
+                            <comment>Border color of login icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_login_icon_border_color_hover>
+                        <header_login_popup_header_color>
+                            <label>Header Login Popup Header Color</label>
+                            <comment>Header Login Popup Header Color</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_login_popup_header_color>
+                        <header_cart>
+                            <label>Header Cart Block</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header_cart>
+                        <header_cart_icon_color>
+                            <label>Header Cart Icon Color</label>
+                            <comment>Color of cart icon in header</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>125</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_cart_icon_color>
+                        <header_cart_icon_color_hover>
+                            <label>Header Cart Icon Color on Hover</label>
+                            <comment>Color of cart icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_cart_icon_color_hover>
+                        <header_cart_icon_border_color>
+                            <label>Header Cart Icon Border Color</label>
+                            <comment>Border color of cart icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>135</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_cart_icon_border_color>
+                        <header_cart_icon_border_color_hover>
+                            <label>Header Cart Icon Border Color on Hover</label>
+                            <comment>Border color of cart icon in header on hover</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_cart_icon_border_color_hover>
+                        <header_cart_popup_header_color>
+                            <label>Header Cart Popup Header Color</label>
+                            <comment>Header Cart Popup Header Color</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>145</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </header_cart_popup_header_color>
+                    </fields>
+                </header>
+                <menu>
+                    <label>Menu</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <menu translate="label">
+                            <label>Menu Type</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </menu>
+                        <menu_type translate="label">
+                            <label>Menu position while scrolling</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_menu_type</source_model>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_preview</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </menu_type>
+                        <!--<menu_home translate="label">-->
+                            <!--<label>Display Home Link</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<comment><![CDATA[It will show Home link in header's menu]]></comment>-->
+                            <!--<sort_order>15</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>1</show_in_store>-->
+                        <!--</menu_home>-->
+                        <menu_colors translate="label">
+                            <label>Sticky Menu Colors</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </menu_colors>
+                        <menu_text_color translate="label">
+                            <label>Menu Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </menu_text_color>
+                        <menu_text_color_hover translate="label">
+                            <label>Menu Text Color On Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </menu_text_color_hover>
+                        <menu_background_color translate="label">
+                            <label>Menu Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </menu_background_color>
+                        <menu_background_color_hover translate="label">
+                            <label>Menu Background Color On Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </menu_background_color_hover>
+                        <submenu_background_color translate="label">
+                            <label>Submenu Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </submenu_background_color>
+                        <submenu_background_color_hover translate="label">
+                            <label>Submenu Background Color On Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </submenu_background_color_hover>
+                        <submenu_text_color translate="label">
+                            <label>Submenu Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </submenu_text_color>
+                        <submenu_text_color_hover translate="label">
+                            <label>Submenu Text Color On Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>sticky_menu</menu_type>
+                            </depends>
+                        </submenu_text_color_hover>
+                        <side_menu_colors translate="label">
+                            <label>Side Menu Colors</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>side_menu</menu_type>
+                            </depends>
+                        </side_menu_colors>
+                        <side_menu_background_color translate="label">
+                            <label>Side Menu Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>side_menu</menu_type>
+                            </depends>
+                        </side_menu_background_color>
+                        <side_menu_text_color translate="label">
+                            <label>Side Menu Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>side_menu</menu_type>
+                            </depends>
+                        </side_menu_text_color>
+                        <side_menu_text_color_hover translate="label">
+                            <label>Side Menu Text Color On Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <menu_type>side_menu</menu_type>
+                            </depends>
+                        </side_menu_text_color_hover>
+                    </fields>
+                </menu>
+                <footer>
+                    <label>Footer</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>25</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <footer translate="label">
+                            <label>Footer Type</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer>
+                        <footer_type translate="label">
+                            <label>Footer Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>illusion_settings/system_config_source_footer_type</source_model>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_preview</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer_type>
+                        <footer_contact translate="label">
+                            <label>Footer Contact Block</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer_contact>
+                        <footer_contact_icons>
+                            <label>Footer Contact Icons</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Color of footer icons in Contact block.</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer_contact_icons>
+                        <footer_contact_links>
+                            <label>Footer Contact Links</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Color of footer links in Contact block.</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer_contact_links>
+                        <footer_contact_links_hover>
+                            <label>Footer Contact Links on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Color of footer links in Contact block on Hover.</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer_contact_links_hover>
+                    </fields>
+                </footer>
+                <social translate="label">
+                    <label>Social</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <social_links translate="label">
+                            <label>Social Links</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_links>
+                        <social_links_color translate="label">
+                            <label>Social Links Color</label>
+                            <comment><![CDATA[Color for social links in header and footer]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </social_links_color>
+                        <social translate="label">
+                            <label>Social Links</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social>
+                        <social_skype>
+                            <label>Skype</label>
+                            <comment><![CDATA[Add your Skype name. <strong style="color:red;">Important</strong>: if you left this page empty, Skype button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_skype>
+                        <social_facebook>
+                            <label>Facebook</label>
+                            <comment><![CDATA[Add your Facebook link. <strong style="color:red;">Important</strong>: if you left this page empty, Facebook button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_facebook>
+                        <social_facebook_user>
+                            <label>Facebook Account</label>
+                            <comment><![CDATA[This account will be used for generating facebook block in footer.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_facebook_user>
+                        <social_twitter>
+                            <label>Twitter</label>
+                            <comment><![CDATA[Add your Twitter link. <strong style="color:red;">Important</strong>: if you left this page empty, Twitter button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_twitter>
+                        <social_twitter_user>
+                            <label>Twitter Account</label>
+                            <comment><![CDATA[This account will be used for genereting twitter block in footer.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_twitter_user>
+                        <social_gplus>
+                            <label>Google Plus</label>
+                            <comment><![CDATA[Add your Google Plus link. <strong style="color:red;">Important</strong>: if you left this page empty, Google Plus button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_gplus>
+                        <social_pinterest>
+                            <label>Pinterest</label>
+                            <comment><![CDATA[Add your Pinterest link. <strong style="color:red;">Important</strong>: if you left this page empty, Pinterest button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_pinterest>
+                        <social_dribble>
+                            <label>Dribble</label>
+                            <comment><![CDATA[Add your Dribble link. <strong style="color:red;">Important</strong>: if you left this page empty, Dribble button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_dribble>
+                        <social_flickr>
+                            <label>Flickr</label>
+                            <comment><![CDATA[Add your Flickr link. <strong style="color:red;">Important</strong>: if you left this page empty, Flickr button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_flickr>
+                        <social_flickr_photo_stream>
+                            <label>Flickr Photo Stream</label>
+                            <comment><![CDATA[This id will be used in footer for generating photo stream in footer]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_flickr_photo_stream>
+                        <social_youtube>
+                            <label>YouTube</label>
+                            <comment><![CDATA[Add your YouTube link. <strong style="color:red;">Important</strong>: if you left this page empty, YouTube button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_youtube>
+                        <social_vimeo>
+                            <label>Vimeo</label>
+                            <comment><![CDATA[Add your Vimeo link. <strong style="color:red;">Important</strong>: if you left this page empty, Vimeo button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_vimeo>
+                        <social_instagram>
+                            <label>Instagram</label>
+                            <comment><![CDATA[Add your Instagram link. <strong style="color:red;">Important</strong>: if you left this page empty, Instagram button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_instagram>
+                        <social_linkedin>
+                            <label>LinkedIn</label>
+                            <comment><![CDATA[Add your LinkedIn link. <strong style="color:red;">Important</strong>: if you left this page empty, LinkedIn button won't be shown.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_linkedin>
+                    </fields>
+                </social>
+                <product_box_settings translate="label">
+                    <label>Product Box</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>35</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <rating translate="label">
+                            <label>Show Rating</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </rating>
+                        <category translate="label">
+                            <label>Show Category</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </category>
+                        <price translate="label">
+                            <label>Show price</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </price>
+                        <wishlist translate="label">
+                            <label>Show 'Add to Wishlist'</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </wishlist>
+                        <compare translate="label">
+                            <label>Show 'Add to Compare'</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </compare>
+                    </fields>
+                </product_box_settings>
+                <price_settings translate="label">
+                    <label>Price</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <product_details_color>
+                            <label>Price Color on Product Page</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_details_color>
+                        <product_listing_color>
+                            <label>Price Color on Product Listing</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_listing_color>
+                        <product_onsale_color>
+                            <label>On Sale Price Color Counter</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for Product on Sale]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_onsale_color>
+                    </fields>
+                </price_settings>
+                <add_to_cart translate="label">
+                    <label>Add to Cart</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>45</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <items>
+                            <label>Add to Cart on Product Details Page</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <product_details_addtocart_background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_details_addtocart_background_color>
+                        <product_details_addtocart_background_color_hover>
+                            <label>Background Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_details_addtocart_background_color_hover>
+                        <product_details_addtocart_text_color>
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_details_addtocart_text_color>
+                        <product_details_addtocart_text_color_hover>
+                            <label>Text Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_details_addtocart_text_color_hover>
+                        <items_listing>
+                            <label>Add to Cart on Product Listing Pages</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items_listing>
+                        <product_listing_addtocart_background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_listing_addtocart_background_color>
+                        <product_listing_addtocart_background_color_hover>
+                            <label>Background Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_listing_addtocart_background_color_hover>
+                        <product_listing_addtocart_text_color>
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_listing_addtocart_text_color>
+                        <product_listing_addtocart_text_color_hover>
+                            <label>Text Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </product_listing_addtocart_text_color_hover>
+                    </fields>
+                </add_to_cart>
+                <add_to_wishlist>
+                    <label>Add to Wishlist</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>46</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <items>
+                            <label>Add to Wishlist Button</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <color>
+                            <label>Button Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </color>
+                        <border_color>
+                            <label>Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </border_color>
+                        <background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </background_color>
+                        <color_hover>
+                            <label>Button Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </color_hover>
+                        <border_color_hover>
+                            <label>Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </border_color_hover>
+                        <background_color_hover>
+                            <label>Background Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </background_color_hover>
+                    </fields>
+                </add_to_wishlist>
+                <add_to_compare>
+                    <label>Add to Compare</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>47</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <items>
+                            <label>Add to compare Button</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <color>
+                            <label>Button Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </color>
+                        <border_color>
+                            <label>Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </border_color>
+                        <background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </background_color>
+                        <color_hover>
+                            <label>Button Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </color_hover>
+                        <border_color_hover>
+                            <label>Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </border_color_hover>
+                        <background_color_hover>
+                            <label>Background Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </background_color_hover>
+                    </fields>
+                </add_to_compare>
+                <buttons translate="label">
+                    <label>Buttons</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>48</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <purple_button>
+                            <label>Purple Button</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </purple_button>
+                        <purple_button_color>
+                            <label>Purple Button Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </purple_button_color>
+                        <purple_button_background_border_color>
+                            <label>Purple Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </purple_button_background_border_color>
+                        <purple_button_color_hover>
+                            <label>Purple Button Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </purple_button_color_hover>
+                        <purple_button_background_border_color_hover>
+                            <label>Purple Background and Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </purple_button_background_border_color_hover>
+                        <pink_button>
+                            <label>Pink Button</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pink_button>
+                        <pink_button_color>
+                            <label>Pink Button Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pink_button_color>
+                        <pink_button_background_border_color>
+                            <label>Pink Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pink_button_background_border_color>
+                        <pink_button_color_hover>
+                            <label>Pink Button Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pink_button_color_hover>
+                        <pink_button_background_border_color_hover>
+                            <label>Pink Background and Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pink_button_background_border_color_hover>
+                        <blue_button>
+                            <label>Blue Button</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blue_button>
+                        <blue_button_color>
+                            <label>Blue Button Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>All buttons by default has this color!</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </blue_button_color>
+                        <blue_button_background_border_color>
+                            <label>Blue Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>All buttons by default has this color!</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </blue_button_background_border_color>
+                        <blue_button_color_hover>
+                            <label>Blue Button Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>All buttons by default has this color!</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </blue_button_color_hover>
+                        <blue_button_background_border_color_hover>
+                            <label>Blue Background and Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>All buttons by default has this color!</comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </blue_button_background_border_color_hover>
+                        <dark_button>
+                            <label>Dark Button</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dark_button>
+                        <dark_button_color>
+                            <label>Dark Button Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </dark_button_color>
+                        <dark_button_background_border_color>
+                            <label>Dark Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </dark_button_background_border_color>
+                        <dark_button_color_hover>
+                            <label>Dark Button Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </dark_button_color_hover>
+                        <dark_button_background_border_color_hover>
+                            <label>Dark Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </dark_button_background_border_color_hover>
+                    </fields>
+                </buttons>
+                <tabs translate="label">
+                    <label>Tabs</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>49</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <items>
+                            <label>Tabs Block</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <tabs_text_color>
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </tabs_text_color>
+                        <tabs_background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </tabs_background_color>
+                        <tabs_text_color_active>
+                            <label>Text Color for active tab</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </tabs_text_color_active>
+                        <tabs_background_color_active>
+                            <label>Background Color for active tab</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </tabs_background_color_active>
+                    </fields>
+                </tabs>
+                <pagination translate="label">
+                    <label>Pagination</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <items>
+                            <label>Pagination Block</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <pagination_color>
+                            <label>Pagination Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pagination_color>
+                        <pagination_background_color>
+                            <label>Pagination Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pagination_background_color>
+                        <pagination_color_active>
+                            <label>Pagination Color for active field</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pagination_color_active>
+                        <pagination_background_color_active>
+                            <label>Pagination Background Color for active field</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </pagination_background_color_active>
+                    </fields>
+                </pagination>
+                <product_status translate="label">
+                    <label>Badges</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>51</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <items>
+                            <label>Sale Badge</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+                        <sale_background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </sale_background_color>
+                        <sale_text_color>
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </sale_text_color>
+                        <items_new>
+                            <label>New Badge</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items_new>
+                        <new_background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </new_background_color>
+                        <new_text_color>
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </new_text_color>
+                        <items_sold>
+                            <label>Sold Badge</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items_sold>
+                        <sold_background_color>
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </sold_background_color>
+                        <sold_text_color>
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </sold_text_color>
+                    </fields>
+                </product_status>
+                <accent_color_one translate="label">
+                    <label>Input Field / Carousel / Back to Top</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>52</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <input_field>
+                            <label>Input Field and Textarea</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </input_field>
+                        <input_field_border_color>
+                            <label>Input Field and Textarea Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for all input fields and textareas (not submit button)]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </input_field_border_color>
+                        <input_placeholder_color>
+                            <label>Input Field Placeholder Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Placeholder color for all input fields (not submit button)]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </input_placeholder_color>
+                        <input_color>
+                            <label>Input Field Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for all input fields and textareas (not submit button)]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </input_color>
+                        <icon>
+                            <label>Carousel Icons</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icon>
+                        <icon_color_grey_light>
+                            <label>Carousel Icons Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for carousel icons]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </icon_color_grey_light>
+                        <icon_color_grey_light_hover>
+                            <label>Carousel Icons Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for carousel icons on hover]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </icon_color_grey_light_hover>
+                        <icon_border_color_grey_light>
+                            <label>Carousel Icons Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for carousel icons]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </icon_border_color_grey_light>
+                        <icon_border_color_grey_light_hover>
+                            <label>Carousel Icons Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for carousel icons on Hover]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </icon_border_color_grey_light_hover>
+                        <back_top>
+                            <label>Back to top</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </back_top>
+                        <back_top_color>
+                            <label>Back To Top Icon Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for back to top icon]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </back_top_color>
+                        <back_top_color_hover>
+                            <label>Back To Top Icon Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for back to top icon on hover]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </back_top_color_hover>
+                        <back_top_border_color>
+                            <label>Back To Top Icon Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for back to top icon]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </back_top_border_color>
+                        <back_top_border_color_hover>
+                            <label>Back To Top Icon Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for back to top icon on hover]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </back_top_border_color_hover>
+                    </fields>
+                </accent_color_one>
+                <tooltip>
+                    <label>Tooltip</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>54</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <tooltip_color>
+                            <label>Tooltip Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </tooltip_color>
+                        <tooltip_background_color>
+                            <label>Tooltip Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </tooltip_background_color>
+                    </fields>
+                </tooltip>
+                <breadcrumb>
+                    <label>Breadcrumb</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>55</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Breadcrumbs</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>
+                    </fields>
+                </breadcrumb>
+                <prevnext>
+                    <label>Previous/Next</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Previous/Next Products on Product Details page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>
+                        <prev_next_color>
+                            <label>Prev/Next Icons Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for prev/next icons on product details page]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </prev_next_color>
+                        <prev_next_color_hover>
+                            <label>Prev/Next Icons Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Color for prev/next icons on product details page on hover]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </prev_next_color_hover>
+                        <prev_next_border_color>
+                            <label>Prev/Next Icons Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for prev/next icons]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </prev_next_border_color>
+                        <prev_next_border_color_hover>
+                            <label>Prev/Next Icons Border Color on Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Border color for prev/next icons on hover]]></comment>
+                            <frontend_model>illusion_settings/adminhtml_system_config_form_fields_color</frontend_model>
+                            <backend_model>illusion_settings/system_config_source_color_validate</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </prev_next_border_color_hover>
+                    </fields>
+                </prevnext>
+            </groups>
+        </illusion_settings>
+    </sections>
+</config>

@@ -1,0 +1,112 @@
+<?php
+    $active = false;
+    $featuredProductsEnable = Mage::getStoreConfig('featured_products/settings/enable');
+    $bestsellerProductsEnable = Mage::getStoreConfig('bestseller_products/settings/enable');
+    $newProductsEnable = Mage::getStoreConfig('new_products/settings/enable');
+    $saleProductsEnable = Mage::getStoreConfig('sale_products/settings/enable');
+?>
+
+<div class="tabs product-in-tabs <?php if($this->getLayout()->getBlock('root')->getTemplate() == 'page/home.phtml') echo ' m_top_63 ';?>">
+    <ul class="product-tabs tabs_nav hr_list d_inline_b d_xs_block m_xs_bottom_20">
+
+        <?php $f_products = $this->getChildHtml('illusionfeaturedproducts');?>
+        <?php $b_products = $this->getChildHtml('illusionbestsellerproducts');?>
+        <?php $n_products = $this->getChildHtml('illusionnewproducts');?>
+        <?php $s_products = $this->getChildHtml('illusionsaleproducts');?>
+
+        <?php if($featuredProductsEnable && !empty($f_products)):?>
+            <li class="f_xs_none active" id="product_tabs_1">
+                <?php $active = true;?>
+                <a href="javascript:void(0)" class="color_dark d_block n_sc_hover tr_all_medium">
+                    <?php echo Mage::getStoreConfig('featured_products/settings/title');?>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($bestsellerProductsEnable && !empty($b_products)):?>
+            <li class="f_xs_none <?php if(!$active) echo ' active '; $active = true;?>" id="product_tabs_2">
+                <a href="javascript:void(0)" class="color_dark d_block n_sc_hover tr_all_medium">
+                    <?php echo Mage::getStoreConfig('bestseller_products/settings/title');?>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($newProductsEnable && !empty($n_products)):?>
+            <li class="f_xs_none <?php if(!$active) echo ' active '; $active = true;?>" id="product_tabs_3">
+                <a href="javascript:void(0)" class="color_dark d_block n_sc_hover tr_all_medium">
+                    <?php echo Mage::getStoreConfig('new_products/settings/title');?>
+                </a>
+            </li>
+        <?php endif;?>
+
+        <?php if($saleProductsEnable && !empty($s_products)):?>
+            <li class="f_xs_none <?php if(!$active) echo ' active '; $active = true;?>" id="product_tabs_4">
+                <a href="javascript:void(0)" class="color_dark d_block n_sc_hover tr_all_medium">
+                    <?php echo Mage::getStoreConfig('sale_products/settings/title');?>
+                </a>
+            </li>
+        <?php endif;?>
+
+    </ul>
+
+    <?php if($featuredProductsEnable):?>
+        <div class="product-tabs-content" id="product_tabs_1_contents">
+            <?php echo $this->getChildHtml('illusionfeaturedproducts');?>
+        </div>
+    <?php endif;?>
+
+    <?php if($bestsellerProductsEnable):?>
+        <div class="product-tabs-content" id="product_tabs_2_contents">
+            <?php echo $this->getChildHtml('illusionbestsellerproducts');?>
+        </div>
+    <?php endif;?>
+
+    <?php if($newProductsEnable):?>
+        <div class="product-tabs-content" id="product_tabs_3_contents">
+            <?php echo $this->getChildHtml('illusionnewproducts');?>
+        </div>
+    <?php endif;?>
+
+    <?php if($saleProductsEnable):?>
+        <div class="product-tabs-content" id="product_tabs_4_contents">
+            <?php echo $this->getChildHtml('illusionsaleproducts');?>
+        </div>
+    <?php endif;?>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    Varien.Tabs = Class.create();
+    Varien.Tabs.prototype = {
+        initialize: function(selector) {
+            var self=this;
+            $$(selector+' a').each(this.initTab.bind(this));
+        },
+
+        initTab: function(el) {
+            el.href = 'javascript:void(0)';
+            if ($(el.parentNode).hasClassName('active')) {
+                this.showContent(el);
+            }
+            el.observe('click', this.showContent.bind(this, el));
+        },
+
+        showContent: function(a) {
+            var li = $(a.parentNode), ul = $(li.parentNode);
+            ul.select('li').each(function(el){
+                var contents = $(el.id+'_contents');
+                if (el==li) {
+                    el.addClassName('active');
+                    contents.show();
+                } else {
+                    el.removeClassName('active');
+                    contents.hide();
+                }
+            });
+        }
+    }
+    new Varien.Tabs('.product-tabs');
+    //]]>
+</script>
+
+

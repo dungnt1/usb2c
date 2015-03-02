@@ -1,0 +1,78 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/login.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Login */
+?>
+<h4 class="r_corners wrapper m_bottom_23 counter_inc color_dark"><?php echo $this->__('Login or Create an Account') ?></h4>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="clearfix m_bottom_40">
+    <h5 class="color_dark fw_light m_bottom_23"><?php echo $this->__('New Customers') ?></h5>
+    <p><?php echo $this->__('By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.') ?></p>
+    <ul>
+        <li class="m_bottom_23">
+            <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+        </li>
+    </ul>
+</div>
+
+<div class="clearfix m_bottom_20">
+    <h5 class="color_dark f_left fw_light"><?php echo $this->__('Registered Customers') ?></h5>
+    <p class="fw_light fs_medium f_right required_l"><?php echo $this->__('Required field') ?></p>
+</div>
+<form class="m_bottom_45 m_xs_bottom_30" action="<?php echo $this->getPostActionUrl() ?>" method="post" id="validate-form">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+    <ul>
+        <li class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_8">
+                <i class="icon-user login_icon fs_medium color_grey_light_2"></i>
+                <input type="text" name="login[username]" data-bvalidator="required,email" placeholder="Email Address" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text r_corners color_grey w_full fw_light" title="<?php echo $this->__('Email Address') ?>" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_8">
+                <i class="icon-lock login_icon fs_medium color_grey_light_2"></i>
+                <input type="password" name="login[password]" data-bvalidator="required,minlength[6]" placeholder="Password" class="input-text r_corners color_grey w_full fw_light" id="pass" title="<?php echo $this->__('Password') ?>" />
+            </div>
+        </li>
+        <li class="m_bottom_23">
+            <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+        </li>
+        <li class="clearfix">
+            <button class="button_type_5 f_left m_right_20 tr_all color_blue transparent fs_medium r_corners"><?php echo $this->__('Login') ?></button>
+            <div class="lh_medium">
+                <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="color_scheme color_purple_hover d_inline_b m_bottom_3 fs_small"><?php echo $this->__('Forgot your password?') ?></a><br>
+                <a href="#" class="color_scheme color_purple_hover fs_small d_none"><?php echo $this->__('Forgot your username?') ?></a>
+            </div>
+        </li>
+    </ul>
+    <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+        <input name="context" type="hidden" value="checkout" />
+    <?php endif; ?>
+</form>

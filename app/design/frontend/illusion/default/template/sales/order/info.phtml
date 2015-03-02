@@ -1,0 +1,260 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+<?php $_order = $this->getOrder() ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title title-buttons">
+    <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+    <?php echo $this->getChildHtml('buttons') ?>
+</div>
+<div class="r_corners wrapper border_grey m_bottom_40 m_xs_bottom_30">
+    <table class="table_type_7 responsive_table w_full t_align_l">
+        <tbody>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Order Number') ?>
+            </td>
+            <td data-title="Order Number" class="fw_light">
+                <?php echo $_order->getRealOrderId();?>
+            </td>
+        </tr>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Order Date') ?>
+            </td>
+            <td data-title="Order Date" class="fw_light">
+                <?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
+            </td>
+        </tr>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Product Status') ?>
+            </td>
+            <td data-title="Product Status" class="fw_light">
+                <?php echo $_order->getStatusLabel();?>
+            </td>
+        </tr>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Last Updated') ?>
+            </td>
+            <td data-title="Last Updated" class="fw_light">
+                <?php echo $this->__('Order Date: %s', $this->formatDate($_order->getUpdatedAt(), 'long')) ?>
+            </td>
+        </tr>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Shipment') ?>
+            </td>
+            <td data-title="Shipment" class="fw_light">
+                <?php if ($_order->getShippingDescription()): ?>
+                    <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
+                <?php else: ?>
+                    <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Payment') ?>
+            </td>
+            <td data-title="Payment" class="fw_light">
+                <?php echo $this->getPaymentInfoHtml() ?>
+            </td>
+        </tr>
+        <tr class="tr_delay">
+            <td class="bg_light_2 color_dark d_xs_none">
+                <?php echo $this->__('Total') ?>
+            </td>
+            <td data-title="Total" class="fw_ex_bold color_pink">
+                <?php echo $_order->formatPrice($_order->getGrandTotal());?>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<?php echo $this->getStatusHistoryRssUrl($_order) ?>
+<div class="row">
+    <?php if (!$_order->getIsVirtual()): ?>
+    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_xs_bottom_30">
+        <h5 class="fw_light color_dark m_bottom_23"><?php echo $this->__('Bill To') ?></h5>
+        <div class="r_corners wrapper border_grey wrap_sm">
+            <table class="table_type_7 responsive_table w_full t_align_l">
+                <tbody>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Email') ?>
+                    </td>
+                    <td data-title="Email" class="fw_light w_break">
+                        <a href="mailto:<?php echo $_order->getCustomerEmail();?>" class="color_dark tr_all">
+                            <?php echo $_order->getCustomerEmail();?>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Company Name') ?>
+                    </td>
+                    <td data-title="Company Name" class="fw_light">
+                        <?php echo $_order->getBillingAddress()->getCompany();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Name') ?>
+                    </td>
+                    <td data-title="First Name" class="fw_light">
+                        <?php echo $_order->getBillingAddress()->getName();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Address') ?>
+                    </td>
+                    <td data-title="Address 1" class="fw_light w_break">
+                        <?php echo $_order->getBillingAddress()->getStreet1();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Zip/Postal Code') ?>
+                    </td>
+                    <td data-title="Zip/Postal Code" class="fw_light">
+                        <?php echo $_order->getBillingAddress()->getPostcode();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('City') ?>
+                    </td>
+                    <td data-title="City" class="fw_light">
+                        <?php echo $_order->getBillingAddress()->getCity();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Country') ?>
+                    </td>
+                    <td data-title="Country" class="fw_light">
+                        <?php echo Mage::app()->getLocale()->getCountryTranslation($_order->getBillingAddress()->getCountry());?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('State') ?>
+                    </td>
+                    <td data-title="State" class="fw_light">
+                        <?php echo $_order->getBillingAddress()->getRegion();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Phone') ?>
+                    </td>
+                    <td data-title="Phone" class="fw_light">
+                        <?php echo $_order->getBillingAddress()->getTelephone();?>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <?php endif;?>
+    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_xs_bottom_30">
+        <h5 class="fw_light color_dark m_bottom_23"><?php echo $this->__('Ship To') ?></h5>
+        <div class="r_corners wrapper border_grey wrap_xs">
+            <table class="table_type_7 responsive_table w_full t_align_l">
+                <tbody>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Company Name') ?>
+                    </td>
+                    <td data-title="Company Name" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getCompany();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Name') ?>
+                    </td>
+                    <td data-title="Name" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getName();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Address') ?>
+                    </td>
+                    <td data-title="Address 1" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getStreet1();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Zip/Postal Code') ?>
+                    </td>
+                    <td data-title="Zip/Postal Code" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getPostcode();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('City') ?>
+                    </td>
+                    <td data-title="City" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getCity();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Country') ?>
+                    </td>
+                    <td data-title="Country" class="fw_light">
+                        <?php echo Mage::app()->getLocale()->getCountryTranslation($_order->getShippingAddress()->getCountry());?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('State') ?>
+                    </td>
+                    <td data-title="State" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getRegion();?>
+                    </td>
+                </tr>
+                <tr class="tr_delay">
+                    <td class="bg_light_2 color_dark d_xs_none">
+                        <?php echo $this->__('Phone') ?>
+                    </td>
+                    <td data-title="Phone" class="fw_light">
+                        <?php echo $_order->getShippingAddress()->getTelephone();?>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

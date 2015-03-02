@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0.0">
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/accept-cookies.css</name>
+                <params/>
+            </action>
+            <action method="addJs">
+                <script>illusion/jquery-2.1.0.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>illusion/cookies.js</script>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="illusion_acceptcookies/acceptCookies" name="accept.cookies" template="cookies/popup.phtml" after="-"/>
+        </reference>
+    </default>
+</layout>

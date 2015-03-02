@@ -1,0 +1,7 @@
+<?php if (Mage::getStoreConfig(AW_Blog_Helper_Config::XML_TAGCLOUD_SIZE) && $this->getCollection()->count()): ?>
+    <ul class="hr_list tags_list">
+        <?php foreach ($this->getCollection() as $tag): ?>
+            <li class="m_right_5 m_bottom_5"><a href="<?php echo $this->getTagHref($tag) ?>" class="r_corners button_type_2 d_block color_dark color_pink_hover fs_medium"><?php echo $tag->getTag() ?></a></li>
+        <?php endforeach;?>
+    </ul>
+<?php endif; ?>

@@ -1,0 +1,48 @@
+<div class="col-lg-5 col-md-5 col-sm-5 m_bottom_30">
+    <h5 class="color_dark m_bottom_20 fw_light"><?php echo $this->__('Contact Us') ?></h5>
+    <div class="row">
+        <ul class="col-lg-6 col-md-6 col-sm-6 fw_light w_break m_xs_bottom_8">
+
+            <?php if($phone = Mage::getStoreConfig('general/store_information/phone')):?>
+                <li class="m_bottom_8">
+                    <div class="d_inline_m icon_wrap_size_1 color_pink footer_contact_icons circle m_right_10">
+                        <i class="icon-phone-1"></i>
+                    </div>
+                    <a class="color_dark color_pink_hover footer_contact_links" href="tel:<?php echo $phone;?>"><?php echo $phone;?></a>
+                </li>
+            <?php endif;?>
+
+            <?php if($mail = Mage::getStoreConfig('trans_email/ident_general/email')):?>
+                <li class="m_bottom_8">
+                    <div class="d_inline_m icon_wrap_size_1 color_pink footer_contact_icons circle m_right_10">
+                        <i class="icon-mail-alt"></i>
+                    </div>
+                    <a href="mailto:<?php echo $mail;?>" class="color_black color_pink_hover footer_contact_links"><?php echo $mail;?></a>
+                </li>
+            <?php endif;?>
+
+            <?php if($skype = $this->getBlockConfig('social/social_skype')):?>
+            <li>
+                <div class="d_inline_m icon_wrap_size_1 color_pink footer_contact_icons circle m_right_10">
+                    <i class="icon-skype-1"></i>
+                </div>
+                <a href="skype://<?php echo $skype;?>?call" class="color_dark color_pink_hover footer_contact_links"><?php echo $skype;?></a>
+            </li>
+            <?php endif;?>
+        </ul>
+        <ul class="col-lg-6 col-md-6 col-sm-6 vr_list_type_5">
+            <?php if($address = Mage::getStoreConfig('general/store_information/address')):?>
+                <li class="m_bottom_15 fw_light relative">
+                    <div class="icon_wrap_size_1 color_pink footer_contact_icons circle f_left">
+                        <i class="icon-location"></i>
+                    </div>
+                    <span class="footer_contact_links"><?php echo $address;?></span>
+                </li>
+
+                <li>
+                    <a href="https://maps.google.com/maps?&amp;q=<?php echo $address;?>" target="_blank"  class="button_type_2 color_dark r_corners tr_all color_pink_hover footer_contact_links d_inline_m fs_medium t_md_align_c w_break">Open in Google Maps</a>
+                </li>
+            <?php endif;?>
+        </ul>
+    </div>
+</div>

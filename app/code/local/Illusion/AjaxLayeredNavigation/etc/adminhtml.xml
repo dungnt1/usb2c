@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <illusion>
+            <title>Illusion</title>
+            <sort_order>999</sort_order>
+            <children>
+                <ajaxlayerednavigation>
+                    <title>Ajax Layered Navigation</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/system_config/edit/section/illusion_ajaxlayerednavigation</action>
+                </ajaxlayerednavigation>
+            </children>
+        </illusion>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <illusion_ajaxlayerednavigation>
+                                        <title>Ajax Layered Navigation</title>
+                                    </illusion_ajaxlayerednavigation>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <illusion>
+                        <title>Illusion</title>
+                        <sort_order>999</sort_order>
+                        <children>
+                            <ajaxlayerednavigation>
+                                <title>Ajax Layered Navigation</title>
+                                <sort_order>10</sort_order>
+                                <action>adminhtml/system_config/edit/section/illusion_ajaxlayerednavigation</action>
+                            </ajaxlayerednavigation>
+                        </children>
+                    </illusion>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

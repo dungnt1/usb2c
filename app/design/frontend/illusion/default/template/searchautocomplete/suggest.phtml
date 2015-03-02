@@ -1,0 +1,42 @@
+<?php
+$results=$this->getSuggestProducts();
+$suggests=Mage::helper('catalogsearch')->getSuggestCollection();
+?>
+<ul class="ajaxsearch" >
+    <li style="display:none"></li>
+    <?php
+    if($this->enabledSuggest())
+        foreach($suggests as $_suggest)
+        {
+            echo "<li class=\"suggest t_left\" >{$_suggest->getQueryText()} <span class=\"amount\">{$_suggest->getNumResults()}</span></li>";
+        }
+
+    if($results->count()&&$this->enabledPreview())
+        foreach($results as $pro)
+        {
+            echo "<li class=\"tr_all preview\" >
+
+                <a href=\"{$pro->getProductUrl()}\">";
+                    if($this->isShowImage())
+                    {
+                        echo "<img src=\"{$this->helper('catalog/image')->init($pro, 'small_image')->resize($this->getImageWidth(),$this->getImageHeight())}\"  />";
+                    }
+
+                    echo '<div class="name-desc m_left_10 f_left t_left" style="width: 80%">';
+                        echo '<span>';
+                            if($this->isShowName()) echo "{$pro->getName()}";
+                        echo '</span>';
+                        echo '<p class="fs_ex_small lh_ex_small">';
+                            $cutDesc = substr($pro->getDescription(),0,$this->getNumDescriptionChar()).'...';
+                            if($this->isShowDescription()) echo "{$cutDesc}";
+                        echo '</p>';
+                        echo '</span>';
+                    echo '</div>';
+
+                    echo "</a>
+                </li>";
+        }
+    echo "<li class=\"t_align_c fw_light\"><a class=\"view-all-results\" href=".Mage::helper('catalogsearch')->getResultUrl()."?".Mage::helper('catalogsearch')->getQueryParamName()."=".Mage::helper('catalogsearch')->getQueryText().">View all products results</a></li>";
+
+    ?>
+</ul>

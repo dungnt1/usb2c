@@ -1,0 +1,32 @@
+/* ACCEPT COOKIES */
+.p_05 {
+    padding:0 5px;
+}
+#accept-cookies{
+    position: absolute;
+    top:0;
+    width: 100%;
+    top: 0%;
+    z-index:9997;
+    left: 0%;
+    display: none;
+    padding:10px;
+    text-align:center;
+}
+
+#accept-cookies .container p{
+    display: inline;
+    font-size: 14px;
+    color: #dadcde;
+}
+
+
+@media only screen and (max-width:1200px){
+    #accept-cookies .container p{
+        width: 100%;
+    }
+
+    #accept-cookies .container .color_blue{
+        float:left;
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+    $posts = $this->getRecentPosts(3);
+?>
+
+<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_sm_bottom_30">
+    <h5 class="color_dark fw_light m_bottom_23"><?php echo $this->__('From The Blog') ?></h5>
+    <?php foreach ($posts as $index => $post): ?>
+            <article class="m_bottom_35 m_xs_bottom_20 clearfix">
+                <!--post image-->
+                <a href="<?php echo $this->getBlogUrl(array('', $post->getIdentifier()));?>" class="d_block f_left m_right_20 r_corners wrapper">
+                    <img src="<?php echo $this->getResizedImage($post->getImage(), 80,80, true);?>" width="80" height="80"/>
+                </a>
+                <!--post title & date-->
+                <a href="<?php echo $this->getBlogUrl(array('', $post->getIdentifier()));?>" class="color_dark m_bottom_5 d_block lh_small"><b><?php echo $post->getTitle();?></b></a>
+                <p class="fs_small color_grey"><i><?php echo $this->formatDate($post->getCreatedTime(), Mage::getStoreConfig('blog/blog/dateformat'), true); ?></i></p>
+            </article>
+    <?php endforeach;?>
+</div>

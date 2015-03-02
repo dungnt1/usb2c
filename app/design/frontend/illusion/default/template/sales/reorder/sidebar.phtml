@@ -1,0 +1,90 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Last order sidebar
+ *
+ * @see Mage_Sale_Block_Reorder_Sidebar
+ */
+?>
+<?php $_items = $this->getItems()?>
+<?php if($_items): ?>
+<div class="m_bottom_45 m_xs_bottom_30">
+    <h5 class="color_dark fw_light m_bottom_20"><?php echo $this->__('My Orders') ?></h5>
+    <form method="post" action="<?php echo $this->getFormActionUrl() ?>" id="reorder-validate-detail">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <div class="block-content">
+            <ul class="added_items_list type_2 p_top_0 m_bottom_3">
+            <?php $_showAddButtonFlag = false ?>
+            <?php foreach ($_items as $_item): ?>
+                <li class="clearfix lh_large relative">
+                    <?php $product = Mage::getModel("catalog/product")->load($_item->getProductId());?>
+                    <a class="d_block f_sm_none f_xs_left d_sm_inline_b d_xs_block m_sm_bottom_5 m_xs_bottom_0 f_left m_right_20 r_corners wrapper" href="<?php echo $product->getProductUrl(); ?>">
+                        <img alt="<?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(80);?>"/>
+                    </a>
+                    <a class="color_dark d_block m_bottom_3 lh_small" href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a>
+                    <?php if ($this->isItemAvailableForReorder($_item)): ?>
+                        <?php $_showAddButtonFlag = true ?>
+                        <input type="checkbox" name="order_items[]" id="reorder-item-<?php echo $_item->getId() ?>" value="<?php echo $_item->getId() ?>" title="<?php echo $this->__('Add to Cart') ?>" class="checkbox validate-one-required-by-name" style="display:none;"/>
+                        <label for="reorder-item-<?php echo $_item->getId() ?>" class="d_inline_b"><?php echo $this->__('Reorder') ?></label>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('reorder-item-<?php echo $_item->getId() ?>').advaiceContainer = 'cart-sidebar-reorder-advice-container';
+                        //]]>
+                        </script>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+            <script type="text/javascript">decorateList('cart-sidebar-reorder')</script>
+            <div id="cart-sidebar-reorder-advice-container"></div>
+            <div class="actions">
+                <?php if ($_showAddButtonFlag): ?>
+                    <button class="button_type_6 d_inline_b color_pink transparent r_corners vc_child tr_all add_to_cart_button m_top_10" type="submit">
+                        <span class="d_inline_m clerarfix">
+                            <i class="icon-basket f_left m_right_10 fs_large"></i>
+                            <span class="fs_medium"><?php echo $this->__('Add to Cart') ?></span>
+                        </span>
+                    </button>
+                <?php endif; ?>
+                <a class="color_dark d_inline_b button_type_6 color_blue_hover r_corners tr_all vc_child m_top_10" href="javascript:void(0);">
+                    <span class="d_inline_m">
+                        <i class="icon-docs d_inline_b m_right_5 fs_large"></i>
+                        <span class="fs_medium d_inline_b" onclick="window.location='<?php echo $this->getUrl('customer/account') ?>'"><?php echo $this->__('View All') ?></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<script type="text/javascript">
+//<![CDATA[
+    var reorderFormDetail = new VarienForm('reorder-validate-detail');
+//]]>
+</script>
+<?php endif ?>

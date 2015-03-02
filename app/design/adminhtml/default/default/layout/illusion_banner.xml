@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <!--<illusion_banner_adminhtml_banner_edit>-->
+        <!--<reference name="head">-->
+            <!--<action method="addJs"><script>illusion/jquery-1.7.2.min.js</script></action>-->
+            <!--<action method="addJs"><script>illusion/plugins/mcolorpicker/mcolorpicker.min.js</script></action>-->
+        <!--</reference>-->
+    <!--</illusion_banner_adminhtml_banner_edit>-->
+    <illusion_banner_adminhtml_banner_index>
+        <reference name="content">
+            <block type="illusion_banner/adminhtml_banner" name="illusion_banner.banner"></block>
+        </reference>
+    </illusion_banner_adminhtml_banner_index>
+</layout>

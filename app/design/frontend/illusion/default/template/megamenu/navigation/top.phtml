@@ -1,0 +1,131 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+ *******************************************************/
+?>
+<?php if(Mage::helper('megamenu')->isActive()): ?>
+    <?php $rootMenus = $this->getRootMenu(); ?>
+    <nav>
+        <div class="menu-top">
+            <div id="mt-sticky-menu" class="megamenu-container hidden-xs">
+                <div id="megamenu">
+                    <ul id="mt_megamenu">
+                        <?php foreach($rootMenus as $rootMenu): ?>
+                            <?php echo $this->getLayout()->createBlock($this->getType($rootMenu->getType())->getBlock())->setMenu($rootMenu)->drawItem() ?>
+                        <?php endforeach; ?>
+                        <li>
+                            <div class="background">
+                                <div class="left>"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <?php
+    $enable_mobilemenu = Mage::getStoreConfig('megamenu/general/mobile_menu');
+    if($enable_mobilemenu>0){
+        ?>
+        <div class="navbar visible-xs">
+            <div class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+                            <span class="sr-only"><?php echo $this->__('Navigation');?></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="../" class="navbar-brand"><?php echo $this->__('Navigation');?></a>
+                    </div>
+                    <div class="menuphone">
+                        <nav class="bs-navbar-collapse collapse" role="navigation" style="height: 1px;">
+                            <ul id="mt_drillnmenu" class="nav-accordion">
+                                <?php foreach($rootMenus as $drillMenu): ?>
+                                    <?php echo $this->getLayout()->createBlock($this->getType($drillMenu->getType())->getBlock())->setMenu($drillMenu)->drawDrillItem() ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $jMega(window).load(function() {
+                    $jMega("#mt_drillnmenu").mtDrillMenu({
+                        accordion:true,
+                        speed: 500,
+                        closedSign: 'collapse',
+                        openedSign: 'expand',
+                        mouseType: 0,
+                        easing: 'easeInOutQuad'
+                    });
+                });
+            </script>
+        </div>
+    <?php }?>
+    <script type="text/javascript">
+        //<!CDATA[
+        var megamenu = new Megamenu('megamenu', {
+            transition: Effect.Transitions.backOut,
+            fancy : <?php echo Mage::helper('megamenu')->isActiveFancy() ?>,
+            duration: <?php echo Mage::helper('megamenu')->getDuration() ?>
+        });
+        <?php if(Mage::helper('megamenu')->isActiveFancy()>0){?>
+        $jMega(window).load(function() {
+            $jMega(function() {
+                $jMega("#mt_megamenu").funcyMenu({
+                    fx: "linear",
+                    speed: 400,
+                    click: function(event, menuItem) {
+                        return false;
+                    }
+                });
+            });
+        });
+        <?php }?>
+        $jMega(window).load(function(){
+            var WindowX  = $jMega(window).width();
+            var container = $jMega('#mt_megamenu');
+            $jMega('li.parent', container).hover(
+                function () {
+                    child = $jMega(this).children('.childcontent');
+                    child.css("left","0px");
+                    child.slideDown(250);
+                    var boxX 	 = child.width();
+                    var inputPOS = $jMega(this).position();
+                    var inputX 	 = $jMega(this).width();
+                    if((inputPOS.left > boxX) && (WindowX - boxX < inputPOS.left)) {
+                        child.css("right", WindowX - inputPOS.left - inputX);
+                    }
+                    /* Menu Center */
+                    else if((inputPOS.left < boxX) && (WindowX - inputPOS.left < boxX)) {
+                        child.css("left", -(WindowX - boxX));
+                    }
+                },function(){
+                    child = $jMega(this).children('.childcontent');
+                    child.css("left","0px");
+                    child.slideUp(150);
+                    var boxX 	 = child.width();
+                    var inputPOS = $jMega(this).position();
+                    var inputX 	 = $jMega(this).width();
+                    if((inputPOS.left > boxX) && (WindowX - boxX < inputPOS.left)) {
+                        child.css("right", WindowX - inputPOS.left - inputX);
+                    }
+                    /* Menu Center */
+                    else if((inputPOS.left < boxX) && (WindowX - inputPOS.left < boxX)) {
+                        child.css("left", -(WindowX - boxX));
+                    }
+                }
+            );
+            <?php if('sticky_menu' == Mage::getStoreConfig('illusion_settings/menu/menu_type')):?>
+//            $jMega("#mt-sticky-menu").sticky({ topSpacing: 0 });
+            <?php endif;?>
+        });
+        //]]>
+    </script>
+<?php endif; ?>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+
+    <cms_index_index translate="label">
+        <reference name="head">
+            <action method='addItem'><type>skin_js</type><name>js/msrp.js</name><params/></action>
+        </reference>
+        <!--<reference name="content">-->
+            <!--<block type="illusion_settings/settings" name="illusion.product.tabs" template="catalog/product/products_in_tabs.phtml" after="illusion.slider">-->
+                <!--<block type="illusion_featuredproducts/featuredproducts" name="illusionfeaturedproducts" as="illusionfeaturedproducts" template="catalog/product/featured_products.phtml"/>-->
+                <!--<block type="illusion_bestsellerproducts/bestsellerproducts" name="illusionbestsellerproducts" as="illusionbestsellerproducts" template="catalog/product/bestseller_products.phtml"/>-->
+                <!--<block type="illusion_newproducts/newproducts" name="illusionnewproducts" as="illusionnewproducts" template="catalog/product/new_products.phtml"/>-->
+                <!--<block type="illusion_saleproducts/saleproducts" name="illusionsaleproducts" as="illusionsaleproducts" template="catalog/product/sale_products.phtml"/>-->
+            <!--</block>-->
+        <!--</reference>-->
+    </cms_index_index>
+</layout>
