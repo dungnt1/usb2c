@@ -6135,6 +6135,7 @@ li .menu-label{
     width: 50%;
     float: left;
     display: block;
+    overflow: hidden;
 }
 .quote-sidebar-form .capacity {
     width: 50%;
@@ -6151,74 +6152,75 @@ li .menu-label{
     overflow: hidden;
 }
 
+
 /*FEATURE BOXES*/
-section {width:100%; margin:15px auto 25px;}
-figure, figure img, .clients img {-webkit-transition:all .3s; -moz-transition:all .3s; -o-transition:all .3s; -ms-transition:all .3s; /* transition:all .3s; */}
-.figwrap {display:block; float:left; width:49%; margin-right:2%; overflow:visible; border:0; outline:0;
+.cf {width:100%; margin:15px auto 25px;}
+.cf figure, .cf figure img, .cf .clients img {-webkit-transition:all .3s; -moz-transition:all .3s; -o-transition:all .3s; -ms-transition:all .3s; /* transition:all .3s; */}
+.cf .figwrap {display:block; float:left; width:49%; margin-right:2%; overflow:visible; border:0; outline:0;
     -webkit-perspective:1780px; -moz-perspective:1780px; -ms-perspective:1780px; perspective:1780px;
     -webkit-perspective-origin:bottom; -moz-perspective-origin:bottom; perspective-origin:bottom;}
-.figwrap:last-child {margin:0; float:right;}
-figure {display:block; position:relative; border:8px solid #f3f3f3; background:#f3f3f3; outline:0;
+.cf .figwrap:last-child {margin:0; float:right;}
+.cf figure {display:block; position:relative; border:8px solid #f3f3f3; background:#f3f3f3; outline:0;
     -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
-figure a {display:block; height:100%; width:100%; overflow:hidden; margin:0; padding:0; position:relative;}
-figure a img {display:block; width:100%; border:none; outline:none; margin:0 auto; -webkit-backface-visibility:hidden;}
-.Category {width:23.5%;}
+.cf figure a {display:block; height:100%; width:100%; overflow:hidden; margin:0; padding:0; position:relative;}
+.cf figure a img {display:block; width:100%; border:none; outline:none; margin:0 auto; -webkit-backface-visibility:hidden;}
+.cf .Category {width:23.5%;}
 
-figure h1, figure h2, figure h3 {display:inline-block; position:absolute; margin:0; bottom:8px; left:0; width:auto; padding:6px 15px 4px 8px; background:rgba(0,0,0,.6);
+.cf figure h1, figure h2, figure h3 {display:inline-block; position:absolute; margin:0; bottom:8px; left:0; width:auto; padding:6px 15px 4px 8px; background:rgba(0,0,0,.6);
     text-shadow:1px 1px 0 rgba(20,20,20,.5); font-family:'Oswald'; font-weight:400; color:#fff; text-transform:uppercase; font-size:32px; line-height:1;
     -webkit-transition:all .2s linear; -moz-transition:all .2s linear; -o-transition:all .2s linear; transition:all .2s linear;
     -moz-box-sizing:content-box; -webkit-box-sizing:content-box; box-sizing:content-box;
     -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; -ms-backface-visibility:hidden; backface-visibility:hidden;}
-figure h3 {font-size:28px;}
-.Category h3 {font-size:22px;}
-span.oddball {font-size:120%;}
-figure p, figcaption span {line-height:1.6; margin:6px 0 0; color:#000; padding:8px;}
-figcaption {position:absolute; opacity:0; bottom:-16px; left:-8px; padding:8px; background:orange; color:#fff; width:100%; height:40%; overflow:hidden;
+.cf figure h3 {font-size:28px;}
+.cf .Category h3 {font-size:22px;}
+.cf span.oddball {font-size:120%;}
+.cf figure p, figcaption span {line-height:1.6; margin:6px 0 0; color:#000; padding:8px;}
+.cf figcaption {position:absolute; opacity:0; bottom:-16px; left:-8px; padding:8px; background:orange; color:#fff; width:100%; height:40%; overflow:hidden;
     -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; -ms-backface-visibility:hidden; backface-visibility:hidden;
     -webkit-transform-origin:center bottom; -moz-transform-origin:center bottom; transform-origin:center bottom;
     -webkit-transform:rotateX(-90deg); -moz-transform:rotateX(-90deg); -ms-transform:rotateX(-90deg); -o-transform:rotateX(-90deg); transform:rotateX(-90deg);
     -webkit-transition:-webkit-transform 0.4s, opacity 0.1s 0.3s; -moz-transition:-moz-transform 0.4s, opacity 0.1s 0.3s; transition:transform 0.4s, opacity 0.1s 0.3s;}
-figcaption span {display:block; color:#fff; font-size:13px; font-weight:bold; margin-top:0; padding-top:0;}
-figcaption a {display:block; padding:11px 16px; background-color:#fff; color:orange; line-height:1; height:auto; width:50%; font-size:18px; font-weight:bold; margin:15px auto 0;
+.cf figcaption span {display:block; color:#fff; font-size:13px; font-weight:bold; margin-top:0; padding-top:0;}
+.cf figcaption a {display:block; padding:11px 16px; background-color:#fff; color:orange; line-height:1; height:auto; width:50%; font-size:18px; font-weight:bold; margin:15px auto 0;
     text-align:center; opacity:0; position:relative; overflow:visible;
     -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;
     -moz-transform:translateY(100px); -ms-transform:translateY(100px); -webkit-transform:translateY(100px); transform:translateY(100px);
     -moz-transition:all .3s ease-in-out .1s, color .3s; -webkit-transition:all .3s ease-in-out .1s, color .3s; -o-transition:all .3s ease-in-out .1s, color .3s; transition:all .3s ease-in-out .1s, color .3s;
     -moz-box-shadow:0 0 0 4px #fff; -webkit-box-shadow:0 0 0 4px #fff; box-shadow:0 0 0 4px #fff;}
-figcaption a:after {pointer-events:none; position:absolute; width:100%; height:100%; content:''; background:#fff; top:-2px; left:-2px; padding:2px; z-index:-1;
+.cf figcaption a:after {pointer-events:none; position:absolute; width:100%; height:100%; content:''; background:#fff; top:-2px; left:-2px; padding:2px; z-index:-1;
     -webkit-transition:-webkit-transform .2s, opacity .3s; -moz-transition:-moz-transform .2s, opacity .3s; transition:transform .2s, opacity .3s;
     -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; -webkit-box-sizing:content-box; -moz-box-sizing:content-box; box-sizing:content-box;}
 
-figure:hover, figure:hover h1, figure:hover h2, figure:hover h3 {background-color:orange; border-color:orange;}
-figure:hover h1, figure:hover h2, figure:hover h3 {color:#fff; left:-2px; bottom:13px; text-shadow:-1px -1px 1px rgba(0,0,0,.2), 1px 1px 1px rgba(255,255,255,0.5);
+.cf figure:hover, figure:hover h1, figure:hover h2, figure:hover h3 {background-color:orange; border-color:orange;}
+.cf figure:hover h1, figure:hover h2, figure:hover h3 {color:#fff; left:-2px; bottom:13px; text-shadow:-1px -1px 1px rgba(0,0,0,.2), 1px 1px 1px rgba(255,255,255,0.5);
     -moz-box-shadow:inset -1px 2px 1px rgba(255,255,255,.25), 1px 5px 0 #c60, 1px 1px 0 #c60, 2px 2px 0 #c60, 3px 3px 0 #c60, 3px 4px 0 #c60, 3px 5px 0 #c60, 4px 8px 3px -1px rgba(0,0,0,.4);
     -webkit-box-shadow:inset -1px 2px 1px rgba(255,255,255,.25), 1px 5px 0 #c60, 1px 1px 0 #c60, 2px 2px 0 #c60, 3px 3px 0 #c60, 3px 4px 0 #c60, 3px 5px 0 #c60, 4px 8px 3px -1px rgba(0,0,0,.4);
     box-shadow:inset -1px 2px 1px rgba(255,255,255,.25), 1px 5px 0 #c60, 1px 1px 0 #c60, 2px 2px 0 #c60, 3px 3px 0 #c60, 3px 4px 0 #c60, 3px 5px 0 #c60, 4px 8px 3px -1px rgba(0,0,0,.4);}
-figure:hover figcaption {opacity:1; -webkit-transform:rotateX(0deg); -moz-transform:rotateX(0deg); -ms-transform:rotateX(0deg); -o-transform:rotateX(0deg); transform:rotateX(0deg);
+.cf figure:hover figcaption {opacity:1; -webkit-transform:rotateX(0deg); -moz-transform:rotateX(0deg); -ms-transform:rotateX(0deg); -o-transform:rotateX(0deg); transform:rotateX(0deg);
     -webkit-transition:-webkit-transform .4s, opacity .1s; -moz-transition:-moz-transform .4s, opacity .1s; -o-transition:transform .4s, opacity .1s; transition:transform .4s, opacity .1s;}
-figure:hover img {-webkit-transform:scale(1.15); -moz-transform:scale(1.15); -ms-transform:scale(1.15); -o-transform:scale(1.15); transform:scale(1.15);}
-figure:hover figcaption a {opacity:1; -moz-transform:translateY(0px); -ms-transform:translateY(0px); -webkit-transform:translateY(0px); transform:translateY(0px);}
-figcaption a:hover {color:#fff; background-color:orange;}
-figcaption a:active {top:1px; color:darkorange; background:none; -moz-box-shadow:0 0 0 4px darkorange; -webkit-box-shadow:0 0 0 4px darkorange; box-shadow:0 0 0 4px darkorange;
+.cf figure:hover img {-webkit-transform:scale(1.15); -moz-transform:scale(1.15); -ms-transform:scale(1.15); -o-transform:scale(1.15); transform:scale(1.15);}
+.cf figure:hover figcaption a {opacity:1; -moz-transform:translateY(0px); -ms-transform:translateY(0px); -webkit-transform:translateY(0px); transform:translateY(0px);}
+.cf figcaption a:hover {color:#fff; background-color:orange;}
+.cf figcaption a:active {top:1px; color:darkorange; background:none; -moz-box-shadow:0 0 0 4px darkorange; -webkit-box-shadow:0 0 0 4px darkorange; box-shadow:0 0 0 4px darkorange;
     -webkit-transition:all .1s linear 0; -moz-transition:all .1s linear 0; -o-transition:all .1s linear 0; transition:all .1s linear 0;}
-figcaption a:hover:after, figcaption a:active:after {opacity:0;
+.cf figcaption a:hover:after, figcaption a:active:after {opacity:0;
     -webkit-transform:scale(1.3,1.5); -moz-transform:scale(1.3,1.5); -ms-transform:scale(1.3,1.5); -o-transform:scale(1.3,1.5); transform:scale(1.3,1.5);}
-figcaption a:active:after {background:transparent; opacity:0;}
+.cf figcaption a:active:after {background:transparent; opacity:0;}
 
-p.mission {display:block; font-size:24px; line-height:1.6; width:100%; color:#333; text-align:center; font-weight:bold; padding:15px 0; margin:0 auto 15px; position:relative;
+.cf p.mission {display:block; font-size:24px; line-height:1.6; width:100%; color:#333; text-align:center; font-weight:bold; padding:15px 0; margin:0 auto 15px; position:relative;
     border:1px solid #f3f3f3; border-left:0; border-right:0; font-family:'Oswald'; font-weight:300; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
-p.mission a {font-family:'Oswald';}
-p.mission a:hover {border-bottom:1px solid #06f;}
-p.mission strong {font-weight:400;}
-p.mission:first-child {border-top:0; padding-top:5px;}
+.cf p.mission a {font-family:'Oswald';}
+.cf p.mission a:hover {border-bottom:1px solid #06f;}
+.cf p.mission strong {font-weight:400;}
+.cf p.mission:first-child {border-top:0; padding-top:5px;}
 
-ul#clients {width:100%; padding:0; margin:10px auto 0; border:0; text-align:center;}
-li[class^="icon-"] {list-style:none; display:inline-block; text-align:center; vertical-align:middle; min-width:64px; padding:10px 0; margin:0 26px 0 0; opacity:.45;
+.cf ul#clients {width:100%; padding:0; margin:10px auto 0; border:0; text-align:center;}
+.cf li[class^="icon-"] {list-style:none; display:inline-block; text-align:center; vertical-align:middle; min-width:64px; padding:10px 0; margin:0 26px 0 0; opacity:.45;
     -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-transition:all .3s; -moz-transition:all .3s; -o-transition:all .3s; -ms-transition:all .3s; transition:all .3s;}
-li[class^="icon-"]:hover {opacity:.75; -webkit-transform:scale(1.15); -moz-transform:scale(1.15); -ms-transform:scale(1.15); -o-transform:scale(1.15); transform:scale(1.15);}
-li[class^="icon-"]:before {font-size:42px; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
-ul#clients li:nth-of-type(8n), ul#clients li:last-of-type {margin-right:0;}
-li[class^="icon-"]>span {display:block; height:0; width:0; overflow:hidden; text-indent:100%;}
+.cf li[class^="icon-"]:hover {opacity:.75; -webkit-transform:scale(1.15); -moz-transform:scale(1.15); -ms-transform:scale(1.15); -o-transform:scale(1.15); transform:scale(1.15);}
+.cf li[class^="icon-"]:before {font-size:42px; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+.cf ul#clients li:nth-of-type(8n), ul#clients li:last-of-type {margin-right:0;}
+.cf li[class^="icon-"]>span {display:block; height:0; width:0; overflow:hidden; text-indent:100%;}
 
 /* NEWSWRAP */
 #NewsWrap {clear:both; width:100%; border-top:0;}

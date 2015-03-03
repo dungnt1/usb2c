@@ -87,17 +87,15 @@
     </div><!-- END QUICK QUOTE SIDEBAR -->
     <script>
         jQuery('.quote-sidebar-form').css('width','0');
-        jQuery('.quote-sidebar-form textarea').hide();
+
           jQuery('.btn.toggle-quote').click(function () {
             if(jQuery('.quote-sidebar-form').width() == 0) {
                 jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {
                 });
-                jQuery('.quote-sidebar-form textarea').show();
             }
             else
                 jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {
                 });
-                jQuery('.quote-sidebar-form textarea').hide();
         });
     </script>
 
