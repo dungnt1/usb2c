@@ -10,7 +10,7 @@
     <?php if($footerType == 'footer_1'):?>
     <!--START SOCIAL SIDEBAR-->
     <?php if(Mage::getStoreConfig('social/social_conf/active')): ?>
-    
+
     <div class="block-social-right">
         <ul>
             <li>
@@ -32,7 +32,7 @@
                 <a id="mail-btn" class="socialitems" href="<?php echo Mage::getStoreConfig('social/social_conf/email') ?>" target="_blank"> <span class="social-icon"> <span class="social-text">Mail To</span> </span> </a>
             </li>
         </ul>
-    </div>   
+    </div>
     <?php endif; ?>
     <script>
         jQuery(document).ready(function($) {
@@ -45,8 +45,8 @@
                 $(this).stop();
                 $(this).animate({width: '43'}, 500, 'swing', function () {
                 });
-            });        
-        }); 
+            });
+        });
     </script><!--END SOCIAL SIDEBAR-->
 
     <div id="quote-sidebar"><!-- START QUICK QUOTE SIDEBAR update code ver2-->
@@ -87,15 +87,17 @@
     </div><!-- END QUICK QUOTE SIDEBAR -->
     <script>
         jQuery('.quote-sidebar-form').css('width','0');
-
+        jQuery('.quote-sidebar-form textarea').hide();
           jQuery('.btn.toggle-quote').click(function () {
             if(jQuery('.quote-sidebar-form').width() == 0) {
                 jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {
                 });
+                jQuery('.quote-sidebar-form textarea').show();
             }
             else
                 jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {
                 });
+                jQuery('.quote-sidebar-form textarea').hide();
         });
     </script>
 
@@ -104,10 +106,10 @@
         <div class="container relative">
             <div class="row">
                 <?php echo $this->getChildHtml('illusion.footer.contact_us_1');?>                                       <!--contact-->
-                <?php echo $this->getChildHtml('illusion.footer.stores');?>                                             <!-- stores -->
+                <?php // echo $this->getChildHtml('illusion.footer.stores');?>                                             <!-- stores -->
 
                 <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
-                    <?php $illusionInformation = Mage::getModel('cms/block')->load('illusion_information_block'); ?>
+                    <?php $illusionInformation = Mage::getModel('cms/block')->load('illusion_services_block'); ?>
                     <?php if($illusionInformation->getIsActive()):?>
                         <h5 class="color_dark m_bottom_20 fw_light"><?php echo $illusionInformation->getTitle(); ?></h5>
                         <?php echo $illusionInformation->getContent();?>
@@ -116,7 +118,16 @@
                 </div>
 
                 <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
-                    <?php $illusionOffers = Mage::getModel('cms/block')->load('illusion_offers_block'); ?>
+                    <?php $illusionInformation = Mage::getModel('cms/block')->load('illusion_solutions_block'); ?>
+                    <?php if($illusionInformation->getIsActive()):?>
+                        <h5 class="color_dark m_bottom_20 fw_light"><?php echo $illusionInformation->getTitle(); ?></h5>
+                        <?php echo $illusionInformation->getContent();?>
+                    <?php endif;?>
+                    <!-- cms block -->
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30">
+                    <?php $illusionOffers = Mage::getModel('cms/block')->load('illusion_support_block'); ?>
                     <?php if($illusionOffers->getIsActive()):?>
                         <h5 class="color_dark m_bottom_20 fw_light"><?php echo $illusionOffers->getTitle(); ?></h5>
                         <?php echo $illusionOffers->getContent();?>
@@ -133,7 +144,7 @@
     <hr class="m_bottom_45 divider_type_3 m_xs_bottom_30">
     <div class="container">
         <div class="row">
-            <?php echo $this->getChildHtml('illusion.footer.social.footer_1');?>                                             <!--social buttons-->
+            <?php // echo $this->getChildHtml('illusion.footer.social.footer_1');?>                                             <!--social buttons-->
 
             <div class="col-lg-6 col-md-5 col-sm-6 m_xs_bottom_30 t_xs_align_l t_align_r">
                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('illusion_credit_card_footer_block')->toHtml(); ?>
