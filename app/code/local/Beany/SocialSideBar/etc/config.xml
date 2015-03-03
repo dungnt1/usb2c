@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Beany_SocialSideBar>
+      <version>0.1.0</version>
+    </Beany_SocialSideBar>
+  </modules>
+  <global>
+    <helpers>
+      <socialsidebar>
+        <class>Beany_SocialSideBar_Helper</class>
+      </socialsidebar>
+    </helpers>
+  </global>
+</config> 

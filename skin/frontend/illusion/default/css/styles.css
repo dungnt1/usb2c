@@ -6035,3 +6035,36 @@ li .menu-label{
 .sticky_part.bg_light {
     text-align: center;
 }
+
+
+
+/*--------------customized style----------*/
+/*Menu*/
+.sub_menu { margin-left: 40px }
+.sub_menu > li { text-align:center }
+
+/*Social Right*/
+.block-social-right { right:0; position:fixed; top:150px; width:45px; z-index:999}
+.social-icon { background:url(../images/social-icons.png) 0 0 no-repeat; display:block; float:right; width:43px; height:43px; margin-bottom:2px;}
+.social-text { float:left; font-size: 11px; margin: 13px 0 11px 44px; white-space:nowrap; color:#fff}
+.social-icons a:hover { text-decoration:none }
+#facebook-btn span { background-position: 13px 7px}
+#linkedin-btn span { background-position: 12px -266px}
+#twitter-btn span { background-position: 13px -39px }
+#youtube-btn span { background-position: 12px -230px }
+#pinterest-btn span { background-position: 12px -181px }
+#googleplus-btn span { background-position: 13px -132px }
+#instagram-btn span { background-position: 10px -300px }
+#flickr-btn span { background-position: 10px -335px }
+#web-btn span { background-position: 10px -403px }
+#mail-btn span { background-position: 10px -369px }
+#facebook-btn .social-icon { background-color:#3B5998 }
+#linkedin-btn .social-icon { background-color:#6eb8da }
+#twitter-btn .social-icon { background-color:#62BDB2 }
+#googleplus-btn .social-icon { background-color:#DB4A39 }
+#pinterest-btn .social-icon { background-color:#DB4A39 }
+#youtube-btn .social-icon { background-color:#C4302B }
+#instagram-btn .social-icon { background-color:#D2C5B3 }
+#flickr-btn .social-icon{ background-color:#E4006B}
+#mail-btn .social-icon { background-color:#2A056F}
+#web-btn .social-icon { background-color:#000}
