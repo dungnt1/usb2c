@@ -6068,3 +6068,78 @@ li .menu-label{
 #flickr-btn .social-icon{ background-color:#E4006B}
 #mail-btn .social-icon { background-color:#2A056F}
 #web-btn .social-icon { background-color:#000}
+
+/* QUICK QUOTE SIDEBAR */
+#quote-sidebar {right:auto; left:0;}
+#quote-sidebar div.quote {left:0; background-color:orange; font-size:20px; cursor:pointer; -moz-border-radius:0 3px 3px 0; -webkit-border-radius:0 3px 3px 0; border-radius:0 3px 3px 0;}
+#quote-sidebar > div.quick-quote {float:left; height:310px;}
+#quote-sidebar:hover div.quick-quote, #quote-sidebar.hover div.quick-quote {width:297px;}
+#quote-sidebar ul {height:auto; width:250px; background-color:orange; left:auto; right:0; padding:10px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;
+  -webkit-transition:opacity .3s; -moz-transition:opacity .3s; -ms-transition:opacity .3s; -o-transition:opacity .3s; transition:opacity .3s;}
+  #quote-sidebar form {position:relative; width:100%; height:100%; line-height:1.5;}
+#quote-sidebar label {display:block; font:12px "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; height:0; color:#fff; margin-bottom:0;}
+#quote-sidebar input, #quote-sidebar select, #quote-sidebar textarea {border:0; outline:0; width:100%; padding:0; margin:2px 0 0; box-shadow:none;
+ font:12px "Trebuchet MS", Arial, Helvetica, sans-serif; vertical-align:middle; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
+#quote-sidebar input, #quote-sidebar select {height:25px; line-height:25px; position:relative; top:0; color:#333;}
+#quote-sidebar input {text-align:center;}
+#quote-sidebar option:hover {background-color:orange;}
+#quote-sidebar label.custom-select {position:relative;}
+#quote-sidebar label.custom-select:after {content:'▼'; position:absolute; right:0; bottom:0; font-size:80%; line-height:25px; padding:0 7px; background:#fff; color:orange; pointer-events:none;
+  -moz-border-radius:0 2px 2px 0; -webkit-border-radius:0 2px 2px 0; border-radius:0 2px 2px 0;}
+ #quote-sidebar textarea {resize:none; height:75px; padding:5px; font-size:11px; line-height:16px; color:#333; vertical-align:top;
+  -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+#quote-sidebar button {width:100%;}
+#quote-sidebar input:focus, #quote-sidebar select:focus, #quote-sidebar textarea:focus,
+#quote-sidebar input:hover, #quote-sidebar select:hover, #quote-sidebar textarea:hover {-moz-box-shadow:0 0 0 1px #c60; -webkit-box-shadow:0 0 0 1px #c60; box-shadow:0 0 0 1px #c60;}
+#quote-sidebar label:hover:after, #quote-sidebar label:active:after {color:#c60;}
+#quote-sidebar label.custom-select.focus:after {color:#c60 !important;}
+#quote-sidebar ul li {padding:0 0 6px;}
+#quote-sidebar ul li.hide {display:none;}
+#quote-sidebar ul li:nth-child(2), #quote-sidebar ul li:nth-child(3) {float:left; width:48%;} /*Quantity / Capacity*/
+#quote-sidebar ul li:nth-child(2) label, #quote-sidebar ul li:nth-child(3) label {height:auto;} /*Quantity / Capacity*/
+#quote-sidebar ul li:nth-child(2) {margin-right:4%;} /*Quantity*/
+#quote-sidebar ul li:nth-child(2) input {text-align:center;}
+#quote-sidebar ul li:nth-child(2):before {background-color:orange; left:-13px; right:auto; margin-top:-21px;}
+#quote-sidebar ul li:nth-child(4) {clear:both;} /*Name*/
+#quote-sidebar ul li:last-child {text-align:center; padding:0;} /*Submit*/
+#quote-sidebar > div.quick-quote, #quote-sidebar ul {-webkit-transition-delay:1s; transition-delay:1s;}
+#quote-sidebar:hover div.quick-quote, #quote-sidebar:hover ul, #quote-sidebar button {-webkit-transition-delay:0s; transition-delay:0s;}
+
+#quote-sidebar {
+    display: block;
+    position: fixed;
+    width: 297px;
+    height: 310px;
+    top: 150px;
+    z-index:999;
+}
+
+#quote-sidebar .row, #quote-sidebar .capacity, #quote-sidebar .quantity {
+    padding: 10px;
+}
+.btn.toggle-quote {
+    background-color: red;
+    display: inline-block;
+    float: left;
+    height: 36px;
+    width: 36px;
+}
+.quote-sidebar-form {
+    background-color: #FFA500;
+    float: right;
+}
+.quote-sidebar-form input[type="text"],.quote-sidebar-form input[type="email"], .quote-sidebar-form input[type="number"]{
+    background-color : #fff; 
+}
+.quote-sidebar-form  .quantity {
+    border: 0px !important;
+    width: 50%;
+    float: left;
+    display: block;
+}
+
+.quote-sidebar-form  .capacity {
+    width: 50%;
+    float: right;
+    display: block;
+}

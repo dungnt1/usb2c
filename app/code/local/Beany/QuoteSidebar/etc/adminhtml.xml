@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<quote_conf translate="title" module="quotesidebar">
+											<title>Quick Quote Configuration Section</title>
+											<sort_order>0</sort_order>
+										</quote_conf>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>

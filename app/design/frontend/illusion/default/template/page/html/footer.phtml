@@ -8,7 +8,9 @@
     ?>
 
     <?php if($footerType == 'footer_1'):?>
+    <!--START SOCIAL SIDEBAR-->
     <?php if(Mage::getStoreConfig('social/social_conf/active')): ?>
+    
     <div class="block-social-right">
         <ul>
             <li>
@@ -30,7 +32,7 @@
                 <a id="mail-btn" class="socialitems" href="<?php echo Mage::getStoreConfig('social/social_conf/email') ?>" target="_blank"> <span class="social-icon"> <span class="social-text">Mail To</span> </span> </a>
             </li>
         </ul>
-    </div>                
+    </div>   
     <?php endif; ?>
     <script>
         jQuery(document).ready(function($) {
@@ -45,7 +47,54 @@
                 });
             });        
         }); 
+    </script><!--END SOCIAL SIDEBAR-->
+
+
+    <div id="quote-sidebar"><!-- START QUICK QUOTE SIDEBAR update code ver2-->
+        <div class="btn toggle-quote"></div>
+        <div class="quote-sidebar-form">
+            <form name="quick-quote-data" action="<?php echo Mage::getBaseUrl() ?>quickquote">
+                <div class="row">
+                    <div class="quantity">
+                        <input name="quantity" type="number" placeholder="Quantity" value="100" required/>
+                    </div>
+                    <div class="capacity">
+                        <select name="capacity" required>
+                            <option value="1GB">1GB</option>
+                            <option value="2GB">3GB</option>
+                            <option value="4GB">4GB</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <input name="name" type="text" placeholder="<?php echo $this->__('Enter Your Full Name Here') ?>" required/>
+                </div>
+                <div class="row">
+                    <input name="email" type="email" placeholder="<?php echo $this->__('Enter Your Valid Email Here') ?>" required/>
+                </div>
+                <div class="row">
+                    <input name="phone" type="text" placeholder="<?php echo $this->__('Enter Your Phone Number Here') ?>" required/>
+                </div>
+                <div class="row">
+                    <textarea name="content" placeholder="<?php echo $this->__('Please jot down any questions or other important details.') ?>" required></textarea>
+                </div>
+                <div class=row>
+                    <button type="submit"><?php echo $this->__('Submit quick quote') ?></button>
+                </div>
+            </form>
+        </div><!--end .quote-sidebar-form-->
+    </div><!-- END QUICK QUOTE SIDEBAR -->
+    <script>
+          jQuery('.btn.toggle-quote').click(function () {
+                if(jQuery('.quote-sidebar-form').width() == 0)
+                    jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {
+                    });
+                else
+                  jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {
+                    });
+            });
     </script>
+
     <!--top part-->
     <section class="footer_top_part">
         <div class="container relative">
