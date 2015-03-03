@@ -49,14 +49,15 @@
         }); 
     </script><!--END SOCIAL SIDEBAR-->
 
-
     <div id="quote-sidebar"><!-- START QUICK QUOTE SIDEBAR update code ver2-->
-        <div class="btn toggle-quote"></div>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+            <div class="btn toggle-quote"><i class="fa fa-weixin"></i>
+            </div>
         <div class="quote-sidebar-form">
             <form name="quick-quote-data" action="<?php echo Mage::getBaseUrl() ?>quickquote">
                 <div class="row">
                     <div class="quantity">
-                        <input name="quantity" type="number" placeholder="Quantity" value="100" required/>
+                        <input name="quantity" type="text" placeholder="Quantity" value="100" required/>
                     </div>
                     <div class="capacity">
                         <select name="capacity" required>
@@ -79,20 +80,25 @@
                     <textarea name="content" placeholder="<?php echo $this->__('Please jot down any questions or other important details.') ?>" required></textarea>
                 </div>
                 <div class=row>
-                    <button type="submit"><?php echo $this->__('Submit quick quote') ?></button>
+                    <button type="submit"><span id="submit-quick-quote"><?php echo $this->__('Submit quick quote') ?></span></button>
                 </div>
             </form>
         </div><!--end .quote-sidebar-form-->
     </div><!-- END QUICK QUOTE SIDEBAR -->
     <script>
+        jQuery('.quote-sidebar-form').css('width','0');
+        jQuery('.quote-sidebar-form textarea').hide();
           jQuery('.btn.toggle-quote').click(function () {
-                if(jQuery('.quote-sidebar-form').width() == 0)
-                    jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {
-                    });
-                else
-                  jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {
-                    });
-            });
+            if(jQuery('.quote-sidebar-form').width() == 0) {
+                jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {
+                });
+                jQuery('.quote-sidebar-form textarea').show();
+            }
+            else
+                jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {
+                });
+                jQuery('.quote-sidebar-form textarea').hide();
+        });
     </script>
 
     <!--top part-->
