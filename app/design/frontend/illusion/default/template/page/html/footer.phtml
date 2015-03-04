@@ -10,7 +10,7 @@
     <?php if($footerType == 'footer_1'):?>
     <!--START SOCIAL SIDEBAR-->
     <?php if(Mage::getStoreConfig('social/social_conf/active')): ?>
-
+    
     <div class="block-social-right">
         <ul>
             <li>
@@ -32,7 +32,7 @@
                 <a id="mail-btn" class="socialitems" href="<?php echo Mage::getStoreConfig('social/social_conf/email') ?>" target="_blank"> <span class="social-icon"> <span class="social-text">Mail To</span> </span> </a>
             </li>
         </ul>
-    </div>
+    </div>   
     <?php endif; ?>
     <script>
         jQuery(document).ready(function($) {
@@ -45,8 +45,8 @@
                 $(this).stop();
                 $(this).animate({width: '43'}, 500, 'swing', function () {
                 });
-            });
-        });
+            });        
+        }); 
     </script><!--END SOCIAL SIDEBAR-->
 
     <div id="quote-sidebar"><!-- START QUICK QUOTE SIDEBAR update code ver2-->
@@ -61,9 +61,13 @@
                     </div>
                     <div class="capacity">
                         <select name="capacity" required>
-                            <option value="1GB">1GB</option>
-                            <option value="2GB">3GB</option>
-                            <option value="4GB">4GB</option>
+                            <option value="1GB"> 1 GB</option>
+                            <option value="2GB"> 3 GB</option>
+                            <option value="4GB"> 4 GB</option>
+                            <option value="8GB"> 8 GB</option>
+                            <option value="16GB">16 GB</option>
+                            <option value="32GB">32 GB</option>
+                            <option value="64GB">64 GB</option>
                         </select>
                     </div>
                 </div>
@@ -86,19 +90,34 @@
         </div><!--end .quote-sidebar-form-->
     </div><!-- END QUICK QUOTE SIDEBAR -->
     <script>
-        jQuery('.quote-sidebar-form').css('width','0');
-        jQuery('.quote-sidebar-form textarea').hide();
-          jQuery('.btn.toggle-quote').click(function () {
-            if(jQuery('.quote-sidebar-form').width() == 0) {
-                jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {
+        jQuery('.quote-sidebar-form').css('width','0px');
+        jQuery('.quote-sidebar-form').hide();
+          jQuery('.btn.toggle-quote').hover(
+            function(){
+                jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {});
+                jQuery('#quote-sidebar').css('width', '297px');
+                jQuery('#quote-sidebar').css('overflow', 'visible');
+                jQuery('.quote-sidebar-form').show();
+          },
+            function(){
+            jQuery('.quote-sidebar-form').hover(
+                function() {
+                    jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {});
+                    jQuery('#quote-sidebar').css('width', '297px');
+                    
+                    jQuery('#quote-sidebar').css('overflow', 'visible');
+                    jQuery('.quote-sidebar-form').show();
+            },
+                function() {
+                    jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {});
+                    jQuery('#quote-sidebar').css('width', '30px');
+                    jQuery('#quote-sidebar').css('overflow', 'visble');
+                    jQuery('.quote-sidebar-form').hide();
                 });
-                jQuery('.quote-sidebar-form textarea').show();
-            }
-            else
-                jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {
-                });
-                jQuery('.quote-sidebar-form textarea').hide();
-        });
+            });
+
+
+   
     </script>
 
     <!--top part-->
@@ -143,16 +162,47 @@
         </div>
     <hr class="m_bottom_45 divider_type_3 m_xs_bottom_30">
     <div class="container">
-        <div class="row">
-            <?php // echo $this->getChildHtml('illusion.footer.social.footer_1');?>                                             <!--social buttons-->
-
+        <div class="row payment-wrapper">
             <div class="col-lg-6 col-md-5 col-sm-6 m_xs_bottom_30 t_xs_align_l t_align_r">
                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('illusion_credit_card_footer_block')->toHtml(); ?>
             </div>
         </div>
     </div>
     </section>
+    <script>
+        function alignCenter(outter, inner) {
+            if(outter !== undefined && inner !== undefined) {
+                console.log(outter,inner);
+                var outterObj = jQuery(outter);
+                var innerObj = jQuery(inner);
+                var marginLeft = 0;
+                /* case 1: if innerObj display == block */
+                if(innerObj.css('display') === 'block') {
+                    // alert(1)
+                    var marginLeft  = (outterObj.width() - innerObj.width()) / 2 - 2;
+                    innerObj.css('marginLeft', marginLeft);
+                }
+                /*  case 2: if innerObj == table-row */
+                else if(innerObj.css('display') === 'table-row') {
+                    // alert(2)
+                    var translateX = (outterObj.width() - innerObj.width()) / 2 - 2;
+                    innerObj.css({"transform":"translateX(" + translateX + "px)"});
+                    console.log(11)
+            
+                }
+            }
+        }
 
+            jQuery(window).resize(
+                function() {
+                    var timerId = setInterval(
+                        function(){
+                            alignCenter('.payment-wrapper', '.payment-wrapper > div');
+                        },
+                1000);
+                clearInterval(timerId);
+            });
+    </script>
     <?php echo $this->getChildHtml('illusion.footer.copyright');?>                                                      <!--copyright-->
 
     <?php elseif($footerType == 'footer_2'):?>
@@ -223,3 +273,9 @@
         <?php echo $this->getChildHtml('illusion.footer.copyright');?>                                                  <!--copyright-->
     <?php endif;?>
 </footer>
+
+<script>
+jQuery(window).load(function() {
+alignCenter('.payment-wrapper', '.payment-wrapper > div');
+});
+</script>
