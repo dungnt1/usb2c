@@ -55,12 +55,15 @@
             </div>
         <div class="quote-sidebar-form">
             <form name="quick-quote-data" action="<?php echo Mage::getBaseUrl() ?>quickquote">
+                <div class="close" id="close-quickquote" style="margin: 0 5px -20px 0;">x</div>
                 <div class="row">
                     <div class="quantity">
+                        <label><?php echo $this->__("Quantity")?></label>
                         <input name="quantity" type="text" placeholder="Quantity" value="100" required/>
                     </div>
                     <div class="capacity">
-                        <select name="capacity" required>
+                        <label><?php echo $this->__("Capacity")?></label>
+                        <select id = "capacity" name="capacity" required>
                             <option value="1GB"> 1 GB</option>
                             <option value="2GB"> 3 GB</option>
                             <option value="4GB"> 4 GB</option>
@@ -92,32 +95,22 @@
     <script>
         jQuery('.quote-sidebar-form').css('width','0px');
         jQuery('.quote-sidebar-form').hide();
-          jQuery('.btn.toggle-quote').hover(
+          jQuery('.btn.toggle-quote').mouseenter(
             function(){
-                jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {});
+                jQuery('.quote-sidebar-form').animate({width: '260'}, 500, 'swing', function () {});
                 jQuery('#quote-sidebar').css('width', '297px');
                 jQuery('#quote-sidebar').css('overflow', 'visible');
                 jQuery('.quote-sidebar-form').show();
-          },
-            function(){
-            jQuery('.quote-sidebar-form').hover(
-                function() {
-                    jQuery('.quote-sidebar-form').animate({width: '260'}, 100, 'swing', function () {});
-                    jQuery('#quote-sidebar').css('width', '297px');
-                    
-                    jQuery('#quote-sidebar').css('overflow', 'visible');
-                    jQuery('.quote-sidebar-form').show();
-            },
-                function() {
-                    jQuery('.quote-sidebar-form').animate({width: '0'}, 100, 'swing', function () {});
-                    jQuery('#quote-sidebar').css('width', '30px');
-                    jQuery('#quote-sidebar').css('overflow', 'visble');
-                    jQuery('.quote-sidebar-form').hide();
-                });
+          });
+        jQuery('#close-quickquote').click(
+            function() {
+                    jQuery('.quote-sidebar-form').animate({width: '0'}, 500, 'swing', function (
+                    ) {
+                        jQuery('#quote-sidebar').css('width', '30px');
+                        jQuery('#quote-sidebar').css('overflow', 'visible');
+                        jQuery('.quote-sidebar-form').hide();
+                    });
             });
-
-
-   
     </script>
 
     <!--top part-->

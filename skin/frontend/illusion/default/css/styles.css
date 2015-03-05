@@ -6073,7 +6073,7 @@ li .menu-label{
 #quote-sidebar ul {height:auto; width:250px; background-color:orange; left:auto; right:0; padding:10px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;
   -webkit-transition:opacity .3s; -moz-transition:opacity .3s; -ms-transition:opacity .3s; -o-transition:opacity .3s; transition:opacity .3s;}
   #quote-sidebar form {position:relative; width:100%; height:100%; line-height:1.5;}
-#quote-sidebar label {display:block; font:12px "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; height:0; color:#fff; margin-bottom:0;}
+#quote-sidebar label {font:12px "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; height:0; color:#fff; margin-bottom:0;}
 #quote-sidebar input, #quote-sidebar select, #quote-sidebar textarea {border:0; outline:0; width:100%; padding:0; margin:2px 0 0; box-shadow:none;
  font:12px "Trebuchet MS", Arial, Helvetica, sans-serif; vertical-align:middle; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
 #quote-sidebar input, #quote-sidebar select {height:25px; line-height:25px; position:relative; top:0; color:#333;}
